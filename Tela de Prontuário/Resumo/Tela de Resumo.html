@@ -116,60 +116,84 @@
                         </a>
 </div>
 <div class="flex-grow space-y-6">
-<div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
-<div class="flex justify-between items-start mb-4">
+<details class="consulta-card group bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
+<summary class="flex justify-between items-start list-none cursor-pointer">
 <div>
-<p class="text-sm font-semibold text-blue-600 mb-1">27/08/2025 - 15:00</p>
+<p class="text-sm font-semibold text-blue-600 mb-1" data-display="datetime">27/08/2025 - 15:00</p>
 <h3 class="text-xl font-semibold text-gray-800">Endocrinologia e Metabologia</h3>
 <p class="text-gray-600">Dr. Ricardo Almeida</p>
 <p class="text-sm text-gray-500">Clínica Endocrinologia e Nutrição</p>
+<span class="mt-2 inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full" data-display="status">Agendado</span>
 </div>
-<div class="flex items-center space-x-2">
-<span class="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Agendado</span>
-<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
-</div>
-</div>
-</div>
-<div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500">
-<div class="flex flex-col">
-<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600 transition-transform duration-300 transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-6 pt-6 border-t border-gray-200">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
 <div>
-<h3 class="text-xl font-semibold text-gray-800">Fisioterapia</h3>
-<p class="text-gray-600">Dra. Ana Pereira</p>
-<p class="text-sm text-gray-500">Clínica Reabilita</p>
-</div>
-<div class="flex items-center space-x-2">
-<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">edit</span></button>
-<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
-</div>
-</div>
-<div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-<div>
-<label class="block text-sm font-medium text-gray-700" for="consultation-date">Data</label>
-<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="consultation-date" type="text" value="10/09/2025"/>
+<label class="block text-sm font-medium text-gray-700" for="consultation-date-1">Data</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" data-source="date" id="consultation-date-1" type="text" value="27/08/2025"/>
 </div>
 <div>
-<label class="block text-sm font-medium text-gray-700" for="consultation-time">Hora</label>
-<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="consultation-time" type="text" value="11:00"/>
+<label class="block text-sm font-medium text-gray-700" for="consultation-time-1">Hora</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" data-source="time" id="consultation-time-1" type="text" value="15:00"/>
 </div>
 <div>
-<label class="block text-sm font-medium text-gray-700" for="patient-status">Status do Paciente</label>
-<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" id="patient-status">
-<option class="text-orange-500" selected="">Requer Atenção</option>
-<option class="text-blue-500">Agendado</option>
-<option class="text-green-500">Concluído</option>
-<option class="text-red-500">Cancelado</option>
+<label class="block text-sm font-medium text-gray-700" for="patient-status-1">Status do Paciente</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" data-source="status" id="patient-status-1">
+<option selected="">Agendado</option>
+<option>Requer Atenção</option>
+<option>Concluído</option>
+<option>Cancelado</option>
 </select>
 </div>
 </div>
 <div class="mt-6 flex justify-end">
 <a href="./Editar consulta.html" class="flex items-center bg-indigo-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 <span class="material-symbols-outlined text-sm mr-2">system_update_alt</span>
-                                Atualizar Detalhes Pós-Consulta
-                            </a>
+                                    Atualizar Detalhes Pós-Consulta
+                                </a>
 </div>
 </div>
+</details>
+<details class="consulta-card group bg-white p-6 rounded-lg shadow-md border-l-4 border-orange-500">
+<summary class="flex justify-between items-start list-none cursor-pointer">
+<div>
+<p class="text-sm font-semibold text-orange-600 mb-1" data-display="datetime">10/09/2025 - 11:00</p>
+<h3 class="text-xl font-semibold text-gray-800">Fisioterapia</h3>
+<p class="text-gray-600">Dra. Ana Pereira</p>
+<p class="text-sm text-gray-500">Clínica Reabilita</p>
+<span class="mt-2 inline-flex items-center bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-0.5 rounded-full" data-display="status">Requer Atenção</span>
 </div>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600 transition-transform duration-300 transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-6 pt-6 border-t border-gray-200">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="consultation-date-2">Data</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" data-source="date" id="consultation-date-2" type="text" value="10/09/2025"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="consultation-time-2">Hora</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" data-source="time" id="consultation-time-2" type="text" value="11:00"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="patient-status-2">Status do Paciente</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" data-source="status" id="patient-status-2">
+<option>Agendado</option>
+<option selected="">Requer Atenção</option>
+<option>Concluído</option>
+<option>Cancelado</option>
+</select>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<a href="./Editar consulta.html" class="flex items-center bg-indigo-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+<span class="material-symbols-outlined text-sm mr-2">system_update_alt</span>
+                                    Atualizar Detalhes Pós-Consulta
+                                </a>
+</div>
+</div>
+</details>
 </div>
 <div class="mt-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4">Tratamentos Anteriores</h2>
@@ -216,5 +240,70 @@
 </div>
 </main>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const statusInfo = {
+            'Agendado': {
+                badgeClasses: 'bg-blue-100 text-blue-800',
+                borderClasses: 'border-blue-500',
+                textClasses: 'text-blue-600'
+            },
+            'Requer Atenção': {
+                badgeClasses: 'bg-orange-100 text-orange-800',
+                borderClasses: 'border-orange-500',
+                textClasses: 'text-orange-600'
+            },
+            'Concluído': {
+                badgeClasses: 'bg-green-100 text-green-800',
+                borderClasses: 'border-green-500',
+                textClasses: 'text-green-600'
+            },
+            'Cancelado': {
+                badgeClasses: 'bg-red-100 text-red-800',
+                borderClasses: 'border-red-500',
+                textClasses: 'text-red-600'
+            }
+        };
 
+        const consultaCards = document.querySelectorAll('.consulta-card');
+
+        consultaCards.forEach(card => {
+            const dateTimeDisplay = card.querySelector('[data-display="datetime"]');
+            const statusBadge = card.querySelector('[data-display="status"]');
+            const dateInput = card.querySelector('[data-source="date"]');
+            const timeInput = card.querySelector('[data-source="time"]');
+            const statusSelect = card.querySelector('[data-source="status"]');
+
+            const updateDateTime = () => {
+                if (dateTimeDisplay && dateInput && timeInput) {
+                    dateTimeDisplay.textContent = `${dateInput.value} - ${timeInput.value}`;
+                }
+            };
+
+            const updateStatus = () => {
+                if (statusBadge && statusSelect && dateTimeDisplay) {
+                    const selectedStatus = statusSelect.value;
+                    const info = statusInfo[selectedStatus];
+
+                    if (info) {
+                        statusBadge.textContent = selectedStatus;
+                        
+                        const baseBadgeClasses = 'mt-2 inline-flex items-center text-xs font-medium px-2.5 py-0.5 rounded-full';
+                        statusBadge.className = `${baseBadgeClasses} ${info.badgeClasses}`;
+
+                        const baseTextClasses = 'text-sm font-semibold mb-1';
+                        dateTimeDisplay.className = `${baseTextClasses} ${info.textClasses}`;
+                        
+                        Object.values(statusInfo).forEach(s => card.classList.remove(s.borderClasses));
+                        card.classList.add(info.borderClasses);
+                    }
+                }
+            };
+            
+            if (dateInput) dateInput.addEventListener('input', updateDateTime);
+            if (timeInput) timeInput.addEventListener('input', updateDateTime);
+            if (statusSelect) statusSelect.addEventListener('change', updateStatus);
+        });
+    });
+</script>
 </body></html>
