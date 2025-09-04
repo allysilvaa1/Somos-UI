@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prontuário Médico - Adicionar Contato</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        .logo-s {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }.error-message {
+            color: #ef4444;font-size: 0.875rem;margin-top: 0.25rem;display: none;
+        }
+        input:invalid:not(:placeholder-shown) {
+            border-color: #ef4444;}
+        input:invalid:not(:placeholder-shown) + .error-message {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+<div class="flex flex-col min-h-screen">
+<header class="bg-white shadow-sm sticky top-0 z-10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center space-x-8">
+<a href="#">
+<div class="h-10 w-10 flex items-center justify-center bg-white rounded-lg">
+<span class="text-4xl logo-s text-[#7EC8F5]">S</span>
+</div>
+</a>
+<nav class="hidden md:flex space-x-6">
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Início</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Rede</a>
+<a class="text-blue-600 border-b-2 border-blue-600 font-semibold text-base" href="#">Registro Médico</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Notificações</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Mensagens</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="bg-gray-100 rounded-lg pl-10 pr-4 py-2 w-48 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Pesquisar..." type="text"/>
+</div>
+<button class="text-gray-500 hover:text-blue-600">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB8ZVFu4v9J1hJM6RKcvebY-36DnmXe679p0TKOB4-Fx0TPd39T3X4HIqq-3R2HJsI6ckXPXpYPLJiP8JpN_yafsVXGwN3ToJd1q218Dl7vERYZsi1KlqpJundMdO5VEx6krNe7khcm7UdIhZR76-efpfOOwUaZ5sJwxeZX4gVJb5mI7Tx88_wdTkTiM0TccOaijPrx_9YoXLyVZenwZ1yXpC901c2oWA2g23Hk8ifCEQBHsCGvDeTkabgC8eErBiTLDbsiONJy4k"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow bg-[#F0F8FF] py-8">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<aside class="lg:col-span-1">
+<div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center sticky top-24">
+<img alt="Foto do perfil do paciente" class="h-32 w-32 rounded-full mb-4 ring-4 ring-blue-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
+<h2 class="text-2xl font-semibold text-gray-800">Sofia Almeida</h2>
+<p class="text-gray-500 mb-2">ID: 123456789</p>
+<p class="text-sm text-gray-400 text-center mb-6">Última atualização: 15/07/2024</p>
+<nav class="w-full space-y-2">
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Resumo/Tela de Resumo.html">
+<span class="material-symbols-outlined mr-3">summarize</span>
+<span>Resumo</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Histórico Médico/Teda de historico medico.html">
+<span class="material-symbols-outlined mr-3">history</span>
+<span>Histórico Médico</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Resultado de Exames/Tela de resultado de exames.html">
+<span class="material-symbols-outlined mr-3">description</span>
+<span>Resultados de Exames</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Medicamentos/Tela de medicamentos.html">
+<span class="material-symbols-outlined mr-3">medication</span>
+<span>Medicamentos</span>
+</a>
+<a class="flex items-center p-3 rounded-lg bg-blue-50 text-blue-600 font-semibold" href="./Tela de rede de apoio.html">
+<span class="material-symbols-outlined mr-3">group</span>
+<span>Rede de Apoio</span>
+</a>
+</nav>
+</div>
+</aside>
+<section class="lg:col-span-3">
+<nav aria-label="Breadcrumb" class="mb-6">
+<ol class="flex items-center space-x-2 text-sm">
+<li>
+<a class="text-gray-500 hover:text-blue-600" href="../Resumo/Tela de Resumo.html">Prontuário</a>
+</li>
+<li>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</li>
+<li>
+<a class="text-gray-500 hover:text-blue-600" href="./Tela de rede de apoio.html">Rede de Apoio</a>
+</li>
+<li>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</li>
+<li>
+<span class="text-gray-700 font-medium">Adicionar Contato</span>
+</li>
+</ol>
+</nav>
+<div class="bg-white p-8 rounded-lg shadow-md">
+<h1 class="text-3xl font-bold text-gray-800 mb-2">Adicionar Novo Contato</h1>
+<p class="text-gray-500 mb-8">Preencha os dados para adicionar um novo membro à rede de apoio de Sofia Almeida.</p>
+<form class="space-y-6" id="add-contact-form" novalidate="">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="contact-name">Nome Completo do Contato/Nome da Instituição</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="contact-name" placeholder="Ex: Mariana Costa ou Clínica Bem-Estar" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="relationship-type">Tipo de Relacionamento</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="relationship-type" required="">
+<option value="">Selecione o tipo</option>
+<option value="Familiar">Familiar</option>
+<option value="Cuidador">Cuidador</option>
+<option value="Médico Especialista">Médico Especialista</option>
+<option value="Psicólogo">Psicólogo</option>
+<option value="Assistente Social">Assistente Social</option>
+<option value="Outros Profissionais de Saúde">Outros Profissionais de Saúde</option>
+<option value="Amigo">Amigo</option>
+<option value="Outros">Outros</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden" id="specialty-field-container">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="specialty">Cargo ou Especialidade (Opcional)</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="specialty" list="specialty-list" placeholder="Ex: Cardiologista, Enfermeiro Chefe" type="text"/>
+<datalist id="specialty-list">
+<option value="Cardiologista">
+</option><option value="Neurologista">
+</option><option value="Psiquiatra">
+</option><option value="Enfermeiro(a)">
+</option><option value="Coordenador de Serviços Sociais">
+</option></datalist>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="primary-phone">Telefone Principal</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="primary-phone" maxlength="15" oninput="maskPhone(this)" pattern="(\([0-9]{2}\)\s?9[0-9]{4}-[0-9]{4})|(\([0-9]{2}\)\s?[0-9]{4}-[0-9]{4})" placeholder="(XX) XXXXX-XXXX" required="" type="tel"/>
+<p class="error-message">Formato de telefone inválido.</p>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="secondary-phone">Telefone Secundário (Opcional)</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="secondary-phone" maxlength="15" oninput="maskPhone(this)" pattern="(\([0-9]{2}\)\s?9[0-9]{4}-[0-9]{4})|(\([0-9]{2}\)\s?[0-9]{4}-[0-9]{4})" placeholder="(XX) XXXXX-XXXX" type="tel"/>
+<p class="error-message">Formato de telefone inválido.</p>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="email">Endereço de E-mail</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="exemplo@email.com" required="" type="email"/>
+<p class="error-message">Formato de e-mail inválido.</p>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="full-address">Endereço Completo</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="full-address" placeholder="Rua, Número, Bairro, Cidade, Estado, CEP" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="notes">Notas/Observações</label>
+<textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="notes" placeholder="Informações adicionais sobre o contato..." rows="4"></textarea>
+</div>
+<div class="flex items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" id="emergency-contact" type="checkbox"/>
+<label class="ml-2 block text-sm text-gray-900" for="emergency-contact">Marcar como Contato de Emergência</label>
+</div>
+<div class="border-t border-gray-200 pt-6 flex justify-end space-x-3">
+<button class="bg-gray-200 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-300" type="button">Cancelar</button>
+<button class="flex items-center bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:bg-blue-300" type="submit">
+<span class="material-symbols-outlined text-sm mr-2">save</span>
+Salvar Contato
+</button>
+</div>
+</form>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<script>
+    function maskPhone(input) {
+      let value = input.value.replace(/\D/g, '');
+      value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+      if (value.length > 9) {
+          value = value.replace(/(\d{5})(\d)/, '$1-$2');
+      } else {
+          value = value.replace(/(\d{4})(\d)/, '$1-$2');
+      }
+      input.value = value.substring(0, 15);
+    }
+    const form = document.getElementById('add-contact-form');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const relationshipType = document.getElementById('relationship-type');
+    const specialtyFieldContainer = document.getElementById('specialty-field-container');
+    const professionalTypes = ['Médico Especialista', 'Psicólogo', 'Assistente Social', 'Outros Profissionais de Saúde'];
+    relationshipType.addEventListener('change', function() {
+        if (professionalTypes.includes(this.value)) {
+            specialtyFieldContainer.classList.remove('hidden');
+        } else {
+            specialtyFieldContainer.classList.add('hidden');
+        }
+    });
+    function validateForm() {
+        const inputs = form.querySelectorAll('input[required], select[required]');
+        let isValid = true;
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                isValid = false;
+                input.classList.add('border-red-500');
+                const errorMessage = input.nextElementSibling;
+                if (errorMessage && errorMessage.classList.contains('error-message')) {
+                    errorMessage.style.display = 'block';
+                }
+            } else {
+                 input.classList.remove('border-red-500');
+                 const errorMessage = input.nextElementSibling;
+                if (errorMessage && errorMessage.classList.contains('error-message')) {
+                    errorMessage.style.display = 'none';
+                }
+            }
+        });
+        // Specific validation for optional but patterned fields
+        const optionalPhone = document.getElementById('secondary-phone');
+        if (optionalPhone.value && !optionalPhone.checkValidity()) {
+            isValid = false;
+            optionalPhone.classList.add('border-red-500');
+            const errorMessage = optionalPhone.nextElementSibling;
+            if (errorMessage) errorMessage.style.display = 'block';
+        } else if (optionalPhone.value) {
+            optionalPhone.classList.remove('border-red-500');
+            const errorMessage = optionalPhone.nextElementSibling;
+            if (errorMessage) errorMessage.style.display = 'none';
+        }
+        if (isValid) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+            validateForm(); // Show all errors on submit attempt
+        }
+        form.classList.add('was-validated');
+    });
+    form.addEventListener('input', validateForm);
+    // Initial validation check
+    validateForm();
+</script>
+
+</body></html>

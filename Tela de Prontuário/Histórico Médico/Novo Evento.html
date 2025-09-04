@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adicionar Novo Evento</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .logo-s {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f8ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .group:focus-within .group-focus-within\:block {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+<div class="flex flex-col min-h-screen">
+<header class="bg-white shadow-sm sticky top-0 z-20">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center space-x-8">
+<a href="#">
+<div class="h-10 w-10 flex items-center justify-center bg-white rounded-lg">
+<span class="text-4xl logo-s text-[#7EC8F5]">S</span>
+</div>
+</a>
+<nav class="hidden md:flex space-x-6">
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Início</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Rede</a>
+<a class="text-blue-600 border-b-2 border-blue-600 font-semibold text-base" href="#">Registro Médico</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Notificações</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Mensagens</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="bg-gray-100 rounded-lg pl-10 pr-4 py-2 w-48 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Pesquisar..." type="text"/>
+</div>
+<button class="text-gray-500 hover:text-blue-600">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB8ZVFu4v9J1hJM6RKcvebY-36DnmXe679p0TKOB4-Fx0TPd39T3X4HIqq-3R2HJsI6ckXPXpYPLJiP8JpN_yafsVXGwN3ToJd1q218Dl7vERYZsi1KlqpJundMdO5VEx6krNe7khcm7UdIhZR76-efpfOOwUaZ5sJwxeZX4gVJb5mI7Tx88_wdTkTiM0TccOaijPrx_9YoXLyVZenwZ1yXpC901c2oWA2g23Hk8ifCEQBHsCGvDeTkabgC8eErBiTLDbsiONJy4k"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow bg-[#F0F8FF] py-8">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<aside class="lg:col-span-1">
+<div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center sticky top-24">
+<img alt="Foto do perfil do paciente" class="h-32 w-32 rounded-full mb-4 ring-4 ring-blue-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
+<h2 class="text-2xl font-semibold text-gray-800">Sofia Almeida</h2>
+<p class="text-gray-500 mb-2">ID: 123456789</p>
+<p class="text-sm text-gray-400 text-center mb-6">Última atualização: 15/07/2024</p>
+<nav class="w-full space-y-2">
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Resumo/Tela de Resumo.html">
+<span class="material-symbols-outlined mr-3">summarize</span>
+<span>Resumo</span>
+</a>
+<a class="flex items-center p-3 rounded-lg bg-blue-50 text-blue-600 font-semibold" href="./Teda de historico medico.html">
+<span class="material-symbols-outlined mr-3">history</span>
+<span>Histórico Médico</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Resultado de Exames/Tela de resultado de exames.html">
+<span class="material-symbols-outlined mr-3">description</span>
+<span>Resultados de Exames</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Medicamentos/Tela de medicamentos.html">
+<span class="material-symbols-outlined mr-3">medication</span>
+<span>Medicamentos</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Rede de Apoio/Tela de rede de apoio.html">
+<span class="material-symbols-outlined mr-3">group</span>
+<span>Rede de Apoio</span>
+</a>
+</nav>
+</div>
+</aside>
+<section class="lg:col-span-3">
+<nav aria-label="Breadcrumb" class="mb-6">
+<ol class="flex items-center space-x-2 text-sm">
+<li>
+<a class="text-gray-500 hover:text-blue-600" href="../Resumo/Tela de Resumo.html">Prontuário</a>
+</li>
+<li>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</li>
+<li>
+<a class="text-gray-500 hover:text-blue-600" href="./Teda de historico medico.html">Histórico Médico</a>
+</li>
+<li>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</li>
+<li>
+<span class="text-gray-700 font-medium">Adicionar Novo Evento</span>
+</li>
+</ol>
+</nav>
+<div class="bg-white rounded-lg shadow-md p-8">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-gray-800">Adicionar Novo Evento</h1>
+<p class="text-gray-500 mt-1">Preencha os detalhes para adicionar um novo evento ao histórico do paciente.</p>
+</div>
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="event-title">Título do Evento</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="event-title" placeholder="Ex: Cirurgia de Apendicite" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="event-type">Tipo de Evento</label>
+<select class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="event-type">
+<option>Selecione um tipo</option>
+<option>Hospitalização</option>
+<option>Cirurgia</option>
+<option>Vacinação</option>
+<option>Alergia</option>
+<option>Outros</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="event-date">Data do Evento</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="event-date" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="event-time">Hora do Evento</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="event-time" type="time"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="event-location">Local/Instituição</label>
+<input class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="event-location" placeholder="Ex: Hospital Central" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-1" for="event-description">Descrição Detalhada</label>
+<textarea class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="event-description" placeholder="Adicione informações adicionais, notas e observações sobre o evento." rows="4"></textarea>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Anexos</label>
+<div class="flex items-center justify-center w-full">
+<label class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100" for="dropzone-file">
+<div class="flex flex-col items-center justify-center pt-5 pb-6">
+<span class="material-symbols-outlined text-gray-400 text-4xl">cloud_upload</span>
+<p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Clique para enviar</span> ou arraste e solte</p>
+<p class="text-xs text-gray-500">PDF, PNG, JPG ou DOCX</p>
+</div>
+<input class="hidden" id="dropzone-file" multiple="" type="file"/>
+</label>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex items-center justify-between p-2 bg-gray-100 rounded-lg">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-gray-600 mr-2">description</span>
+<span class="text-sm font-medium text-gray-800">relatorio_cirurgia.pdf</span>
+</div>
+<button class="text-gray-500 hover:text-red-600">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between p-2 bg-gray-100 rounded-lg">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-gray-600 mr-2">image</span>
+<span class="text-sm font-medium text-gray-800">raio_x_torax.jpg</span>
+</div>
+<button class="text-gray-500 hover:text-red-600">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-4 space-x-4">
+<button class="bg-gray-200 text-gray-700 rounded-lg px-6 py-2 text-sm font-medium hover:bg-gray-300" type="button">Cancelar</button>
+<button class="bg-blue-600 text-white rounded-lg px-6 py-2 text-sm font-medium hover:bg-blue-700 flex items-center" type="submit">
+<span class="material-symbols-outlined text-sm mr-2">save</span>
+                            Salvar Evento
+                        </button>
+</div>
+</form>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resultados de Exames</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+        .logo-s {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+         ::-webkit-scrollbar {
+            width: 8px;
+        }
+         ::-webkit-scrollbar-track {
+            background: #f0f8ff;
+        }
+         ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+         ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .group:focus-within .group-focus-within\:block {
+            display: block;
+        }
+        .group[open] .group-open\:block {
+            display: block;
+        }
+        .group[open] .group-open\:rotate-180 {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+<div class="flex flex-col min-h-screen">
+<header class="bg-white shadow-sm sticky top-0 z-20">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center space-x-8">
+<a href="#">
+<div class="h-10 w-10 flex items-center justify-center bg-white rounded-lg">
+<span class="text-4xl logo-s text-[#7EC8F5]">S</span>
+</div>
+</a>
+<nav class="hidden md:flex space-x-6">
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Início</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Rede</a>
+<a class="text-blue-600 border-b-2 border-blue-600 font-semibold text-base" href="#">Registro Médico</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Notificações</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Mensagens</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="bg-gray-100 rounded-lg pl-10 pr-4 py-2 w-48 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Pesquisar..." type="text"/>
+</div>
+<button class="text-gray-500 hover:text-blue-600">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB8ZVFu4v9J1hJM6RKcvebY-36DnmXe679p0TKOB4-Fx0TPd39T3X4HIqq-3R2HJsI6ckXPXpYPLJiP8JpN_yafsVXGwN3ToJd1q218Dl7vERYZsi1KlqpJundMdO5VEx6krNe7khcm7UdIhZR76-efpfOOwUaZ5sJwxeZX4gVJb5mI7Tx88_wdTkTiM0TccOaijPrx_9YoXLyVZenwZ1yXpC901c2oWA2g23Hk8ifCEQBHsCGvDeTkabgC8eErBiTLDbsiONJy4k"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow bg-[#F0F8FF] py-8">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<aside class="lg:col-span-1">
+<div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center sticky top-24">
+<img alt="Foto do perfil do paciente" class="h-32 w-32 rounded-full mb-4 ring-4 ring-blue-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
+<h2 class="text-2xl font-semibold text-gray-800">Sofia Almeida</h2>
+<p class="text-gray-500 mb-2">ID: 123456789</p>
+<p class="text-sm text-gray-400 text-center mb-6">Última atualização: 15/07/2024</p>
+<nav class="w-full space-y-2">
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Resumo/Tela de Resumo.html">
+<span class="material-symbols-outlined mr-3">summarize</span>
+<span>Resumo</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Histórico Médico/Teda de historico medico.html">
+<span class="material-symbols-outlined mr-3">history</span>
+<span>Histórico Médico</span>
+</a>
+<a class="flex items-center p-3 rounded-lg bg-blue-50 text-blue-600 font-semibold" href="./Tela de resultado de exames.html">
+<span class="material-symbols-outlined mr-3">description</span>
+<span>Resultados de Exames</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Medicamentos/Tela de medicamentos.html">
+<span class="material-symbols-outlined mr-3">medication</span>
+<span>Medicamentos</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Rede de Apoio/Tela de rede de apoio.html">
+<span class="material-symbols-outlined mr-3">group</span>
+<span>Rede de Apoio</span>
+</a>
+</nav>
+</div>
+</aside>
+<section class="lg:col-span-3">
+<div class="flex flex-col h-full">
+<div class="mb-6">
+<div class="flex justify-between items-center mb-4">
+<h1 class="text-3xl font-bold text-gray-800">Resultados de Exames</h1>
+<a href="./Adicionar novo resultado de exame.html" class="flex items-center bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700">
+<span class="material-symbols-outlined text-sm mr-2">upload_file</span>
+                                        Adicionar Resultado
+                                    </a>
+</div>
+<div class="flex items-center space-x-2">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm" placeholder="Pesquisar por exame, laboratório, data..." type="text"/>
+</div>
+<div class="relative group">
+<button class="flex items-center bg-white border border-gray-300 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+<span class="material-symbols-outlined text-sm mr-2">filter_list</span>
+                                            Filtrar
+                                            <span class="material-symbols-outlined text-sm ml-1 transition-transform duration-300 group-focus-within:rotate-180">expand_more</span>
+</button>
+<div class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl z-10 hidden group-focus-within:block">
+<div class="p-4 border-b border-gray-200">
+<h3 class="text-base font-semibold text-gray-800 mb-4">Filtrar por Tipo de Exame</h3>
+<div class="space-y-3">
+<label class="flex items-center">
+<input checked="" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-700">Exames Laboratoriais</span>
+</label>
+<label class="flex items-center">
+<input checked="" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-700">Exames de Imagem</span>
+</label>
+<label class="flex items-center">
+<input checked="" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-700">Relatórios de Diagnóstico</span>
+</label>
+<label class="flex items-center">
+<input class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" type="checkbox"/>
+<span class="ml-2 text-sm text-gray-700">Outros</span>
+</label>
+</div>
+</div>
+<div class="p-4">
+<h3 class="text-base font-semibold text-gray-800 mb-4">Filtrar por Data</h3>
+<div class="space-y-3">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="start-date">De</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="start-date" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="end-date">Até</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="end-date" type="date"/>
+</div>
+</div>
+</div>
+<div class="px-4 py-3 bg-gray-50 flex justify-end space-x-2">
+<button class="bg-gray-200 text-gray-700 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-300">Limpar</button>
+<button class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700">Aplicar</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<span class="material-symbols-outlined text-xl mr-2 text-blue-500">science</span>
+<h3 class="text-lg font-semibold text-gray-800">Hemograma Completo</h3>
+<span class="ml-3 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Normal</span>
+</div>
+<p class="text-sm text-gray-500">Data: 10/07/2024 • Laboratório Clínico Vida</p>
+</div>
+<div class="mt-4 sm:mt-0 flex items-center space-x-2">
+<a class="flex items-center bg-blue-50 text-blue-600 rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-blue-100" href="#">
+<span class="material-symbols-outlined text-sm mr-1">visibility</span>
+                                                Ver Detalhes
+                                            </a>
+</div>
+</div>
+</div>
+<div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<span class="material-symbols-outlined text-xl mr-2 text-purple-500">radiology</span>
+<h3 class="text-lg font-semibold text-gray-800">Raio-X de Tórax</h3>
+</div>
+<p class="text-sm text-gray-500">Data: 05/06/2024 • Hospital Imagem</p>
+</div>
+<div class="mt-4 sm:mt-0 flex items-center space-x-2">
+<a class="flex items-center bg-blue-50 text-blue-600 rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-blue-100" href="#">
+<span class="material-symbols-outlined text-sm mr-1">visibility</span>
+                                                Ver Laudo
+                                            </a>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-gray-200">
+<p class="text-sm text-gray-700"><strong>Resumo:</strong> Campos pulmonares limpos. Área cardíaca de dimensões normais. Sem evidência de fraturas ou anomalias ósseas.</p>
+</div>
+</div>
+<details class="group bg-white p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+<summary class="flex flex-col sm:flex-row sm:items-start sm:justify-between list-none cursor-pointer">
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<span class="material-symbols-outlined text-xl mr-2 text-blue-500">science</span>
+<h3 class="text-lg font-semibold text-gray-800">Perfil Lipídico</h3>
+<span class="ml-3 bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Atenção</span>
+</div>
+<p class="text-sm text-gray-500">Data: 02/03/2024 • Laboratório Clínico Vida</p>
+<ul class="text-sm text-gray-600 space-y-1 mt-4">
+<li>Colesterol Total: <span class="font-medium text-gray-800">210 mg/dL</span> <span class="text-xs text-gray-500">(Ref: &lt; 200)</span></li>
+<li class="font-semibold text-yellow-700">LDL: 140 mg/dL <span class="text-xs text-gray-500">(Ref: &lt; 130)</span></li>
+<li>HDL: <span class="font-medium text-gray-800">55 mg/dL</span> <span class="text-xs text-gray-500">(Ref: &gt; 40)</span></li>
+<li>Triglicerídeos: <span class="font-medium text-gray-800">130 mg/dL</span> <span class="text-xs text-gray-500">(Ref: &lt; 150)</span></li>
+</ul>
+</div>
+<div class="mt-4 sm:mt-0 flex items-center space-x-2 self-start">
+<button class="flex items-center bg-blue-50 text-blue-600 rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-blue-100">
+<span class="material-symbols-outlined text-base mr-1 transition-transform duration-300 group-open:rotate-180">show_chart</span>
+<span class="group-open:hidden">Ver Tendência</span>
+<span class="hidden group-open:block">Ocultar Tendência</span>
+</button>
+</div>
+</summary>
+<div class="mt-4 pt-4 border-t border-gray-200">
+<div class="flex justify-between items-center mb-4">
+<h4 class="text-base font-semibold text-gray-700">Histórico de Colesterol LDL</h4>
+<div class="flex space-x-1">
+<button class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300">3M</button>
+<button class="px-2 py-1 text-xs font-medium text-white bg-blue-600 rounded-md">6M</button>
+<button class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300">1A</button>
+<button class="px-2 py-1 text-xs font-medium text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300">Tudo</button>
+</div>
+</div>
+<div>
+<canvas id="ldlChart"></canvas>
+</div>
+</div>
+</details>
+<div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<span class="material-symbols-outlined text-xl mr-2 text-red-500">biotech</span>
+<h3 class="text-lg font-semibold text-gray-800">Biópsia de Pele</h3>
+</div>
+<p class="text-sm text-gray-500">Data: 15/11/2023 • Dermato Patologia</p>
+</div>
+<div class="mt-4 sm:mt-0 flex items-center space-x-2">
+<a class="flex items-center bg-blue-50 text-blue-600 rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-blue-100" href="#">
+<span class="material-symbols-outlined text-sm mr-1">visibility</span>
+                                                Ver Laudo
+                                            </a>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-gray-200">
+<p class="text-sm text-gray-700"><strong>Resumo:</strong> Nevo displásico com margens livres. Recomendado acompanhamento anual.</p>
+</div>
+</div>
+<details class="group bg-white p-4 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+<summary class="flex flex-col sm:flex-row sm:items-start sm:justify-between list-none cursor-pointer">
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<span class="material-symbols-outlined text-xl mr-2 text-blue-500">science</span>
+<h3 class="text-lg font-semibold text-gray-800">Glicemia de Jejum</h3>
+<span class="ml-3 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Normal</span>
+</div>
+<p class="text-sm text-gray-500">Data: 02/02/2022 • Clínica Geral Saúde+</p>
+<div class="flex items-center mt-4">
+<span class="text-2xl font-bold text-gray-800 mr-2">95</span>
+<span class="text-sm text-gray-600">mg/dL</span>
+<svg class="w-24 h-8 ml-4 text-blue-500" fill="none" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+<path d="M 0 20 C 10 20, 20 10, 30 15 S 50 25, 60 20 S 80 5, 90 10 L 100 12" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+</div>
+<div class="mt-4 sm:mt-0 flex items-center space-x-2 self-start">
+<button class="flex items-center bg-blue-50 text-blue-600 rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-blue-100">
+<span class="material-symbols-outlined text-base mr-1 transition-transform duration-300 group-open:rotate-180">show_chart</span>
+<span class="group-open:hidden">Ver Tendência</span>
+<span class="hidden group-open:block">Ocultar Tendência</span>
+</button>
+</div>
+</summary>
+<div class="mt-4 pt-4 border-t border-gray-200">
+<p class="text-sm text-gray-700">Gráfico de tendência para Glicemia de Jejum...</p>
+</div>
+</details>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<script>
+        const ctx = document.getElementById('ldlChart');
+        if (ctx) {
+            const data = {
+                labels: ['Set/23', 'Nov/23', 'Jan/24', 'Mar/24'],
+                datasets: [{
+                    label: 'LDL (mg/dL)',
+                    data: [135, 138, 132, 140],
+                    fill: false,
+                    borderColor: (context) => {
+                        const chart = context.chart;
+                        const {
+                            ctx,
+                            chartArea
+                        } = chart;
+                        if (!chartArea) {
+                            return null;
+                        }
+                        return getGradient(ctx, chartArea);
+                    },
+                    tension: 0.1,
+                    pointBackgroundColor: (context) => context.raw > 130 ? 'rgb(239, 68, 68)' : 'rgb(59, 130, 246)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: (context) => context.raw > 130 ? 'rgb(239, 68, 68)' : 'rgb(59, 130, 246)',
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                }]
+            };
+            let width, height, gradient;
+            function getGradient(ctx, chartArea) {
+                const chartWidth = chartArea.right - chartArea.left;
+                const chartHeight = chartArea.bottom - chartArea.top;
+                if (gradient === null || width !== chartWidth || height !== chartHeight) {
+                    width = chartWidth;
+                    height = chartHeight;
+                    gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+                    gradient.addColorStop(0, 'rgb(59, 130, 246)');
+                    gradient.addColorStop(0.5, 'rgb(251, 191, 36)');
+                    gradient.addColorStop(1, 'rgb(239, 68, 68)');
+                }
+                return gradient;
+            }
+            new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#fff',
+                            titleColor: '#334155',
+                            bodyColor: '#475569',
+                            borderColor: '#e2e8f0',
+                            borderWidth: 1,
+                            padding: 10,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + ' mg/dL';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Valor (mg/dL)'
+                            },
+                             grid: {
+                                drawOnChartArea: false
+                            }
+                        },
+                         x: {
+                             grid: {
+                                display: false,
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    elements: {
+                        line: {
+                            borderWidth: 2
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body></html>

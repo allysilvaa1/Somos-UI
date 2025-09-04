@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Adicionar Novo Medicamento</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .logo-s {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+<div class="flex flex-col min-h-screen">
+<header class="bg-white shadow-sm sticky top-0 z-20">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="flex items-center space-x-8">
+<a href="#">
+<div class="h-10 w-10 flex items-center justify-center bg-white rounded-lg">
+<span class="text-4xl logo-s text-[#7EC8F5]">S</span>
+</div>
+</a>
+<nav class="hidden md:flex space-x-6">
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Início</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Rede</a>
+<a class="text-blue-600 border-b-2 border-blue-600 font-semibold text-base" href="#">Registro Médico</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Notificações</a>
+<a class="text-gray-600 hover:text-blue-600 font-medium text-base" href="#">Mensagens</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="bg-gray-100 rounded-lg pl-10 pr-4 py-2 w-48 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Pesquisar..." type="text"/>
+</div>
+<button class="text-gray-500 hover:text-blue-600">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB8ZVFu4v9J1hJM6RKcvebY-36DnmXe679p0TKOB4-Fx0TPd39T3X4HIqq-3R2HJsI6ckXPXpYPLJiP8JpN_yafsVXGwN3ToJd1q218Dl7vERYZsi1KlqpJundMdO5VEx6krNe7khcm7UdIhZR76-efpfOOwUaZ5sJwxeZX4gVJb5mI7Tx88_wdTkTiM0TccOaijPrx_9YoXLyVZenwZ1yXpC901c2oWA2g23Hk8ifCEQBHsCGvDeTkabgC8eErBiTLDbsiONJy4k"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow bg-[#F0F8FF] py-10">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<aside class="lg:col-span-1">
+<div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center sticky top-24">
+<img alt="Foto do perfil do paciente" class="h-32 w-32 rounded-full mb-4 ring-4 ring-blue-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
+<h2 class="text-2xl font-semibold text-gray-800">Sofia Almeida</h2>
+<p class="text-gray-500 mb-2">ID: 123456789</p>
+<p class="text-sm text-gray-400 text-center mb-6">Última atualização: 15/07/2024</p>
+<nav class="w-full space-y-2">
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Resumo/Tela de Resumo.html">
+<span class="material-symbols-outlined mr-3">summarize</span>
+<span>Resumo</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Histórico Médico/Teda de historico medico.html">
+<span class="material-symbols-outlined mr-3">history</span>
+<span>Histórico Médico</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Resultado de Exames/Tela de resultado de exames.html">
+<span class="material-symbols-outlined mr-3">description</span>
+<span>Resultados de Exames</span>
+</a>
+<a class="flex items-center p-3 rounded-lg bg-blue-50 text-blue-600 font-semibold" href="./Tela de medicamentos.html">
+<span class="material-symbols-outlined mr-3">medication</span>
+<span>Medicamentos</span>
+</a>
+<a class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 font-medium" href="../Rede de Apoio/Tela de rede de apoio.html">
+<span class="material-symbols-outlined mr-3">group</span>
+<span>Rede de Apoio</span>
+</a>
+</nav>
+</div>
+</aside>
+<section class="lg:col-span-3">
+<nav aria-label="Breadcrumb" class="mb-6">
+<ol class="flex items-center space-x-2 text-sm">
+<li>
+<a class="text-gray-500 hover:text-blue-600" href="../Resumo/Tela de Resumo.html">Prontuário</a>
+</li>
+<li>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</li>
+<li>
+<a class="text-gray-500 hover:text-blue-600" href="./Tela de medicamentos.html">Medicamentos</a>
+</li>
+<li>
+<span class="material-symbols-outlined text-gray-400 text-sm">chevron_right</span>
+</li>
+<li>
+<span class="text-gray-700 font-medium">Adicionar Prescrição</span>
+</li>
+</ol>
+</nav>
+<div class="bg-white p-8 rounded-2xl shadow-lg">
+<div class="mb-8">
+<h1 class="text-3xl font-bold text-gray-800">Adicionar Nova Prescrição</h1>
+<p class="text-gray-500 mt-1">Preencha os detalhes da nova prescrição para o paciente.</p>
+</div>
+<form action="#" class="space-y-8">
+<div class="border-b border-gray-200 pb-8">
+<h2 class="text-lg font-semibold leading-7 text-gray-900 mb-4">Informações do Paciente</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
+<div>
+<label class="block text-sm font-medium text-gray-700" for="patient-name">Nome do Paciente</label>
+<div class="mt-1 flex items-center p-3 bg-gray-100 rounded-md">
+<img alt="Foto do perfil do paciente" class="h-10 w-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
+<span class="text-gray-800 font-medium">Sofia Almeida</span>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="prescribing-doctor">Nome do Médico Prescritor</label>
+<div class="relative mt-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="block w-full rounded-md border-gray-300 pl-10 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="prescribing-doctor" name="prescribing-doctor" placeholder="Pesquisar por nome..." type="text" value="Dr. Carlos Montenegro"/>
+</div>
+</div>
+</div>
+</div>
+<div class="border-b border-gray-200 pb-8">
+<h2 class="text-lg font-semibold leading-7 text-gray-900 mb-6">Detalhes da Prescrição</h2>
+<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+<div class="sm:col-span-6">
+<label class="block text-sm font-medium text-gray-700" for="drug-name">Nome do Medicamento</label>
+<div class="relative mt-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+<input class="block w-full rounded-md border-gray-300 pl-10 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="drug-name" name="drug-name" placeholder="Pesquisar medicamento... (ex: Lisinopril)" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700" for="dosage">Dosagem</label>
+<div class="mt-1 flex rounded-md shadow-sm">
+<input class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="dosage" name="dosage" placeholder="10" type="number"/>
+<select class="block rounded-r-md border-l-0 border-gray-300 bg-gray-50 text-gray-700 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="dosage-unit" name="dosage-unit">
+<option>mg</option>
+<option>ml</option>
+<option>comprimidos</option>
+<option>UI</option>
+<option>g</option>
+</select>
+</div>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700" for="frequency">Frequência</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="frequency" name="frequency">
+<option>1x ao dia</option>
+<option>2x ao dia</option>
+<option>3x ao dia</option>
+<option>a cada 8h</option>
+<option>a cada 12h</option>
+<option>Conforme necessário</option>
+</select>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700" for="route">Via de Administração</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="route" name="route">
+<option>Oral</option>
+<option>Intravenosa</option>
+<option>Intramuscular</option>
+<option>Tópica</option>
+<option>Subcutânea</option>
+</select>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700" for="status">Status</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="status" name="status">
+<option>Ativo</option>
+<option>Suspenso</option>
+<option>Concluído</option>
+</select>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700" for="start-date">Data de Início</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="start-date" name="start-date" type="date"/>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700" for="end-date">Data de Término <span class="text-gray-400">(opcional)</span></label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="end-date" name="end-date" type="date"/>
+</div>
+<div class="sm:col-span-6">
+<label class="block text-sm font-medium text-gray-700" for="treatment-duration">Duração Total do Tratamento</label>
+<div class="mt-1 flex rounded-md shadow-sm">
+<input class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="treatment-duration-value" name="treatment-duration-value" placeholder="Ex: 14 ou 'até o desaparecimento dos sintomas'" type="text"/>
+<select class="block rounded-r-md border-l-0 border-gray-300 bg-gray-50 text-gray-700 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="treatment-duration-unit" name="treatment-duration-unit">
+<option>dias</option>
+<option>semanas</option>
+<option>meses</option>
+<option>indeterminado</option>
+</select>
+</div>
+</div>
+<div class="sm:col-span-6 hidden">
+<label class="block text-sm font-medium text-gray-700" for="suspension-reason">Motivo da Suspensão</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="suspension-reason" name="suspension-reason" placeholder="Especifique o motivo..." type="text"/>
+</div>
+</div>
+</div>
+<div>
+<h2 class="text-lg font-semibold leading-7 text-gray-900 mb-4">Informações Adicionais</h2>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="instructions">Observações / Instruções Específicas</label>
+<textarea class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" id="instructions" name="instructions" placeholder="Ex: Tomar com alimentos, evitar exposição ao sol, etc." rows="4"></textarea>
+</div>
+</div>
+<div class="flex items-center justify-end gap-x-4 pt-6">
+<button class="text-sm font-semibold text-gray-600 hover:text-gray-800" type="button">Cancelar</button>
+<button class="rounded-md bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" type="submit">Salvar Prescrição</button>
+</div>
+</form>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
