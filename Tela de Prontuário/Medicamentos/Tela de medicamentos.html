@@ -22,6 +22,9 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
         }
+        .group[open] .group-open\:rotate-180 {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -128,55 +131,181 @@
 <div class="space-y-6">
 <div>
 <h2 class="text-2xl font-bold text-gray-800 mb-4">Medicamentos Atuais</h2>
-<div class="space-y-4">
-<div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
-<div class="flex flex-col sm:flex-row justify-between items-start">
+<div class="space-y-4" id="medicamentos-atuais-lista">
+<details class="group medication-card bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
+<summary class="flex flex-col sm:flex-row justify-between items-start list-none cursor-pointer">
 <div class="flex-1">
 <h3 class="text-xl font-semibold text-gray-800">Lisinopril</h3>
-<p class="text-gray-600 mb-2">10mg, 1 vez ao dia, via oral</p>
-<p class="text-sm text-gray-500">Início: 01/03/2023 - Fim: Contínuo</p>
+<p class="text-gray-600 mb-2" data-display="full-dosage">10mg, 1 vez ao dia, via oral</p>
+<p class="text-sm text-gray-500" data-display="dates">Início: 01/03/2023 - Fim: Contínuo</p>
 </div>
 <div class="flex items-center space-x-4 mt-4 sm:mt-0">
-<span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Ativo</span>
+<span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full" data-display="status">Ativo</span>
 <button class="text-gray-500 hover:text-blue-600" title="Ver Prescrição">
 <span class="material-symbols-outlined">description</span>
 </button>
-<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600 transition-transform duration-300 transform group-open:rotate-180">expand_more</span>
+</div>
+</summary>
+<div class="mt-6 pt-6 border-t border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700">Dosagem</label>
+<div class="mt-1 flex rounded-md shadow-sm">
+<input class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="dosage" type="number" value="10"/>
+<select class="block rounded-r-md border-l-0 border-gray-300 bg-gray-50 text-gray-700 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="dosage-unit">
+<option selected>mg</option>
+<option>ml</option>
+</select>
 </div>
 </div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Frequência</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="frequency">
+<option selected>1 vez ao dia</option>
+<option>2 vezes ao dia</option>
+</select>
 </div>
-<div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
-<div class="flex flex-col sm:flex-row justify-between items-start">
+<div>
+<label class="block text-sm font-medium text-gray-700">Via de Administração</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="route">
+<option selected>Oral</option>
+<option>Tópica</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Status</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="status">
+<option selected>Ativo</option>
+<option>Suspenso</option>
+<option>Concluído</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Data de Início</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="start-date" type="text" value="01/03/2023"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Data de Término</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="end-date" type="text" value="Contínuo"/>
+</div>
+</div>
+</details>
+<details class="group medication-card bg-white p-6 rounded-lg shadow-md border-l-4 border-green-500">
+<summary class="flex flex-col sm:flex-row justify-between items-start list-none cursor-pointer">
 <div class="flex-1">
 <h3 class="text-xl font-semibold text-gray-800">Metformina</h3>
-<p class="text-gray-600 mb-2">850mg, 2 vezes ao dia, via oral</p>
-<p class="text-sm text-gray-500">Início: 15/06/2022 - Fim: Contínuo</p>
+<p class="text-gray-600 mb-2" data-display="full-dosage">850mg, 2 vezes ao dia, via oral</p>
+<p class="text-sm text-gray-500" data-display="dates">Início: 15/06/2022 - Fim: Contínuo</p>
 </div>
 <div class="flex items-center space-x-4 mt-4 sm:mt-0">
-<span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Ativo</span>
+<span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full" data-display="status">Ativo</span>
 <button class="text-gray-500 hover:text-blue-600" title="Ver Prescrição">
 <span class="material-symbols-outlined">description</span>
 </button>
-<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600 transition-transform duration-300 transform group-open:rotate-180">expand_more</span>
+</div>
+</summary>
+<div class="mt-6 pt-6 border-t border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700">Dosagem</label>
+<div class="mt-1 flex rounded-md shadow-sm">
+<input class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="dosage" type="number" value="850"/>
+<select class="block rounded-r-md border-l-0 border-gray-300 bg-gray-50 text-gray-700 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="dosage-unit">
+<option selected>mg</option>
+<option>ml</option>
+</select>
 </div>
 </div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Frequência</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="frequency">
+<option>1 vez ao dia</option>
+<option selected>2 vezes ao dia</option>
+</select>
 </div>
-<div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-yellow-500">
-<div class="flex flex-col sm:flex-row justify-between items-start">
+<div>
+<label class="block text-sm font-medium text-gray-700">Via de Administração</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="route">
+<option selected>Oral</option>
+<option>Tópica</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Status</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="status">
+<option selected>Ativo</option>
+<option>Suspenso</option>
+<option>Concluído</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Data de Início</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="start-date" type="text" value="15/06/2022"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Data de Término</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="end-date" type="text" value="Contínuo"/>
+</div>
+</div>
+</details>
+<details class="group medication-card bg-white p-6 rounded-lg shadow-md border-l-4 border-yellow-500">
+<summary class="flex flex-col sm:flex-row justify-between items-start list-none cursor-pointer">
 <div class="flex-1">
 <h3 class="text-xl font-semibold text-gray-800">Amoxicilina</h3>
-<p class="text-gray-600 mb-2">500mg, de 8 em 8 horas, via oral</p>
-<p class="text-sm text-gray-500">Início: 10/07/2024 - Fim: 17/07/2024</p>
+<p class="text-gray-600 mb-2" data-display="full-dosage">500mg, de 8 em 8 horas, via oral</p>
+<p class="text-sm text-gray-500" data-display="dates">Início: 10/07/2024 - Fim: 17/07/2024</p>
 </div>
 <div class="flex items-center space-x-4 mt-4 sm:mt-0">
-<span class="inline-flex items-center bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Suspenso</span>
+<span class="inline-flex items-center bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full" data-display="status">Suspenso</span>
 <button class="text-gray-500 hover:text-blue-600" title="Ver Prescrição">
 <span class="material-symbols-outlined">description</span>
 </button>
-<button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_vert</span></button>
+<span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600 transition-transform duration-300 transform group-open:rotate-180">expand_more</span>
+</div>
+</summary>
+<div class="mt-6 pt-6 border-t border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700">Dosagem</label>
+<div class="mt-1 flex rounded-md shadow-sm">
+<input class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="dosage" type="number" value="500"/>
+<select class="block rounded-r-md border-l-0 border-gray-300 bg-gray-50 text-gray-700 focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="dosage-unit">
+<option selected>mg</option>
+<option>ml</option>
+</select>
 </div>
 </div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Frequência</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="frequency">
+<option>1 vez ao dia</option>
+<option selected>de 8 em 8 horas</option>
+</select>
 </div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Via de Administração</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="route">
+<option selected>Oral</option>
+<option>Tópica</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Status</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="status">
+<option>Ativo</option>
+<option selected>Suspenso</option>
+<option>Concluído</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Data de Início</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="start-date" type="text" value="10/07/2024"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700">Data de Término</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" data-source="end-date" type="text" value="17/07/2024"/>
+</div>
+</div>
+</details>
 </div>
 </div>
 <div class="mt-8">
@@ -200,9 +329,7 @@
 <td class="p-4 text-gray-800 hidden sm:table-cell">05/05/2024 - 08/05/2024</td>
 <td class="p-4"><span class="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Concluído</span></td>
 <td class="p-4 text-right">
-<button class="text-gray-500 hover:text-blue-600" title="Ver Detalhes">
-<span class="material-symbols-outlined">visibility</span>
-</button>
+<a href="./detalhes-prescricao.html" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">chevron_right</span></a>
 </td>
 </tr>
 <tr class="border-b hover:bg-gray-50">
@@ -213,9 +340,7 @@
 <td class="p-4 text-gray-800 hidden sm:table-cell">12/02/2024 - 15/02/2024</td>
 <td class="p-4"><span class="inline-flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Concluído</span></td>
 <td class="p-4 text-right">
-<button class="text-gray-500 hover:text-blue-600" title="Ver Detalhes">
-<span class="material-symbols-outlined">visibility</span>
-</button>
+<a href="./detalhes-prescricao.html" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">chevron_right</span></a>
 </td>
 </tr>
 <tr class="hover:bg-gray-50">
@@ -226,9 +351,7 @@
 <td class="p-4 text-gray-800 hidden sm:table-cell">01/01/2022 - 01/03/2023</td>
 <td class="p-4"><span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Interrompido</span></td>
 <td class="p-4 text-right">
-<button class="text-gray-500 hover:text-blue-600" title="Ver Detalhes">
-<span class="material-symbols-outlined">visibility</span>
-</button>
+<a href="./detalhes-prescricao.html" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">chevron_right</span></a>
 </td>
 </tr>
 </tbody>
@@ -242,5 +365,130 @@
 </div>
 </main>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const statusInfo = {
+            'Ativo': {
+                badgeClasses: 'bg-green-100 text-green-800',
+                borderClasses: 'border-green-500',
+            },
+            'Suspenso': {
+                badgeClasses: 'bg-yellow-100 text-yellow-800',
+                borderClasses: 'border-yellow-500',
+            },
+            'Concluído': {
+                badgeClasses: 'bg-blue-100 text-blue-800',
+                borderClasses: 'border-blue-500',
+            }
+        };
 
+        function setupMedicationCard(card) {
+            const fullDosageDisplay = card.querySelector('[data-display="full-dosage"]');
+            const datesDisplay = card.querySelector('[data-display="dates"]');
+            const statusBadge = card.querySelector('[data-display="status"]');
+
+            const dosageInput = card.querySelector('[data-source="dosage"]');
+            const dosageUnitSelect = card.querySelector('[data-source="dosage-unit"]');
+            const frequencySelect = card.querySelector('[data-source="frequency"]');
+            const routeSelect = card.querySelector('[data-source="route"]');
+            const statusSelect = card.querySelector('[data-source="status"]');
+            const startDateInput = card.querySelector('[data-source="start-date"]');
+            const endDateInput = card.querySelector('[data-source="end-date"]');
+            
+            function updateDisplay() {
+                fullDosageDisplay.textContent = `${dosageInput.value}${dosageUnitSelect.value}, ${frequencySelect.value}, via ${routeSelect.value.toLowerCase()}`;
+                datesDisplay.textContent = `Início: ${startDateInput.value} - Fim: ${endDateInput.value}`;
+                
+                const selectedStatus = statusSelect.value;
+                const info = statusInfo[selectedStatus];
+                if (info) {
+                    statusBadge.textContent = selectedStatus;
+                    statusBadge.className = `inline-flex items-center text-xs font-medium px-2.5 py-0.5 rounded-full ${info.badgeClasses}`;
+                    
+                    Object.values(statusInfo).forEach(s => card.classList.remove(s.borderClasses));
+                    card.classList.add(info.borderClasses);
+                }
+            }
+
+            [dosageInput, dosageUnitSelect, frequencySelect, routeSelect, statusSelect, startDateInput, endDateInput].forEach(el => {
+                el.addEventListener('change', updateDisplay);
+                el.addEventListener('input', updateDisplay);
+            });
+        }
+
+        document.querySelectorAll('.medication-card').forEach(setupMedicationCard);
+
+        const novoMedicamentoData = localStorage.getItem('novoMedicamento');
+        if (novoMedicamentoData) {
+            const med = JSON.parse(novoMedicamentoData);
+            const lista = document.getElementById('medicamentos-atuais-lista');
+            const info = statusInfo[med.status] || statusInfo['Ativo'];
+            
+            const newMedCardHTML = `
+                <details class="group medication-card bg-white p-6 rounded-lg shadow-md border-l-4 ${info.borderClasses}">
+                    <summary class="flex flex-col sm:flex-row justify-between items-start list-none cursor-pointer">
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-800">${med.name}</h3>
+                            <p class="text-gray-600 mb-2" data-display="full-dosage">${med.dosage}${med.dosage_unit}, ${med.frequency}, via ${med.route.toLowerCase()}</p>
+                            <p class="text-sm text-gray-500" data-display="dates">Início: ${med.start_date} - Fim: ${med.end_date}</p>
+                        </div>
+                        <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                            <span class="inline-flex items-center ${info.badgeClasses} text-xs font-medium px-2.5 py-0.5 rounded-full" data-display="status">${med.status}</span>
+                            <button class="text-gray-500 hover:text-blue-600" title="Ver Prescrição"><span class="material-symbols-outlined">description</span></button>
+                            <span class="material-symbols-outlined text-gray-400 group-hover:text-gray-600 transition-transform duration-300 transform group-open:rotate-180">expand_more</span>
+                        </div>
+                    </summary>
+                     <div class="mt-6 pt-6 border-t border-gray-200 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Dosagem</label>
+                            <div class="mt-1 flex rounded-md shadow-sm">
+                                <input class="block w-full flex-1 rounded-none rounded-l-md border-gray-300 sm:text-sm" data-source="dosage" type="number" value="${med.dosage}">
+                                <select class="block rounded-r-md border-l-0 border-gray-300 bg-gray-50 text-gray-700 sm:text-sm" data-source="dosage-unit">
+                                    <option ${med.dosage_unit === 'mg' ? 'selected' : ''}>mg</option>
+                                    <option ${med.dosage_unit === 'ml' ? 'selected' : ''}>ml</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Frequência</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" data-source="frequency">
+                                <option ${med.frequency === '1 vez ao dia' ? 'selected' : ''}>1 vez ao dia</option>
+                                <option ${med.frequency === '2 vezes ao dia' ? 'selected' : ''}>2 vezes ao dia</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Via de Administração</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" data-source="route">
+                                <option ${med.route === 'Oral' ? 'selected' : ''}>Oral</option>
+                                <option ${med.route === 'Tópica' ? 'selected' : ''}>Tópica</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Status</label>
+                            <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" data-source="status">
+                                <option ${med.status === 'Ativo' ? 'selected' : ''}>Ativo</option>
+                                <option ${med.status === 'Suspenso' ? 'selected' : ''}>Suspenso</option>
+                                <option ${med.status === 'Concluído' ? 'selected' : ''}>Concluído</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Data de Início</label>
+                            <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" data-source="start-date" type="text" value="${med.start_date}">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Data de Término</label>
+                            <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm" data-source="end-date" type="text" value="${med.end_date}">
+                        </div>
+                    </div>
+                </details>
+            `;
+            lista.insertAdjacentHTML('afterbegin', newMedCardHTML);
+            
+            const newCard = lista.firstElementChild;
+            setupMedicationCard(newCard);
+
+            localStorage.removeItem('novoMedicamento');
+        }
+    });
+</script>
 </body></html>
