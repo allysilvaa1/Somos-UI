@@ -39,19 +39,21 @@
 </div>
 <input class="appearance-none block w-full px-3 py-4 pl-12 border border-gray-300 rounded-xl placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition" id="email" name="email" placeholder="Seu e-mail ou usuário" required="" type="email"/>
 </div>
+<div id="email-error" class="text-red-500 text-xs mt-1 hidden">Por favor, insira um e-mail válido.</div>
 </div>
 <div>
 <div class="relative">
 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-gray-400">lock</span>
 </div>
-<input class="appearance-none block w-full px-3 py-4 pl-12 border border-gray-300 rounded-xl placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition" id="password" name="password" placeholder="Sua senha" required="" type="password"/>
+<input class="appearance-none block w-full px-3 py-4 pl-12 border border-gray-300 rounded-xl placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition" id="password" name="password" placeholder="Sua senha" required="" type="password" minlength="6"/>
 <button class="absolute inset-y-0 right-0 pr-4 flex items-center text-sm leading-5" type="button">
 <span class="material-symbols-outlined text-gray-400 hover:text-gray-600">
                                 visibility
                             </span>
 </button>
 </div>
+<div id="password-error" class="text-red-500 text-xs mt-1 hidden">A senha deve ter pelo menos 6 caracteres.</div>
 </div>
 <div class="flex items-center justify-between">
 <div class="flex items-center">
@@ -63,7 +65,7 @@
 </div>
 </div>
 <div>
-<button class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-semibold rounded-xl text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 ease-in-out" type="submit">
+<button id="submit-button" class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-semibold rounded-xl text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 ease-in-out disabled:bg-blue-300 disabled:cursor-not-allowed" type="submit">
                         Entrar
                     </button>
 </div>
@@ -99,4 +101,43 @@
 </div>
 </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+        const submitButton = document.getElementById('submit-button');
+
+        function validateForm() {
+            const isEmailValid = emailInput.value.length > 0 && emailInput.checkValidity();
+            const isPasswordValid = passwordInput.value.length >= 6;
+
+            if (emailInput.value.length > 0 && !isEmailValid) {
+                emailError.classList.remove('hidden');
+            } else {
+                emailError.classList.add('hidden');
+            }
+            
+            if (passwordInput.value.length > 0 && !isPasswordValid) {
+                passwordError.classList.remove('hidden');
+            } else {
+                passwordError.classList.add('hidden');
+            }
+
+            if (isEmailValid && isPasswordValid) {
+                submitButton.disabled = false;
+            } else {
+                submitButton.disabled = true;
+            }
+        }
+
+        emailInput.addEventListener('input', validateForm);
+        passwordInput.addEventListener('input', validateForm);
+
+        validateForm();
+    });
+</script>
+
 </body></html>
