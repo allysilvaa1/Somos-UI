@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR"><head>
-<meta charset="utf-8"/>
+<meta charset="utf--8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Login - Prontuário Médico</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -109,6 +108,17 @@
         const emailError = document.getElementById('email-error');
         const passwordError = document.getElementById('password-error');
         const submitButton = document.getElementById('submit-button');
+        
+        // --- INÍCIO DA CORREÇÃO ---
+        const togglePasswordButton = passwordInput.nextElementSibling;
+        const visibilityIcon = togglePasswordButton.querySelector('span');
+
+        togglePasswordButton.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            visibilityIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+        });
+        // --- FIM DA CORREÇÃO ---
 
         function validateForm() {
             const isEmailValid = emailInput.value.length > 0 && emailInput.checkValidity();
