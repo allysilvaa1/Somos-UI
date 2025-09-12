@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recuperar Senha - Prontuário Médico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .logo-s {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+    }
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }[type='radio'] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }[type='radio'] + label {
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease-in-out;
+      text-align: center;
+      flex-grow: 1;
+    }[type='radio']:checked + label {
+      background-color: #7EC8F5;
+      color: white;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50" x-data="{ recoveryMethod: 'email' }">
+<div class="flex min-h-screen flex-col items-center justify-center bg-[#F0F8FF] p-6 sm:p-12">
+<div class="w-full max-w-md">
+<div class="bg-white p-8 md:p-10 rounded-xl shadow-lg">
+<div class="flex justify-center mb-6">
+<div class="h-16 w-16 flex items-center justify-center bg-white rounded-full shadow-inner">
+<span class="text-6xl logo-s text-[#7EC8F5]">S</span>
+</div>
+</div>
+<h2 class="text-2xl font-bold text-center text-gray-700 mb-2">Esqueceu sua Senha?</h2>
+<p class="text-center text-gray-500 mb-8" x-show="recoveryMethod === 'email'">Insira seu e-mail para receber as instruções de recuperação.</p>
+<p class="text-center text-gray-500 mb-8" x-show="recoveryMethod === 'sms'">Insira seu celular para receber as instruções de recuperação.</p>
+<form class="space-y-6">
+<div>
+<div class="flex justify-center items-center bg-gray-100 rounded-lg p-1 mb-6">
+<input checked="" id="email-option" name="recovery-option" type="radio" value="email" x-model="recoveryMethod"/>
+<label class="text-gray-600 font-medium" for="email-option">Receber por E-mail</label>
+<input id="sms-option" name="recovery-option" type="radio" value="sms" x-model="recoveryMethod"/>
+<label class="text-gray-600 font-medium" for="sms-option">Receber por SMS</label>
+</div>
+</div>
+<div x-show="recoveryMethod === 'email'">
+<label class="sr-only" for="email">Seu E-mail</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  mail
+                </span>
+<input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7EC8F5] transition duration-300" id="email" name="email" placeholder="Seu E-mail" required="" type="email"/>
+</div>
+</div>
+<div style="display: none;" x-show="recoveryMethod === 'sms'">
+<label class="sr-only" for="phone">Seu Número de Celular</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  sms
+                </span>
+<input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7EC8F5] transition duration-300" id="phone" name="phone" placeholder="Seu Número de Celular" required="" type="tel"/>
+</div>
+</div>
+<div>
+<button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-gradient-to-r from-[#7EC8F5] to-[#6CB7E5] hover:from-[#6CB7E5] hover:to-[#5AA6D5] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7EC8F5] transform active:scale-95 transition duration-300 ease-in-out" type="submit">
+                Recuperar Senha
+              </button>
+</div>
+</form>
+<p class="mt-8 text-center text-sm text-gray-500">
+            Lembrou da senha?
+            <a class="font-medium text-[#7EC8F5] hover:text-[#6CB7E5]" href="#">
+              Voltar para o Login
+            </a>
+</p>
+</div>
+</div>
+</div>
+<script defer="" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+</body></html>

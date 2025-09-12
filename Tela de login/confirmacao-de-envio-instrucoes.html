@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Instruções Enviadas - Prontuário Médico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+    }
+  </style>
+</head>
+<body class="bg-[#F0F7FF]" x-data="{ method: 'email', timer: 59, resendDisabled: true }" x-init="
+    const interval = setInterval(() => {
+      if (timer > 0) {
+        timer--;
+      } else {
+        resendDisabled = false;
+        clearInterval(interval);
+      }
+    }, 1000);
+  ">
+<div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
+<div class="w-full max-w-md">
+<div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200 text-center">
+<div class="flex flex-col items-center text-center">
+<div class="h-24 w-24 flex items-center justify-center bg-white rounded-xl mb-4">
+<img src="../Tela de login - 02/logotipo-sem-fundo.png" alt="Logotipo do Sistema" class="h-full w-full object-contain">
+</div>
+</div>
+<div x-show="method === 'email'">
+<span class="material-symbols-outlined text-7xl text-green-500">mark_email_read</span>
+<h1 class="text-2xl font-bold text-gray-900 mt-2">Instruções Enviadas!</h1>
+<p class="text-gray-500 mt-2 mb-6">
+            Enviamos as instruções para o e-mail: <br/><strong class="font-medium text-gray-800">u***o@dominio.com</strong>.
+          </p>
+<p class="text-sm text-gray-500">
+            Clique no link enviado para criar uma nova senha. O link é válido por 24 horas.
+          </p>
+</div>
+<div style="display: none;" x-show="method === 'sms'">
+<span class="material-symbols-outlined text-7xl text-green-500">sms</span>
+<h1 class="text-2xl font-bold text-gray-900 mt-2">Verifique suas Mensagens!</h1>
+<p class="text-gray-500 mt-2 mb-6">
+            Um SMS foi enviado para o número: <br/><strong class="font-medium text-gray-800">(XX) 9XXXX-X000</strong>.
+          </p>
+<p class="text-sm text-gray-500">
+            Insira o código recebido para continuar o processo de redefinição.
+          </p>
+</div>
+<div class="mt-6 text-sm text-gray-500 space-y-2">
+<p>
+            Pode levar alguns minutos para a mensagem chegar.
+          </p>
+<p x-show="method === 'email'">
+            Não se esqueça de verificar sua pasta de spam.
+          </p>
+</div>
+<div class="mt-8">
+<p class="text-sm text-gray-600">
+            Não recebeu?
+            <a :class="{ 'opacity-50 cursor-not-allowed': resendDisabled }" @click="if (!resendDisabled) { timer = 59; resendDisabled = true;}" class="font-medium text-blue-600 hover:text-blue-500 cursor-pointer">
+              Reenviar instruções
+            </a>
+<span class="text-gray-400 text-xs" x-show="resendDisabled">(<span x-text="timer"></span>s)</span>
+</p>
+</div>
+<div class="mt-8 border-t pt-6">
+<a class="font-medium text-blue-600 hover:text-blue-500" href="./Tela-de-login-aprimorada.html">
+            Voltar para o Login
+          </a>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+</body>
+</html>
