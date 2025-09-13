@@ -44,7 +44,7 @@
       <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200">
         <div class="flex flex-col items-center text-center">
             <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto mb-4">
-            <h1 class="text-3xl font-bold text-gray-900">Esqueceu sua Senha?</h1>
+            <h1 class="text-3xl font-bold text-[#4d4d4d]">Esqueceu sua Senha?</h1>
             <p class="text-lg text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'email'">Insira seu e-mail para receber as instruções de recuperação.</p>
             <p class="text-lg text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'sms'" style="display: none;">Insira seu celular para receber as instruções de recuperação.</p>
         </div>
@@ -53,17 +53,17 @@
           <div>
             <div class="flex justify-center items-center bg-gray-100 rounded-lg p-1 mb-6">
               <input checked="" id="email-option" name="recovery-option" type="radio" value="email" x-model="recoveryMethod" />
-              <label class="text-gray-700 font-bold text-base" for="email-option">Receber por E-mail</label>
+              <label class="text-[#4d4d4d] font-bold text-base" for="email-option">Receber por E-mail</label>
 
               <input id="sms-option" name="recovery-option" type="radio" value="sms" x-model="recoveryMethod" />
-              <label class="text-gray-700 font-bold text-base" for="sms-option">Receber por SMS</label>
+              <label class="text-[#4d4d4d] font-bold text-base" for="sms-option">Receber por SMS</label>
             </div>
           </div>
           <div x-show="recoveryMethod === 'email'">
             <label class="sr-only" for="email">Seu E-mail</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">mail</span>
-              <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="email" name="email" placeholder="Seu e-mail" required="" type="email" />
+              <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="email" name="email" placeholder="Seu e-mail" required="" type="email" />
             </div>
             <p id="email-error" class="mt-2 text-xs text-red-600 hidden" role="alert">Por favor, insira um e-mail válido.</p>
           </div>
@@ -71,7 +71,7 @@
             <label class="sr-only" for="phone">Seu Número de Celular</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">sms</span>
-              <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="phone" name="phone" placeholder="Seu celular com DDD" required="" type="tel" />
+              <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="phone" name="phone" placeholder="Seu celular com DDD" required="" type="tel" />
             </div>
              <p id="phone-error" class="mt-2 text-xs text-red-600 hidden" role="alert">Por favor, insira um número de telefone válido.</p>
           </div>
@@ -81,7 +81,7 @@
             </button>
           </div>
         </form>
-        <p class="mt-8 text-center text-base text-gray-600">
+        <p class="mt-8 text-center text-base text-[#4d4d4d]">
           Lembrou da senha?
           <a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="./Tela-de-login-aprimorada.html">
             Voltar para o Login
