@@ -87,6 +87,15 @@
 <div>
     <div class="relative">
         <span class="input-icon">
+            <span class="material-symbols-outlined">calendar_today</span>
+        </span>
+        <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-[#4d4d4d] focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="dob" name="dob" placeholder="Data de Nascimento" required type="text"/>
+    </div>
+    <p class="text-red-500 text-xs mt-1 hidden">Data de nascimento é obrigatória.</p>
+</div>
+<div>
+    <div class="relative">
+        <span class="input-icon">
             <span class="material-symbols-outlined">email</span>
         </span>
         <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-[#4d4d4d] focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="email" name="email" placeholder="E-mail" required type="email"/>
@@ -183,8 +192,13 @@
             }
         });
 
+        const dobInput = document.getElementById('dob');
+        dobInput.addEventListener('focus', () => { dobInput.type = 'date'; });
+        dobInput.addEventListener('blur', () => { if (!dobInput.value) { dobInput.type = 'text'; } });
+
         const fields = {
             fullname: { input: document.getElementById('fullname') },
+            dob: { input: dobInput },
             email: { input: document.getElementById('email') },
             cpf: { input: document.getElementById('cpf') },
             cellphone: { input: phoneInputField },
@@ -201,10 +215,11 @@
         fields.confirm_password.error = fields.confirm_password.input.parentElement.parentElement.querySelector('p');
         fields.terms.error = fields.terms.input.parentElement.parentElement.querySelector('p');
 
+        fields.fullname.validation = value => value.trim() !== '';
+        fields.dob.validation = value => value.trim() !== '';
+        fields.email.validation = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         fields.cpf.validation = value => /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value);
         fields.cellphone.validation = value => phoneInputInstance.isValidNumber();
-        fields.fullname.validation = value => value.trim() !== '';
-        fields.email.validation = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         fields.password.validation = value => value.length >= 6;
         fields.confirm_password.validation = value => value === fields.password.input.value && value.length > 0;
         fields.terms.validation = input => input.checked;
