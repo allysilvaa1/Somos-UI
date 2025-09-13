@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 <style type="text/tailwindcss">
     body {
       font-family: 'PT Sans', sans-serif;
@@ -27,6 +27,9 @@
     }
     .input-icon {
         @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400;
+    }
+    .iti {
+        width: 100%;
     }
   </style>
 </head>
@@ -101,12 +104,7 @@
         <p class="text-red-500 text-xs mt-1 hidden">CPF inválido.</p>
     </div>
     <div>
-        <div class="relative">
-            <span class="input-icon">
-                <span class="material-symbols-outlined">phone_iphone</span>
-            </span>
-            <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-[#4d4d4d] focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="cellphone" name="cellphone" placeholder="Celular" required type="text"/>
-        </div>
+        <input class="block w-full pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-[#4d4d4d] focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="cellphone" name="cellphone" required type="tel" placeholder="Seu celular com DDD"/>
         <p class="text-red-500 text-xs mt-1 hidden">Celular inválido.</p>
     </div>
 </div>
@@ -164,16 +162,32 @@
 </div>
 </div>
 <script defer src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('signup-form');
         const submitButton = document.getElementById('submit-button');
 
+        const phoneInputField = document.getElementById('cellphone');
+        const phoneInputInstance = window.intlTelInput(phoneInputField, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            initialCountry: "auto",
+            geoIpLookup: callback => {
+                fetch("https://ipapi.co/json")
+                    .then(res => res.json())
+                    .then(data => callback(data.country_code))
+                    .catch(() => callback("br"));
+            },
+            customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
+                return "Seu celular com DDD";
+            }
+        });
+
         const fields = {
             fullname: { input: document.getElementById('fullname') },
             email: { input: document.getElementById('email') },
             cpf: { input: document.getElementById('cpf') },
-            cellphone: { input: document.getElementById('cellphone') },
+            cellphone: { input: phoneInputField },
             password: { input: document.getElementById('password') },
             confirm_password: { input: document.getElementById('confirm_password') },
             terms: { input: document.getElementById('terms') }
@@ -187,9 +201,8 @@
         fields.confirm_password.error = fields.confirm_password.input.parentElement.parentElement.querySelector('p');
         fields.terms.error = fields.terms.input.parentElement.parentElement.querySelector('p');
 
-
         fields.cpf.validation = value => /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value);
-        fields.cellphone.validation = value => /^\(\d{2}\) \d{5}-\d{4}$/.test(value);
+        fields.cellphone.validation = value => phoneInputInstance.isValidNumber();
         fields.fullname.validation = value => value.trim() !== '';
         fields.email.validation = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         fields.password.validation = value => value.length >= 6;
@@ -205,16 +218,7 @@
             input.value = value;
         };
 
-        const maskPhone = (input) => {
-            let value = input.value.replace(/\D/g, '');
-            value = value.substring(0, 11);
-            value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-            value = value.replace(/(\d{5})(\d{4})$/, '$1-$2');
-            input.value = value;
-        };
-
         fields.cpf.input.addEventListener('input', (e) => maskCPF(e.target));
-        fields.cellphone.input.addEventListener('input', (e) => maskPhone(e.target));
 
         const validateField = (fieldName) => {
             const field = fields[fieldName];
@@ -240,6 +244,7 @@
             field.input.addEventListener('blur', validateForm);
         });
         
+        fields.cellphone.input.addEventListener('countrychange', validateForm);
         fields.password.input.addEventListener('keyup', () => validateField('confirm_password'));
 
         form.addEventListener('submit', (e) => {
