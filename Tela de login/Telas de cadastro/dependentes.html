@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dependentes - Prontuário Médico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<style type="text/tailwindcss">
+    body {
+      font-family: 'PT Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.filled {
+        font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="bg-[#F0F7FF]" x-data="{ noDependents: false, showModal: false, dependents: [], editingDependent: null, newDependent: { name: '', dob: '', cpf: '', relationship: '', phone: '' } }">
+<div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
+<div class="w-full max-w-4xl">
+<div class="mb-8">
+<div class="flex items-center justify-center">
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-[#467de9] rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined filled text-white">check</span>
+</div>
+<p class="mt-2 text-xs font-semibold text-[#467de9]">Cadastro</p>
+</div>
+<div class="flex-auto border-t-2 border-[#467de9] -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-[#467de9] rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined filled text-white">check</span>
+</div>
+<p class="mt-2 text-xs font-semibold text-[#467de9]">Meu Plano</p>
+</div>
+<div class="flex-auto border-t-2 border-[#467de9] -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-[#467de9] rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white filled">groups</span>
+</div>
+<p class="mt-2 text-xs font-semibold text-[#467de9]">Dependentes</p>
+</div>
+<div class="flex-auto border-t-2 border-gray-200 -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-gray-500">check_circle</span>
+</div>
+<p class="mt-2 text-xs text-gray-500">Conclusão</p>
+</div>
+</div>
+</div>
+<div class="w-full mx-auto">
+<div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200">
+<div class="flex justify-center mb-4">
+    <img src="../../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto">
+</div>
+<div class="text-center">
+<h2 class="text-3xl font-bold text-[#4d4d4d] mb-2">Gerencie seus Dependentes</h2>
+<p class="text-lg text-[#4d4d4d] mb-6">Adicione os membros da sua família para gerenciar os prontuários em um só lugar.</p>
+</div>
+<div class="flex items-center justify-center mb-6">
+<label class="flex items-center space-x-2 cursor-pointer">
+<input class="form-checkbox h-5 w-5 text-[#467de9] rounded focus:ring-[#467de9]" type="checkbox" x-model="noDependents"/>
+<span class="text-[#4d4d4d]">Não tenho dependentes para adicionar</span>
+</label>
+</div>
+<div x-show="!noDependents">
+<div class="space-y-4 mb-6">
+<template :key="index" x-for="(dependent, index) in dependents">
+<div class="bg-gray-50 p-4 rounded-lg flex items-center justify-between border border-gray-200">
+<div>
+<p class="font-semibold text-[#4d4d4d]" x-text="dependent.name"></p>
+<p class="text-sm text-gray-500" x-text="`Nascimento: ${dependent.dob} | Parentesco: ${dependent.relationship}`"></p>
+</div>
+<div class="flex items-center space-x-2">
+<button @click="editingDependent = index; showModal = true; newDependent = {...dependents[index]}" class="text-gray-500 hover:text-[#467de9]">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button @click="dependents.splice(index, 1)" class="text-gray-500 hover:text-red-500">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</template>
+</div>
+<div class="text-center">
+<button @click="editingDependent = null; newDependent = { name: '', dob: '', cpf: '', relationship: '', phone: '' }; showModal = true" class="w-full bg-white text-[#467de9] font-bold py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors border-2 border-dashed border-[#467de9]">
+<span class="material-symbols-outlined align-middle mr-1">add</span>
+Adicionar Novo Dependente
+</button>
+</div>
+</div>
+<div class="mt-8 flex items-center justify-between">
+<a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="./meu-plano.html">
+Voltar
+</a>
+<a href="./cadastro-concluido.html" class="w-auto flex justify-center py-3 px-8 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-[#467de9] hover:bg-[#467de9]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#467de9] active:scale-[.98] transition-colors">
+Continuar
+</a>
+</div>
+</div>
+</div>
+</div>
+<div @click.self="showModal = false" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" x-show="showModal" x-transition:enter="ease-out duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0" x-transition:leave="ease-in duration-200" x-transition:leave-end="opacity-0" x-transition:leave-start="opacity-100">
+<div @click.stop="" class="bg-white rounded-lg shadow-xl p-6 md:p-8 w-full max-w-lg" x-transition:enter="ease-out duration-300" x-transition:enter-end="opacity-100 scale-100" x-transition:enter-start="opacity-0 scale-95" x-transition:leave="ease-in duration-200" x-transition:leave-end="opacity-0 scale-95" x-transition:leave-start="opacity-100 scale-100">
+<h3 class="text-xl font-bold text-[#4d4d4d] mb-4" x-text="editingDependent === null ? 'Adicionar Novo Dependente' : 'Editar Dependente'"></h3>
+<form @submit.prevent="() => { if (editingDependent !== null) { dependents[editingDependent] = newDependent } else { dependents.push(newDependent) }; showModal = false; }">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="col-span-2">
+<label class="block text-sm font-medium text-gray-700" for="name">Nome Completo</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#467de9] focus:ring-[#467de9] sm:text-sm" id="name" required="" type="text" x-model="newDependent.name"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="dob">Data de Nascimento</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#467de9] focus:ring-[#467de9] sm:text-sm" id="dob" required="" type="date" x-model="newDependent.dob"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="relationship">Parentesco</label>
+<select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#467de9] focus:ring-[#467de9] sm:text-sm" id="relationship" required="" x-model="newDependent.relationship">
+<option disabled="" value="">Selecione</option>
+<option>Filho(a)</option>
+<option>Cônjuge</option>
+<option>Pai/Mãe</option>
+<option>Outro</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="cpf">CPF (Opcional)</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#467de9] focus:ring-[#467de9] sm:text-sm" id="cpf" type="text" x-model="newDependent.cpf"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700" for="phone">Telefone (Opcional)</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#467de9] focus:ring-[#467de9] sm:text-sm" id="phone" type="tel" x-model="newDependent.phone"/>
+</div>
+</div>
+<div class="mt-6 flex justify-end space-x-3">
+<button @click="showModal = false" class="bg-gray-200 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-300 transition-colors" type="button">Cancelar</button>
+<button class="bg-[#467de9] hover:bg-[#467de9]/90 text-white font-bold py-2 px-6 rounded-lg focus:outline-none transition-colors duration-200" type="submit" x-text="editingDependent === null ? 'Adicionar' : 'Salvar'"></button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+</body></html>

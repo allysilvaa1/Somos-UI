@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meu Plano - Prontuário Médico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style type="text/tailwindcss">
+    body {
+      font-family: 'PT Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.filled {
+        font-variation-settings: 'FILL' 1;
+    }
+    .plan-card {
+        @apply bg-white p-6 rounded-xl shadow-lg border border-transparent cursor-pointer transition-all duration-300;
+    }
+    .plan-card.selected {
+        @apply border-[#467de9] ring-2 ring-[#467de9];
+    }
+  </style>
+</head>
+<body class="bg-[#F0F7FF]" x-data="{ selectedPlan: 'premium' }">
+<div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
+<div class="w-full max-w-4xl">
+<div class="mb-8">
+<div class="flex items-center justify-center">
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-[#467de9] rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined filled text-white">check</span>
+</div>
+<p class="mt-2 text-xs font-semibold text-[#467de9]">Cadastro</p>
+</div>
+<div class="flex-auto border-t-2 border-[#467de9] -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-[#467de9] rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white filled">assignment</span>
+</div>
+<p class="mt-2 text-xs font-semibold text-[#467de9]">Meu Plano</p>
+</div>
+<div class="flex-auto border-t-2 border-gray-200 -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-gray-500">groups</span>
+</div>
+<p class="mt-2 text-xs text-gray-500">Dependentes</p>
+</div>
+<div class="flex-auto border-t-2 border-gray-200 -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-gray-500">check_circle</span>
+</div>
+<p class="mt-2 text-xs text-gray-500">Conclusão</p>
+</div>
+</div>
+</div>
+<div class="w-full mx-auto">
+<div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200">
+<div class="flex justify-center mb-4">
+    <img src="../../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto">
+</div>
+<div class="text-center">
+<h2 class="text-3xl font-bold text-[#4d4d4d] mb-2">Escolha seu Plano</h2>
+<p class="text-lg text-[#4d4d4d] mb-8">Selecione o plano que melhor se adapta às suas necessidades.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div :class="{'selected': selectedPlan === 'basic'}" @click="selectedPlan = 'basic'" class="plan-card">
+<h3 class="text-xl font-bold text-[#4d4d4d] text-center">Básico</h3>
+<p class="text-3xl font-bold text-center my-4 text-[#467de9]">Grátis</p>
+<ul class="space-y-2 text-[#4d4d4d] text-sm">
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+1 Perfil de Paciente
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Histórico Médico Básico
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Suporte por E-mail
+</li>
+</ul>
+<button :class="{'bg-[#467de9] text-white border-[#467de9] hover:bg-[#467de9]/90': selectedPlan === 'basic', 'text-[#4d4d4d] border-gray-300 hover:bg-gray-50': selectedPlan !== 'basic'}" class="w-full mt-6 py-2 px-4 rounded-lg font-bold border transition-colors">Selecionar</button>
+</div>
+<div :class="{'selected': selectedPlan === 'premium'}" @click="selectedPlan = 'premium'" class="plan-card relative">
+<div class="absolute top-0 -mt-3 w-full flex justify-center">
+<span class="bg-[#F59E0B] text-white text-xs font-bold px-3 py-1 rounded-full">MAIS POPULAR</span>
+</div>
+<h3 class="text-xl font-bold text-[#4d4d4d] text-center">Premium</h3>
+<p class="text-3xl font-bold text-center my-4 text-[#467de9]">R$ 49<span class="text-base font-normal">/mês</span></p>
+<ul class="space-y-2 text-[#4d4d4d] text-sm">
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Até 5 Perfis (Dependentes)
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Histórico Completo e Gráficos
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Compartilhamento com Médicos
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Suporte Prioritário
+</li>
+</ul>
+<button :class="{'bg-[#467de9] text-white border-[#467de9] hover:bg-[#467de9]/90': selectedPlan === 'premium', 'text-[#4d4d4d] border-gray-300 hover:bg-gray-50': selectedPlan !== 'premium'}" class="w-full mt-6 py-2 px-4 rounded-lg font-bold border transition-colors">Selecionar</button>
+</div>
+<div :class="{'selected': selectedPlan === 'professional'}" @click="selectedPlan = 'professional'" class="plan-card">
+<h3 class="text-xl font-bold text-[#4d4d4d] text-center">Profissional</h3>
+<p class="text-3xl font-bold text-center my-4 text-[#467de9]">R$ 99<span class="text-base font-normal">/mês</span></p>
+<ul class="space-y-2 text-[#4d4d4d] text-sm">
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Perfis Ilimitados
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Recursos Premium
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Módulo para Clínicas
+</li>
+<li class="flex items-center">
+<span class="material-symbols-outlined text-green-500 mr-2 filled">check_circle</span>
+Suporte 24/7 Dedicado
+</li>
+</ul>
+<button :class="{'bg-[#467de9] text-white border-[#467de9] hover:bg-[#467de9]/90': selectedPlan === 'professional', 'text-[#4d4d4d] border-gray-300 hover:bg-gray-50': selectedPlan !== 'professional'}" class="w-full mt-6 py-2 px-4 rounded-lg font-bold border transition-colors">Selecionar</button>
+</div>
+</div>
+<div class="text-center mb-6">
+<a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="#">
+              Comparar Planos Detalhadamente
+            </a>
+</div>
+<div class="flex items-center justify-between">
+<a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="./cadastro.html">
+              Voltar
+            </a>
+<a href="./dependentes.html" class="w-auto flex justify-center py-3 px-8 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-[#467de9] hover:bg-[#467de9]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#467de9] active:scale-[.98] transition-colors">
+            Continuar
+          </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+</body></html>
