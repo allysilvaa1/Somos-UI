@@ -17,69 +17,113 @@
     }
   </style>
 </head>
-<body class="bg-[#F0F7FF]" x-data="{ method: 'email', timer: 59, resendDisabled: true }" x-init="
-    const interval = setInterval(() => {
-      if (timer > 0) {
-        timer--;
-      } else {
-        resendDisabled = false;
-        clearInterval(interval);
-      }
-    }, 1000);
-  ">
+<body class="bg-[#F0F7FF]">
 <div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
 <div class="w-full max-w-md">
 <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200 text-center">
 <div class="flex flex-col items-center text-center">
-<div class="h-24 w-24 flex items-center justify-center bg-white rounded-xl mb-4">
-<img src="../Tela de login - 02/logotipo-sem-fundo.png" alt="Logotipo do Sistema" class="h-full w-full object-contain">
+    <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto mb-4">
 </div>
+
+<div id="email-confirmation" style="display: none;">
+    <span class="material-symbols-outlined text-7xl text-green-500">mark_email_read</span>
+    <h1 class="text-2xl font-bold text-gray-900 mt-2">Instruções Enviadas!</h1>
+    <p class="text-gray-500 mt-2 mb-6">
+        Enviamos as instruções para o e-mail: <br/><strong id="email-identifier" class="font-medium text-gray-800"></strong>.
+    </p>
+    <p class="text-sm text-gray-500">
+        Clique no link enviado para criar uma nova senha. O link é válido por 24 horas.
+    </p>
 </div>
-<div x-show="method === 'email'">
-<span class="material-symbols-outlined text-7xl text-green-500">mark_email_read</span>
-<h1 class="text-2xl font-bold text-gray-900 mt-2">Instruções Enviadas!</h1>
-<p class="text-gray-500 mt-2 mb-6">
-            Enviamos as instruções para o e-mail: <br/><strong class="font-medium text-gray-800">u***o@dominio.com</strong>.
-          </p>
-<p class="text-sm text-gray-500">
-            Clique no link enviado para criar uma nova senha. O link é válido por 24 horas.
-          </p>
+
+<div id="sms-confirmation" style="display: none;">
+    <span class="material-symbols-outlined text-7xl text-green-500">sms</span>
+    <h1 class="text-2xl font-bold text-gray-900 mt-2">Verifique suas Mensagens!</h1>
+    <p class="text-gray-500 mt-2 mb-6">
+        Um SMS foi enviado para o número: <br/><strong id="sms-identifier" class="font-medium text-gray-800"></strong>.
+    </p>
+    <p class="text-sm text-gray-500">
+        Insira o código recebido para continuar o processo de redefinição.
+    </p>
 </div>
-<div style="display: none;" x-show="method === 'sms'">
-<span class="material-symbols-outlined text-7xl text-green-500">sms</span>
-<h1 class="text-2xl font-bold text-gray-900 mt-2">Verifique suas Mensagens!</h1>
-<p class="text-gray-500 mt-2 mb-6">
-            Um SMS foi enviado para o número: <br/><strong class="font-medium text-gray-800">(XX) 9XXXX-X000</strong>.
-          </p>
-<p class="text-sm text-gray-500">
-            Insira o código recebido para continuar o processo de redefinição.
-          </p>
-</div>
+
 <div class="mt-6 text-sm text-gray-500 space-y-2">
-<p>
-            Pode levar alguns minutos para a mensagem chegar.
-          </p>
-<p x-show="method === 'email'">
-            Não se esqueça de verificar sua pasta de spam.
-          </p>
+    <p>
+        Pode levar alguns minutos para a mensagem chegar.
+    </p>
+    <p id="spam-warning" style="display: none;">
+        Não se esqueça de verificar sua pasta de spam.
+    </p>
 </div>
+
 <div class="mt-8">
-<p class="text-sm text-gray-600">
-            Não recebeu?
-            <a :class="{ 'opacity-50 cursor-not-allowed': resendDisabled }" @click="if (!resendDisabled) { timer = 59; resendDisabled = true;}" class="font-medium text-blue-600 hover:text-blue-500 cursor-pointer">
-              Reenviar instruções
-            </a>
-<span class="text-gray-400 text-xs" x-show="resendDisabled">(<span x-text="timer"></span>s)</span>
-</p>
+    <p class="text-sm text-gray-600">
+        Não recebeu?
+        <a id="resend-link" href="./redefinicao-de-senha.html" class="font-medium text-[#467de9] hover:text-[#467de9]/90 opacity-50 cursor-not-allowed">
+          Reenviar instruções
+        </a>
+        <span id="timer-span" class="text-gray-400 text-xs">(<span id="timer-countdown">59</span>s)</span>
+    </p>
 </div>
 <div class="mt-8 border-t pt-6">
-<a class="font-medium text-blue-600 hover:text-blue-500" href="./Tela-de-login-aprimorada.html">
-            Voltar para o Login
-          </a>
+    <a class="font-medium text-[#467de9] hover:text-[#467de9]/90" href="./Tela-de-login-aprimorada.html">
+        Voltar para o Login
+    </a>
 </div>
 </div>
 </div>
 </div>
-<script defer="" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const method = params.get('method');
+        const identifier = params.get('identifier');
+
+        const emailConfirmationDiv = document.getElementById('email-confirmation');
+        const smsConfirmationDiv = document.getElementById('sms-confirmation');
+        const emailIdentifierEl = document.getElementById('email-identifier');
+        const smsIdentifierEl = document.getElementById('sms-identifier');
+        const spamWarning = document.getElementById('spam-warning');
+
+        function showEmail(email) {
+            if (!email) return 'e-mail inválido';
+            return email;
+        }
+
+        function showPhone(phone) {
+            if (!phone) return 'número inválido';
+            return phone;
+        }
+
+        if (method === 'email' && identifier) {
+            emailIdentifierEl.textContent = showEmail(identifier);
+            emailConfirmationDiv.style.display = 'block';
+            spamWarning.style.display = 'block';
+        } else if (method === 'sms' && identifier) {
+            smsIdentifierEl.textContent = showPhone(identifier);
+            smsConfirmationDiv.style.display = 'block';
+        }
+
+        const resendLink = document.getElementById('resend-link');
+        const timerSpan = document.getElementById('timer-span');
+        const timerCountdown = document.getElementById('timer-countdown');
+        let timeLeft = 59;
+
+        resendLink.style.pointerEvents = 'none';
+
+        const interval = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                timerCountdown.textContent = timeLeft;
+            } else {
+                clearInterval(interval);
+                resendLink.classList.remove('opacity-50', 'cursor-not-allowed');
+                resendLink.style.pointerEvents = 'auto';
+                timerSpan.style.display = 'none';
+            }
+        }, 1000);
+    });
+</script>
 </body>
 </html>

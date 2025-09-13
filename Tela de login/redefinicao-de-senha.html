@@ -42,13 +42,13 @@
     <div class="w-full max-w-md">
       <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200">
         <div class="flex flex-col items-center text-center">
-            <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-20 w-auto mb-4">
+            <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto mb-4">
             <h1 class="text-2xl font-bold text-gray-900">Esqueceu sua Senha?</h1>
             <p class="text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'email'">Insira seu e-mail para receber as instruções de recuperação.</p>
             <p class="text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'sms'" style="display: none;">Insira seu celular para receber as instruções de recuperação.</p>
         </div>
 
-        <form id="recovery-form" action="./confirmacao-de-envio-instrucoes.html" class="space-y-6" novalidate>
+        <form id="recovery-form" class="space-y-6" novalidate>
           <div>
             <div class="flex justify-center items-center bg-gray-100 rounded-lg p-1 mb-6">
               <input checked="" id="email-option" name="recovery-option" type="radio" value="email" x-model="recoveryMethod" />
@@ -145,17 +145,23 @@
       phoneInput.addEventListener('input', maskPhoneOnInput);
 
       form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
         let isValid = true;
         const currentMethod = document.querySelector('input[name="recovery-option"]:checked').value;
+        let identifier = '';
 
         if (currentMethod === 'email') {
+          identifier = emailInput.value;
           isValid = validateEmail();
         } else if (currentMethod === 'sms') {
+          identifier = phoneInput.value;
           isValid = validatePhone();
         }
 
-        if (!isValid) {
-          event.preventDefault();
+        if (isValid) {
+          const url = `./confirmacao-de-envio-instrucoes.html?method=${currentMethod}&identifier=${encodeURIComponent(identifier)}`;
+          window.location.href = url;
         }
       });
       
