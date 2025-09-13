@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -189,6 +188,11 @@
   </div>
 
 <script>
+  // Limpa os dados de sessão do cadastro ao carregar a tela de login
+  document.addEventListener('DOMContentLoaded', () => {
+    sessionStorage.removeItem('registrationData');
+  });
+
   // Validação simples
   const email = document.getElementById('email');
   const pwd = document.getElementById('password');

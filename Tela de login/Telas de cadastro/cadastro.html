@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 <style type="text/tailwindcss">
@@ -176,6 +176,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('signup-form');
         const submitButton = document.getElementById('submit-button');
+        const sessionKey = 'registrationData';
 
         const phoneInputField = document.getElementById('cellphone');
         const phoneInputInstance = window.intlTelInput(phoneInputField, {
@@ -187,6 +188,7 @@
                     .then(data => callback(data.country_code))
                     .catch(() => callback("br"));
             },
+            preferredCountries: ['br'],
             customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
                 return "Seu celular com DDD";
             }
@@ -240,40 +242,92 @@
             value = value.replace(/(\d{4,5})(\d{4})$/, '$1-$2');
             input.value = value;
         };
+        
+        const saveDataToSession = () => {
+            const currentData = JSON.parse(sessionStorage.getItem(sessionKey) || '{}');
+            currentData.personalInfo = {
+                fullname: fields.fullname.input.value,
+                dob: fields.dob.input.value,
+                email: fields.email.input.value,
+                cpf: fields.cpf.input.value,
+                cellphone: fields.cellphone.input.value,
+                countryCode: phoneInputInstance.getSelectedCountryData().iso2,
+            };
+            currentData.credentials = {
+                password: fields.password.input.value,
+                confirm_password: fields.confirm_password.input.value,
+            };
+            sessionStorage.setItem(sessionKey, JSON.stringify(currentData));
+        };
+
+        const loadDataFromSession = () => {
+            const data = JSON.parse(sessionStorage.getItem(sessionKey) || '{}');
+            if (data.personalInfo) {
+                fields.fullname.input.value = data.personalInfo.fullname || '';
+                fields.dob.input.value = data.personalInfo.dob || '';
+                if(data.personalInfo.dob) fields.dob.input.type = 'date';
+                fields.email.input.value = data.personalInfo.email || '';
+                fields.cpf.input.value = data.personalInfo.cpf || '';
+                maskCPF(fields.cpf.input);
+                fields.cellphone.input.value = data.personalInfo.cellphone || '';
+                maskPhone(fields.cellphone.input);
+                if (data.personalInfo.countryCode) {
+                    phoneInputInstance.setCountry(data.personalInfo.countryCode);
+                }
+            }
+            if (data.credentials) {
+                fields.password.input.value = data.credentials.password || '';
+                fields.confirm_password.input.value = data.credentials.confirm_password || '';
+            }
+        };
 
         fields.cpf.input.addEventListener('input', (e) => maskCPF(e.target));
         fields.cellphone.input.addEventListener('input', (e) => maskPhone(e.target));
 
-        const validateField = (fieldName) => {
+        const validateField = (fieldName, showError = false) => {
             const field = fields[fieldName];
             const value = fieldName === 'terms' ? field.input : field.input.value;
             const isValid = field.validation(value);
-            field.error.classList.toggle('hidden', isValid);
+            if (showError) {
+                field.error.classList.toggle('hidden', isValid);
+            }
             return isValid;
         };
 
-        const validateForm = () => {
+        const validateForm = (showErrors = false) => {
             let isFormValid = true;
             for (const fieldName in fields) {
-                if (!validateField(fieldName)) {
+                if (!validateField(fieldName, showErrors)) {
                     isFormValid = false;
                 }
             }
             submitButton.disabled = !isFormValid;
+            return isFormValid;
         };
 
-        Object.values(fields).forEach(field => {
-            const eventType = field.input.type === 'checkbox' ? 'change' : 'keyup';
-            field.input.addEventListener(eventType, validateForm);
-            field.input.addEventListener('blur', validateForm);
+        Object.entries(fields).forEach(([fieldName, field]) => {
+            const eventType = ['checkbox', 'radio'].includes(field.input.type) ? 'change' : 'input';
+            field.input.addEventListener(eventType, () => {
+                saveDataToSession();
+                validateForm(false);
+            });
+            field.input.addEventListener('blur', () => {
+                validateField(fieldName, true);
+            });
         });
         
-        fields.cellphone.input.addEventListener('countrychange', validateForm);
-        fields.password.input.addEventListener('keyup', () => validateField('confirm_password'));
+        fields.cellphone.input.addEventListener('countrychange', () => {
+            saveDataToSession();
+            validateForm(false);
+        });
+        fields.password.input.addEventListener('input', () => validateField('confirm_password'));
+
+        loadDataFromSession();
+        validateForm(false);
 
         form.addEventListener('submit', (e) => {
-            validateForm();
-            if (submitButton.disabled) {
+            const isFormValid = validateForm(true);
+            if (!isFormValid) {
                 e.preventDefault();
             }
         });
