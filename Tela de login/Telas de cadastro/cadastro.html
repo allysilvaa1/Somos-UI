@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cadastro de Usuário - Prontuário Médico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style type="text/tailwindcss">
+    body {
+      font-family: 'PT Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.filled {
+        font-variation-settings: 'FILL' 1;
+    }
+    .input-icon {
+        @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400;
+    }
+  </style>
+</head>
+<body class="bg-[#F0F7FF]" x-data="{ showPassword: false, showConfirmPassword: false }">
+<div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
+<div class="w-full max-w-2xl">
+<div class="mb-8">
+<div class="flex items-center justify-center">
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-[#467de9] rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined filled text-white">person</span>
+</div>
+<p class="mt-2 text-xs font-semibold text-[#467de9]">Cadastro</p>
+</div>
+<div class="flex-auto border-t-2 border-[#467de9] -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-gray-500">assignment</span>
+</div>
+<p class="mt-2 text-xs text-gray-500">Meu Plano</p>
+</div>
+<div class="flex-auto border-t-2 border-gray-200 -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-gray-500">groups</span>
+</div>
+<p class="mt-2 text-xs text-gray-500">Dependentes</p>
+</div>
+<div class="flex-auto border-t-2 border-gray-200 -ml-2 -mr-2"></div>
+<div class="flex flex-col items-center relative">
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-gray-500">check_circle</span>
+</div>
+<p class="mt-2 text-xs text-gray-500">Conclusão</p>
+</div>
+</div>
+</div>
+<div class="w-full max-w-lg mx-auto">
+<div class="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
+<div class="flex justify-center mb-6">
+    <img src="../../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto">
+</div>
+<div class="text-center">
+<h2 class="text-3xl font-bold text-[#4d4d4d] mb-2">Crie sua Conta</h2>
+<p class="text-lg text-gray-500 mb-8">Preencha seus dados pessoais e crie sua senha.</p>
+</div>
+<form id="signup-form" action="./meu-plano.html" class="space-y-4" method="GET" novalidate>
+<div>
+    <div class="relative">
+        <span class="input-icon">
+            <span class="material-symbols-outlined">person</span>
+        </span>
+        <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="fullname" name="fullname" placeholder="Nome Completo" required type="text"/>
+    </div>
+    <p class="text-red-500 text-xs mt-1 hidden">Nome completo é obrigatório.</p>
+</div>
+<div>
+    <div class="relative">
+        <span class="input-icon">
+            <span class="material-symbols-outlined">email</span>
+        </span>
+        <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="email" name="email" placeholder="E-mail" required type="email"/>
+    </div>
+    <p class="text-red-500 text-xs mt-1 hidden">Por favor, insira um e-mail válido.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+        <div class="relative">
+            <span class="input-icon">
+                <span class="material-symbols-outlined">badge</span>
+            </span>
+            <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="cpf" name="cpf" placeholder="CPF" required type="text"/>
+        </div>
+        <p class="text-red-500 text-xs mt-1 hidden">CPF inválido.</p>
+    </div>
+    <div>
+        <div class="relative">
+            <span class="input-icon">
+                <span class="material-symbols-outlined">phone_iphone</span>
+            </span>
+            <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="cellphone" name="cellphone" placeholder="Celular" required type="text"/>
+        </div>
+        <p class="text-red-500 text-xs mt-1 hidden">Celular inválido.</p>
+    </div>
+</div>
+<div>
+    <div class="relative">
+        <span class="input-icon">
+            <span class="material-symbols-outlined">lock</span>
+        </span>
+        <input :type="showPassword ? 'text' : 'password'" class="block w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="password" name="password" placeholder="Nova Senha" required/>
+        <button @click.prevent="showPassword = !showPassword" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-[#4d4d4d]" type="button">
+            <span class="material-symbols-outlined" x-show="!showPassword">visibility</span>
+            <span class="material-symbols-outlined" x-show="showPassword">visibility_off</span>
+        </button>
+    </div>
+    <p class="text-red-500 text-xs mt-1 hidden">A senha deve ter no mínimo 6 caracteres.</p>
+</div>
+<div>
+    <div class="relative">
+        <span class="input-icon">
+            <span class="material-symbols-outlined">lock_reset</span>
+        </span>
+        <input :type="showConfirmPassword ? 'text' : 'password'" class="block w-full pl-12 pr-10 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="confirm_password" name="confirm_password" placeholder="Confirme a Senha" required/>
+        <button @click.prevent="showConfirmPassword = !showConfirmPassword" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-[#4d4d4d]" type="button">
+            <span class="material-symbols-outlined" x-show="!showConfirmPassword">visibility</span>
+            <span class="material-symbols-outlined" x-show="showConfirmPassword">visibility_off</span>
+        </button>
+    </div>
+    <p class="text-red-500 text-xs mt-1 hidden">As senhas não coincidem.</p>
+</div>
+<div class="pt-2">
+    <div class="flex items-center">
+        <input class="h-4 w-4 text-[#467de9] focus:ring-[#467de9] border-gray-300 rounded" id="terms" name="terms" type="checkbox" required/>
+        <label class="ml-2 block text-sm text-[#4d4d4d]" for="terms">
+              Li e aceito os <a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="#">Termos de Uso</a> e <a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="#">Política de Privacidade</a>.
+            </label>
+    </div>
+    <p class="text-red-500 text-xs mt-1 hidden">Você deve aceitar os termos.</p>
+</div>
+<div>
+<button id="submit-button" class="w-full bg-[#467de9] hover:bg-[#467de9]/90 text-white font-bold text-lg py-3 px-4 rounded-lg focus:outline-none transition-colors duration-200 disabled:bg-gray-400" type="submit" disabled>
+            Continuar
+          </button>
+</div>
+</form>
+<div class="mt-8 text-center border-t pt-6">
+<p class="text-base text-[#4d4d4d]">
+            Já tem uma conta?
+            <a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="../Tela-de-login-aprimorada.html">
+              Faça Login
+            </a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script defer src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('signup-form');
+        const submitButton = document.getElementById('submit-button');
+
+        const fields = {
+            fullname: { input: document.getElementById('fullname') },
+            email: { input: document.getElementById('email') },
+            cpf: { input: document.getElementById('cpf') },
+            cellphone: { input: document.getElementById('cellphone') },
+            password: { input: document.getElementById('password') },
+            confirm_password: { input: document.getElementById('confirm_password') },
+            terms: { input: document.getElementById('terms') }
+        };
+
+        for (const key in fields) {
+            fields[key].error = fields[key].input.parentElement.parentElement.querySelector('p');
+        }
+
+        fields.password.error = fields.password.input.parentElement.parentElement.querySelector('p');
+        fields.confirm_password.error = fields.confirm_password.input.parentElement.parentElement.querySelector('p');
+        fields.terms.error = fields.terms.input.parentElement.parentElement.querySelector('p');
+
+
+        fields.cpf.validation = value => /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(value);
+        fields.cellphone.validation = value => /^\(\d{2}\) \d{5}-\d{4}$/.test(value);
+        fields.fullname.validation = value => value.trim() !== '';
+        fields.email.validation = value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        fields.password.validation = value => value.length >= 6;
+        fields.confirm_password.validation = value => value === fields.password.input.value && value.length > 0;
+        fields.terms.validation = input => input.checked;
+
+        const maskCPF = (input) => {
+            let value = input.value.replace(/\D/g, '');
+            value = value.substring(0, 11);
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            input.value = value;
+        };
+
+        const maskPhone = (input) => {
+            let value = input.value.replace(/\D/g, '');
+            value = value.substring(0, 11);
+            value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+            value = value.replace(/(\d{5})(\d{4})$/, '$1-$2');
+            input.value = value;
+        };
+
+        fields.cpf.input.addEventListener('input', (e) => maskCPF(e.target));
+        fields.cellphone.input.addEventListener('input', (e) => maskPhone(e.target));
+
+        const validateField = (fieldName) => {
+            const field = fields[fieldName];
+            const value = fieldName === 'terms' ? field.input : field.input.value;
+            const isValid = field.validation(value);
+            field.error.classList.toggle('hidden', isValid);
+            return isValid;
+        };
+
+        const validateForm = () => {
+            let isFormValid = true;
+            for (const fieldName in fields) {
+                if (!validateField(fieldName)) {
+                    isFormValid = false;
+                }
+            }
+            submitButton.disabled = !isFormValid;
+        };
+
+        Object.values(fields).forEach(field => {
+            const eventType = field.input.type === 'checkbox' ? 'change' : 'keyup';
+            field.input.addEventListener(eventType, validateForm);
+            field.input.addEventListener('blur', validateForm);
+        });
+        
+        fields.password.input.addEventListener('keyup', () => validateField('confirm_password'));
+
+        form.addEventListener('submit', (e) => {
+            validateForm();
+            if (submitButton.disabled) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+</body>
+</html>
