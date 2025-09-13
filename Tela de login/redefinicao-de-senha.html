@@ -7,11 +7,12 @@
   <title>Recuperar Senha - Prontuário Médico</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style type="text/tailwindcss">
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'PT Sans', sans-serif;
     }
     .material-symbols-outlined {
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -43,23 +44,23 @@
       <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200">
         <div class="flex flex-col items-center text-center">
             <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto mb-4">
-            <h1 class="text-2xl font-bold text-gray-900">Esqueceu sua Senha?</h1>
-            <p class="text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'email'">Insira seu e-mail para receber as instruções de recuperação.</p>
-            <p class="text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'sms'" style="display: none;">Insira seu celular para receber as instruções de recuperação.</p>
+            <h1 class="text-3xl font-bold text-gray-900">Esqueceu sua Senha?</h1>
+            <p class="text-lg text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'email'">Insira seu e-mail para receber as instruções de recuperação.</p>
+            <p class="text-lg text-gray-500 mt-2 mb-8" x-show="recoveryMethod === 'sms'" style="display: none;">Insira seu celular para receber as instruções de recuperação.</p>
         </div>
 
         <form id="recovery-form" class="space-y-6" novalidate>
           <div>
             <div class="flex justify-center items-center bg-gray-100 rounded-lg p-1 mb-6">
               <input checked="" id="email-option" name="recovery-option" type="radio" value="email" x-model="recoveryMethod" />
-              <label class="text-gray-700 font-medium text-sm" for="email-option">Receber por e-mail</label>
+              <label class="text-gray-700 font-bold text-base" for="email-option">Receber por E-mail</label>
 
               <input id="sms-option" name="recovery-option" type="radio" value="sms" x-model="recoveryMethod" />
-              <label class="text-gray-700 font-medium text-sm" for="sms-option">Receber por SMS</label>
+              <label class="text-gray-700 font-bold text-base" for="sms-option">Receber por SMS</label>
             </div>
           </div>
           <div x-show="recoveryMethod === 'email'">
-            <label class="sr-only" for="email">Seu e-mail</label>
+            <label class="sr-only" for="email">Seu E-mail</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">mail</span>
               <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="email" name="email" placeholder="Seu e-mail" required="" type="email" />
@@ -75,15 +76,15 @@
              <p id="phone-error" class="mt-2 text-xs text-red-600 hidden" role="alert">Por favor, insira um número de telefone válido.</p>
           </div>
           <div>
-            <button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-semibold text-white bg-[#467de9] hover:bg-[#467de9]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#467de9] active:scale-[.98] transition" type="submit">
+            <button class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-[#467de9] hover:bg-[#467de9]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#467de9] active:scale-[.98] transition" type="submit">
               Recuperar senha
             </button>
           </div>
         </form>
-        <p class="mt-8 text-center text-sm text-gray-600">
+        <p class="mt-8 text-center text-base text-gray-600">
           Lembrou da senha?
-          <a class="font-medium text-[#467de9] hover:text-[#467de9]/90" href="./Tela-de-login-aprimorada.html">
-            Voltar para o login
+          <a class="font-bold text-[#467de9] hover:text-[#467de9]/90" href="./Tela-de-login-aprimorada.html">
+            Voltar para o Login
           </a>
         </p>
       </div>
