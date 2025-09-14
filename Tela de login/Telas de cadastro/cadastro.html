@@ -33,7 +33,7 @@
     }
   </style>
 </head>
-<body class="bg-[#F0F7FF]" x-data="{ showPassword: false, showConfirmPassword: false }">
+<body class="bg-[#F0F7FF]" x-data="{ showPassword: false, showConfirmPassword: false, showConfirmEmailModal: false, emailToConfirm: '' }">
 <div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
 <div class="w-full max-w-2xl">
 <div class="mb-8">
@@ -170,6 +170,27 @@
 </div>
 </div>
 </div>
+<div x-show="showConfirmEmailModal" style="display: none;" @keydown.escape.window="showConfirmEmailModal = false" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div @click.away="showConfirmEmailModal = false" class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md text-center">
+        <span class="material-symbols-outlined text-6xl text-[#467de9] mb-4">mark_email_read</span>
+        <h2 class="text-2xl font-bold text-[#4d4d4d] mb-2">Verifique seu e-mail</h2>
+        <p class="text-lg text-[#4d4d4d] mb-6">
+            Enviaremos um link de ativação para o e-mail: <br/>
+            <strong class="font-bold text-[#4d4d4d]" x-text="emailToConfirm"></strong>
+        </p>
+        <p class="text-sm text-[#4d4d4d] mb-8">
+            Clique no link da mensagem para confirmar sua conta e ter acesso a todos os recursos.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button type="button" @click="showConfirmEmailModal = false; document.getElementById('email').focus()" class="w-full sm:w-auto flex justify-center py-3 px-6 border border-gray-300 rounded-lg text-base font-bold text-[#4d4d4d] bg-white hover:bg-gray-50 transition-colors">
+                Corrigir e-mail
+            </button>
+            <button type="button" @click="window.location.href='../Tela-de-login-aprimorada.html'" class="w-full sm:w-auto flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-sm text-base font-bold text-white bg-[#467de9] hover:bg-[#467de9]/90 transition-colors">
+                Enviar e-mail
+            </button>
+        </div>
+    </div>
+</div>
 <script defer src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <script>
@@ -177,6 +198,7 @@
         const form = document.getElementById('signup-form');
         const submitButton = document.getElementById('submit-button');
         const sessionKey = 'registrationData';
+        const alpineContainer = document.querySelector('[x-data]');
 
         const phoneInputField = document.getElementById('cellphone');
         const phoneInputInstance = window.intlTelInput(phoneInputField, {
@@ -326,9 +348,11 @@
         validateForm(false);
 
         form.addEventListener('submit', (e) => {
+            e.preventDefault();
             const isFormValid = validateForm(true);
-            if (!isFormValid) {
-                e.preventDefault();
+            if (isFormValid) {
+                alpineContainer.__x.$data.emailToConfirm = fields.email.input.value;
+                alpineContainer.__x.$data.showConfirmEmailModal = true;
             }
         });
     });
