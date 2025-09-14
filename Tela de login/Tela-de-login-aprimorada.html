@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <!-- Tipografia -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 
 <style type="text/tailwindcss">
@@ -59,7 +59,7 @@
 </style>
 </head>
 
-<body class="bg-[#F0F7FF]">
+<body class="bg-[#F0F7FF]" x-data="loginForm()">
   <div class="flex min-h-screen">
 
     <!-- HERO ESQUERDA -->
@@ -102,7 +102,7 @@
             <p class="text-lg text-[#4d4d4d] mt-2 mb-8">Faça seu login para continuar.</p>
           </div>
 
-          <form id="form" class="space-y-6" novalidate>
+          <form id="form" class="space-y-6" novalidate @submit.prevent="handleLogin()">
             <!-- E-mail -->
             <div>
               <label for="email" class="sr-only">Email</label>
@@ -187,18 +187,70 @@
     </div>
   </div>
 
-<script>
-  // Limpa os dados de sessão do cadastro ao carregar a tela de login
-  document.addEventListener('DOMContentLoaded', () => {
-    sessionStorage.removeItem('registrationData');
-  });
+<div x-show="showAccessModal" style="display: none;" @keydown.escape.window="showAccessModal = false" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+    <div @click.away="showAccessModal = false" class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-lg text-center transform transition-all" x-show="showAccessModal" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+        <span class="material-symbols-outlined text-6xl text-[#467de9] mb-4">waving_hand</span>
+        <h2 class="text-2xl font-bold text-[#4d4d4d] mb-3">Que bom ter você por aqui!</h2>
+        <p class="text-base text-[#4d4d4d] mb-4">
+            Ficamos felizes com seu interesse na SOMOS! No momento, estamos em uma fase de acesso exclusivo para convidados, aprimorando cada detalhe da plataforma para oferecer a melhor experiência.
+        </p>
+        <p class="text-base font-bold text-[#4d4d4d] mb-4">
+            Para solicitar sua liberação, envie um e-mail para <strong class="font-bold">contato@rsomos.com.br</strong> com as seguintes informações:
+        </p>
+        <ul class="text-left space-y-2 inline-block mb-6">
+            <li class="flex items-center"><span class="material-symbols-outlined text-green-500 mr-2" style="font-variation-settings: 'FILL' 1">check_circle</span>Uma breve apresentação sobre você.</li>
+            <li class="flex items-center"><span class="material-symbols-outlined text-green-500 mr-2" style="font-variation-settings: 'FILL' 1">check_circle</span>O motivo do seu interesse na SOMOS.</li>
+            <li class="flex items-center"><span class="material-symbols-outlined text-green-500 mr-2" style="font-variation-settings: 'FILL' 1">check_circle</span>Como você gostaria de contribuir.</li>
+        </ul>
+        <p class="text-sm text-gray-500 mb-8">Após a análise, nossa equipe entrará em contato.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button type="button" @click="showAccessModal = false" class="w-full sm:w-auto flex justify-center py-3 px-6 border border-gray-300 rounded-lg text-base font-bold text-[#4d4d4d] bg-white hover:bg-gray-50 transition-colors">
+                Entendi
+            </button>
+            <a href="mailto:contato@rsomos.com.br?subject=Solicitação de Acesso - Plataforma SOMOS&body=Olá, equipe SOMOS!%0A%0AGostaria de solicitar acesso à plataforma.%0A%0A-%20Apresentação:%20[Escreva brevemente sobre você]%0A%0A-%20Motivo do Interesse:%20[Conte-nos por que você tem interesse na SOMOS]%0A%0A-%20Como Gostaria de Contribuir:%20[Descreva como você gostaria de contribuir com o projeto]%0A%0AAgradeço a atenção.%0A%0AAtenciosamente,%0A[Seu Nome]" class="w-full sm:w-auto flex justify-center items-center gap-2 py-3 px-6 border border-transparent rounded-lg shadow-sm text-base font-bold text-white bg-[#467de9] hover:bg-[#467de9]/90 transition-colors">
+                <span class="material-symbols-outlined">email</span>
+                Solicitar por E-mail
+            </a>
+        </div>
+    </div>
+</div>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-  // Validação simples
-  const email = document.getElementById('email');
-  const pwd = document.getElementById('password');
-  const emailErr = document.getElementById('email-error');
-  const pwdErr = document.getElementById('password-error');
-  const form = document.getElementById('form');
+<script>
+  function loginForm() {
+    return {
+      showAccessModal: false,
+      handleLogin() {
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailErr = document.getElementById('email-error');
+        const pwdErr = document.getElementById('password-error');
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        const okEmail = emailInput.value && emailRe.test(emailInput.value);
+        const okPwd = passwordInput.value && passwordInput.value.length >= 6;
+
+        let isValid = true;
+        if (!okEmail) {
+          showError(emailInput, emailErr, 'Use um e-mail válido.');
+          isValid = false;
+        } else {
+          clearError(emailInput, emailErr);
+        }
+        
+        if (!okPwd) {
+          showError(passwordInput, pwdErr, 'A senha deve conter 6+ caracteres.');
+          isValid = false;
+        } else {
+          clearError(passwordInput, pwdErr);
+        }
+
+        if (isValid) {
+          this.showAccessModal = true;
+        }
+      }
+    }
+  }
 
   function showError(input, el, msg){
     if(msg) el.textContent = msg;
@@ -206,42 +258,42 @@
     input.classList.add('border-red-500','focus:border-red-500','focus:ring-red-500');
     el.classList.remove('hidden');
   }
+
   function clearError(input, el){
     input.removeAttribute('aria-invalid');
     input.classList.remove('border-red-500','focus:border-red-500','focus:ring-red-500');
     el.classList.add('hidden');
   }
 
-  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  document.addEventListener('DOMContentLoaded', () => {
+    sessionStorage.removeItem('registrationData');
+    
+    const email = document.getElementById('email');
+    const pwd = document.getElementById('password');
+    const emailErr = document.getElementById('email-error');
+    const pwdErr = document.getElementById('password-error');
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  email.addEventListener('blur', ()=>{
-    (!email.value || !emailRe.test(email.value))
-      ? showError(email,emailErr,'Use um e-mail válido.')
-      : clearError(email,emailErr);
-  });
+    email.addEventListener('blur', ()=>{
+      (!email.value || !emailRe.test(email.value))
+        ? showError(email,emailErr,'Use um e-mail válido.')
+        : clearError(email,emailErr);
+    });
 
-  pwd.addEventListener('blur', ()=>{
-    (!pwd.value || pwd.value.length < 6)
-      ? showError(pwd,pwdErr,'A senha deve conter 6+ caracteres.')
-      : clearError(pwd,pwdErr);
-  });
+    pwd.addEventListener('blur', ()=>{
+      (!pwd.value || pwd.value.length < 6)
+        ? showError(pwd,pwdErr,'A senha deve conter 6+ caracteres.')
+        : clearError(pwd,pwdErr);
+    });
 
-  form.addEventListener('submit', (e)=>{
-    const okEmail = email.value && emailRe.test(email.value);
-    const okPwd = pwd.value && pwd.value.length >= 6;
-    if(!okEmail) showError(email,emailErr,'Use um e-mail válido.');
-    if(!okPwd) showError(pwd,pwdErr,'A senha deve conter 6+ caracteres.');
-    if(!okEmail || !okPwd) e.preventDefault();
-  });
-
-  // Toggle de senha
-  const toggle = document.getElementById('togglePwd');
-  const eyeIcon = document.getElementById('eyeIcon');
-  toggle.addEventListener('click', ()=>{
-    const show = pwd.type === 'password';
-    pwd.type = show ? 'text' : 'password';
-    toggle.setAttribute('aria-pressed', String(show));
-    eyeIcon.textContent = show ? 'visibility_off' : 'visibility';
+    const toggle = document.getElementById('togglePwd');
+    const eyeIcon = document.getElementById('eyeIcon');
+    toggle.addEventListener('click', ()=>{
+      const show = pwd.type === 'password';
+      pwd.type = show ? 'text' : 'password';
+      toggle.setAttribute('aria-pressed', String(show));
+      eyeIcon.textContent = show ? 'visibility_off' : 'visibility';
+    });
   });
 </script>
 </body>
