@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Verificar Código - Prontuário Médico</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style type="text/tailwindcss">
+    body {
+      font-family: 'PT Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+    }
+    .code-input {
+      width: 3rem;
+      height: 3.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d1d5db;
+      transition: all 0.2s ease-in-out;
+    }
+    .code-input:focus {
+      border-color: #467de9;
+      box-shadow: 0 0 0 2px rgba(70, 125, 233, 0.4);
+      outline: none;
+    }
+  </style>
+</head>
+<body class="bg-[#F0F7FF]">
+<div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
+<div class="w-full max-w-md">
+<div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200 text-center">
+<div class="flex flex-col items-center text-center">
+    <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto mb-4">
+</div>
+
+<div>
+    <span class="material-symbols-outlined text-7xl text-green-500">sms</span>
+    <h1 class="text-3xl font-bold text-[#4d4d4d] mt-2">Verifique seu celular</h1>
+    <p class="text-lg text-[#4d4d4d] mt-2 mb-6">
+        Enviamos um código de 6 dígitos para o número: <br/><strong id="sms-identifier" class="font-bold text-[#4d4d4d]"></strong>.
+    </p>
+</div>
+
+<form id="otp-form" class="space-y-6">
+    <div class="flex justify-center gap-2" id="otp-inputs">
+        <input class="code-input" type="text" inputmode="numeric" maxlength="1" required>
+        <input class="code-input" type="text" inputmode="numeric" maxlength="1" required>
+        <input class="code-input" type="text" inputmode="numeric" maxlength="1" required>
+        <input class="code-input" type="text" inputmode="numeric" maxlength="1" required>
+        <input class="code-input" type="text" inputmode="numeric" maxlength="1" required>
+        <input class="code-input" type="text" inputmode="numeric" maxlength="1" required>
+    </div>
+    <p id="otp-error" class="text-xs text-red-600 hidden" role="alert">Código inválido. Tente novamente.</p>
+    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-[#467de9] hover:bg-[#467de9]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#467de9] active:scale-[.98] transition">
+        Verificar código
+    </button>
+</form>
+
+<div class="mt-8">
+    <p class="text-base text-[#4d4d4d]">
+        Não recebeu?
+        <a id="resend-link" href="#" class="font-bold text-[#467de9] hover:text-[#467de9]/90 opacity-50 cursor-not-allowed">
+          Reenviar código
+        </a>
+        <span id="timer-span" class="text-gray-400 text-sm">(<span id="timer-countdown">59</span>s)</span>
+    </p>
+</div>
+<div class="mt-8 border-t pt-6">
+    <a class="font-bold text-base text-[#467de9] hover:text-[#467de9]/90" href="./redefinicao-de-senha.html">
+        Voltar
+    </a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const identifier = params.get('identifier');
+        const smsIdentifierEl = document.getElementById('sms-identifier');
+
+        if (identifier) {
+            smsIdentifierEl.textContent = identifier;
+        } else {
+            window.location.href = './redefinicao-de-senha.html';
+        }
+
+        const otpForm = document.getElementById('otp-form');
+        const inputs = Array.from(document.querySelectorAll('#otp-inputs input'));
+        const errorEl = document.getElementById('otp-error');
+
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (input.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === "Backspace" && !input.value && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        otpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const code = inputs.map(input => input.value).join('');
+            
+            errorEl.classList.add('hidden');
+            inputs.forEach(input => input.classList.remove('border-red-500'));
+
+            if (code === '123456') { // Simulação de código correto
+                window.location.href = `./nova-senha.html`;
+            } else {
+                errorEl.classList.remove('hidden');
+                inputs.forEach(input => input.classList.add('border-red-500'));
+            }
+        });
+        
+        const resendLink = document.getElementById('resend-link');
+        const timerSpan = document.getElementById('timer-span');
+        const timerCountdown = document.getElementById('timer-countdown');
+        let timeLeft = 59;
+
+        const startTimer = () => {
+            resendLink.style.pointerEvents = 'none';
+            resendLink.classList.add('opacity-50', 'cursor-not-allowed');
+            timerSpan.style.display = 'inline';
+            timeLeft = 59;
+            timerCountdown.textContent = timeLeft;
+
+            const interval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    timerCountdown.textContent = timeLeft;
+                } else {
+                    clearInterval(interval);
+                    resendLink.classList.remove('opacity-50', 'cursor-not-allowed');
+                    resendLink.style.pointerEvents = 'auto';
+                    timerSpan.style.display = 'none';
+                }
+            }, 1000);
+        };
+        
+        resendLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (resendLink.style.pointerEvents === 'auto') {
+                console.log('reenviando...');
+                startTimer();
+            }
+        });
+
+        startTimer();
+    });
+</script>
+</body>
+</html>
