@@ -14,6 +14,9 @@
     body {
       font-family: 'PT Sans', sans-serif;
     }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+    }
     .code-input {
       width: 3rem;
       height: 3.5rem;
@@ -34,22 +37,14 @@
 <div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
 <div class="w-full max-w-md">
 <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200 text-center">
-<div class="flex justify-center mb-6">
-    <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-12 w-auto">
+<div class="flex flex-col items-center text-center">
+    <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto mb-4">
 </div>
 
 <div>
-    <div class="flex justify-center mb-4">
-        <svg class="w-20 h-20" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-            <g fill="none" fill-rule="evenodd">
-                <path d="M14,54 L14,10 C14,8.896 14.896,8 16,8 L48,8 C49.104,8 50,8.896 50,10 L50,54 L34.786,42.762 C33.05,41.554 30.95,41.554 29.214,42.762 L14,54 Z" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path stroke="#22C55E" stroke-width="2.5" d="M24,24L40,24" stroke-linecap="round"/>
-                <path stroke="#22C55E" stroke-width="2.5" d="M24,34L34,34" stroke-linecap="round"/>
-            </g>
-        </svg>
-    </div>
+    <span class="material-symbols-outlined text-7xl text-green-500">sms</span>
     <h1 class="text-3xl font-bold text-[#4d4d4d] mt-2">Verifique seu celular</h1>
-    <p class="text-lg text-gray-500 mt-2 mb-6">
+    <p class="text-lg text-[#4d4d4d] mt-2 mb-6">
         Enviamos um código de 6 dígitos para o número: <br/><strong id="sms-identifier" class="font-bold text-[#4d4d4d]"></strong>.
     </p>
 </div>

@@ -14,6 +14,9 @@
     body {
       font-family: 'PT Sans', sans-serif;
     }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+    }
     .code-input {
       width: 3rem;
       height: 3.5rem;
@@ -34,22 +37,14 @@
 <div class="flex min-h-screen flex-col items-center justify-center p-6 sm:p-12">
 <div class="w-full max-w-md">
 <div class="bg-white p-8 md:p-10 rounded-2xl shadow-xl ring-1 ring-gray-200 text-center">
-<div class="flex justify-center mb-6">
-    <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-12 w-auto">
+<div class="flex flex-col items-center text-center">
+    <img src="../Imagens/logomarca-somos.png" alt="Logotipo do Sistema" class="h-16 w-auto mb-4">
 </div>
 
 <div>
-    <div class="flex justify-center mb-4">
-        <svg class="w-20 h-20" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-            <g fill="none" fill-rule="evenodd">
-                <path stroke="#22C55E" stroke-width="2.5" d="M2,20 L32,36 L62,20" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M62,48 L62,16 C62,14.896 61.104,14 60,14 L4,14 C2.896,14 2,14.896 2,16 L2,48 C2,49.104 2.896,50 4,50 L60,50 C61.104,50 62,49.104 62,48 Z" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path stroke="#22C55E" stroke-width="3" d="M23,34 L30,41 L43,28" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-        </svg>
-    </div>
+    <span class="material-symbols-outlined text-7xl text-green-500">mark_email_read</span>
     <h1 class="text-3xl font-bold text-[#4d4d4d] mt-2">Verifique seu e-mail</h1>
-    <p class="text-lg text-gray-500 mt-2 mb-6">
+    <p class="text-lg text-[#4d4d4d] mt-2 mb-6">
         Enviamos um código de 6 dígitos para o e-mail: <br/><strong id="email-identifier" class="font-bold text-[#4d4d4d]"></strong>.
     </p>
 </div>
@@ -92,7 +87,7 @@
         const params = new URLSearchParams(window.location.search);
         const identifier = params.get('identifier');
         const emailIdentifierEl = document.getElementById('email-identifier');
-
+        
         if (identifier) {
             emailIdentifierEl.textContent = identifier;
         } else {
