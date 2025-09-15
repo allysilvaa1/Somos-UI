@@ -42,15 +42,15 @@
     <div class="flex justify-center mb-4">
         <svg class="w-20 h-20" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
             <g fill="none" fill-rule="evenodd">
-                <path d="M14,54 L14,10 C14,8.896 14.896,8 16,8 L48,8 C49.104,8 50,8.896 50,10 L50,54 L34.786,42.762 C33.05,41.554 30.95,41.554 29.214,42.762 L14,54 Z" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path stroke="#22C55E" stroke-width="2.5" d="M24,24L40,24" stroke-linecap="round"/>
-                <path stroke="#22C55E" stroke-width="2.5" d="M24,34L34,34" stroke-linecap="round"/>
+                <path stroke="#22C55E" stroke-width="2.5" d="M2,20 L32,36 L62,20" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M62,48 L62,16 C62,14.896 61.104,14 60,14 L4,14 C2.896,14 2,14.896 2,16 L2,48 C2,49.104 2.896,50 4,50 L60,50 C61.104,50 62,49.104 62,48 Z" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path stroke="#22C55E" stroke-width="3" d="M23,34 L30,41 L43,28" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
         </svg>
     </div>
-    <h1 class="text-3xl font-bold text-[#4d4d4d] mt-2">Verifique seu celular</h1>
+    <h1 class="text-3xl font-bold text-[#4d4d4d] mt-2">Verifique seu e-mail</h1>
     <p class="text-lg text-gray-500 mt-2 mb-6">
-        Enviamos um código de 6 dígitos para o número: <br/><strong id="sms-identifier" class="font-bold text-[#4d4d4d]"></strong>.
+        Enviamos um código de 6 dígitos para o e-mail: <br/><strong id="email-identifier" class="font-bold text-[#4d4d4d]"></strong>.
     </p>
 </div>
 
@@ -91,10 +91,10 @@
     document.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);
         const identifier = params.get('identifier');
-        const smsIdentifierEl = document.getElementById('sms-identifier');
+        const emailIdentifierEl = document.getElementById('email-identifier');
 
         if (identifier) {
-            smsIdentifierEl.textContent = identifier;
+            emailIdentifierEl.textContent = identifier;
         } else {
             window.location.href = './redefinicao-de-senha.html';
         }

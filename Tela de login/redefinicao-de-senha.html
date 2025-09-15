@@ -60,7 +60,7 @@
             </div>
           </div>
           <div x-show="recoveryMethod === 'email'">
-            <label class="sr-only" for="email">Seu E-mail</label>
+            <label class="sr-only" for="email">Seu e-mail</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">mail</span>
               <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-[#4d4d4d] focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="email" name="email" placeholder="Seu e-mail" required="" type="email" />
@@ -68,7 +68,7 @@
             <p id="email-error" class="mt-2 text-xs text-red-600 hidden" role="alert">Por favor, insira um e-mail válido.</p>
           </div>
           <div style="display: none;" x-show="recoveryMethod === 'sms'">
-            <label class="sr-only" for="phone">Seu Número de Celular</label>
+            <label class="sr-only" for="phone">Seu número de celular</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">sms</span>
               <input class="block w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg text-[#4d4d4d] placeholder-[#4d4d4d] focus:outline-none focus:ring-2 focus:ring-[#467de9] transition" id="phone" name="phone" placeholder="Seu celular com DDD" required="" type="tel" />
@@ -157,7 +157,7 @@
           identifier = emailInput.value;
           isValid = validateEmail();
           if (isValid) {
-            url = `./confirmacao-de-envio-instrucoes.html?method=${currentMethod}&identifier=${encodeURIComponent(identifier)}`;
+            url = `./validacao-codigo-email.html?identifier=${encodeURIComponent(identifier)}`;
           }
         } else if (currentMethod === 'sms') {
           identifier = phoneInput.value;
