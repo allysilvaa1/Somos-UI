@@ -18,6 +18,7 @@
   .group:hover .group-hover\:block { display:block; }
   .modal { transition: opacity .25s ease; }
   body.modal-active { overflow-x:hidden; overflow-y:hidden; }
+  #courses-carousel::-webkit-scrollbar { display: none; }
 </style>
 </head>
 <body class="bg-[#F0F7FF]">
@@ -338,6 +339,102 @@
       </button>
     </div>
   </div>
+  
+  <div class="bg-white p-6 rounded-xl shadow-sm">
+    <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-bold text-[#4d4d4d]">Programas e Cursos Parceiros</h3>
+        <div class="hidden sm:flex items-center space-x-2">
+            <button id="scroll-left-btn" class="p-1 rounded-full hover:bg-gray-100 text-gray-600 disabled:text-gray-300 disabled:cursor-not-allowed">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button id="scroll-right-btn" class="p-1 rounded-full hover:bg-gray-100 text-gray-600 disabled:text-gray-300 disabled:cursor-not-allowed">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+        </div>
+    </div>
+    <div id="courses-carousel" class="flex overflow-x-auto space-x-6 pb-4 scroll-smooth snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
+                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop" alt="Curso de Gestantes">
+                <div class="p-4 flex flex-col flex-grow">
+                    <div class="flex items-center space-x-4 mb-3 text-xs text-gray-600">
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>8h</span>
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>IMIP</span>
+                    </div>
+                    <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Curso de Preparação para o Parto - IMIP</h4>
+                    <div class="flex justify-between items-center mt-auto pt-3">
+                        <span class="font-bold text-lg text-[#4d4d4d]">R$ 129,90</span>
+                        <a href="#" class="bg-[#2D3748] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#1A202C] transition-colors">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
+                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1615996024426-046938531a74?q=80&w=2670&auto=format&fit=crop" alt="Curso de Amamentação">
+                <div class="p-4 flex flex-col flex-grow">
+                    <div class="flex items-center space-x-4 mb-3 text-xs text-gray-600">
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>4h 30m</span>
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Online</span>
+                    </div>
+                    <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Amamentação Descomplicada</h4>
+                    <div class="flex justify-between items-center mt-auto pt-3">
+                        <span class="font-bold text-lg text-[#4d4d4d]">R$ 79,00</span>
+                        <a href="#" class="bg-[#2D3748] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#1A202C] transition-colors">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
+                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1599043414847-3c58b682a337?q=80&w=2670&auto=format&fit=crop" alt="Workshop de Primeiros Socorros">
+                <div class="p-4 flex flex-col flex-grow">
+                    <div class="flex items-center space-x-4 mb-3 text-xs text-gray-600">
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>3h</span>
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Presencial</span>
+                    </div>
+                    <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Primeiros Socorros para Bebês</h4>
+                     <div class="flex justify-between items-center mt-auto pt-3">
+                        <span class="font-bold text-lg text-[#4d4d4d]">R$ 99,90</span>
+                        <a href="#" class="bg-[#2D3748] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#1A202C] transition-colors">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
+                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2670&auto=format&fit=crop" alt="Nutrição na Gestação">
+                <div class="p-4 flex flex-col flex-grow">
+                    <div class="flex items-center space-x-4 mb-3 text-xs text-gray-600">
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>6h</span>
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Online</span>
+                    </div>
+                    <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Nutrição na Gestação: Coma Bem por Dois</h4>
+                     <div class="flex justify-between items-center mt-auto pt-3">
+                        <span class="font-bold text-lg text-[#4d4d4d]">R$ 65,50</span>
+                        <a href="#" class="bg-[#2D3748] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#1A202C] transition-colors">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
+                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop" alt="Encontro de Mães">
+                <div class="p-4 flex flex-col flex-grow">
+                    <div class="flex items-center space-x-4 mb-3 text-xs text-gray-600">
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>2h</span>
+                        <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Evento</span>
+                    </div>
+                    <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Evento Online: Encontro de Mães Empreendedoras</h4>
+                    <div class="flex justify-between items-center mt-auto pt-3">
+                        <span class="font-bold text-lg text-green-600">Gratuito</span>
+                        <a href="#" class="bg-[#2D3748] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#1A202C] transition-colors">Participar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
 </section>
 
 <aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start">
@@ -602,6 +699,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   function toggleModal(modal){ modal.classList.toggle('hidden'); modal.classList.toggle('flex'); document.body.classList.toggle('modal-active'); }
+
+  const carousel = document.getElementById('courses-carousel');
+  const scrollLeftBtn = document.getElementById('scroll-left-btn');
+  const scrollRightBtn = document.getElementById('scroll-right-btn');
+
+  if (carousel && scrollLeftBtn && scrollRightBtn) {
+    const updateArrowState = () => {
+      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+      scrollLeftBtn.disabled = carousel.scrollLeft <= 0;
+      scrollRightBtn.disabled = carousel.scrollLeft >= maxScrollLeft - 1;
+    };
+
+    scrollLeftBtn.addEventListener('click', () => {
+      const card = carousel.querySelector('div');
+      if (card) {
+        carousel.scrollBy({
+          left: -(card.offsetWidth + 24),
+          behavior: 'smooth'
+        });
+      }
+    });
+
+    scrollRightBtn.addEventListener('click', () => {
+      const card = carousel.querySelector('div');
+      if (card) {
+        carousel.scrollBy({
+          left: card.offsetWidth + 24,
+          behavior: 'smooth'
+        });
+      }
+    });
+
+    carousel.addEventListener('scroll', updateArrowState);
+    window.addEventListener('resize', updateArrowState);
+    updateArrowState();
+  }
 });
 </script>
 </body>
