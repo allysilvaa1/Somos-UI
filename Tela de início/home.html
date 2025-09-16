@@ -85,87 +85,115 @@
         </button>
 
         <div id="profilesList" class="pt-4 mt-4 border-t border-gray-100 hidden">
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 bg-gray-100 rounded-md"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 bg-gray-100 rounded-md border border-gray-100"
              data-name="Sofia Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Titular">
             <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0" alt="">
             <div class="flex-grow">
-              <p class="font-semibold text-gray-800">Sofia Almeida</p>
-              <p class="text-xs text-blue-600 font-medium current-flag">Perfil atual</p>
+              <div class="profile-details hidden">
+                <p class="font-semibold text-gray-800">Sofia Almeida</p>
+                <p class="text-xs text-gray-500">Titular</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+                </div>
+              </div>
+              <div class="current-indicator">
+                <p class="font-semibold text-gray-800">Sofia Almeida</p>
+                <p class="text-xs text-blue-600 font-medium">Perfil atual</p>
+              </div>
             </div>
             <span class="material-symbols-outlined text-blue-600 filled check-icon">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="João Almeida"
-             data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBUC6tPlNCbXBsgoQ0KdN_axuSVDf1PfZPCN131043vtcqcOZl6dwxJfWN3pxEvMZaAfnDlV3730_K5G7ojiWEuGR4Kv05701PDwGSyqsWItBZvCrz5MV45keqEkY4m0Bl2MYhQ65EyqE83kVHEqMRBjt6WVCsDpP2zLiHoQboZ84ARZSd2VJ52E_6AsFlqwj5FRMZuqEtjP8LGRxpiD28tt5rg9yEGCv6JNQ98RFZz_22ggc4l0tiOzutpvLe_d1kSoIVTLXvnvlw"
+             data-avatar="https://xsgames.co/randomusers/assets/avatars/male/46.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Filho - Menor de 18">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUC6tPlNCbXBsgoQ0KdN_axuSVDf1PfZPCN131043vtcqcOZl6dwxJfWN3pxEvMZaAfnDlV3730_K5G7ojiWEuGR4Kv05701PDwGSyqsWItBZvCrz5MV45keqEkY4m0Bl2MYhQ65EyqE83kVHEqMRBjt6WVCsDpP2zLiHoQboZ84ARZSd2VJ52E_6AsFlqwj5FRMZuqEtjP8LGRxpiD28tt5rg9yEGCv6JNQ98RFZz_22ggc4l0tiOzutpvLe_d1kSoIVTLXvnvlw" alt="">
+            <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/male/46.jpg" alt="">
             <div class="flex-grow">
-              <p class="font-semibold text-gray-800">João Almeida</p>
-              <p class="text-xs text-gray-500">Filho - Menor de 18 anos</p>
-              <div class="flex items-center gap-1.5 mt-1">
-                <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
-                <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+              <div class="profile-details">
+                <p class="font-semibold text-gray-800">João Almeida</p>
+                <p class="text-xs text-gray-500">Filho - Menor de 18 anos</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+                </div>
+              </div>
+              <div class="current-indicator hidden">
+                <p class="font-semibold text-gray-800">João Almeida</p>
+                <p class="text-xs text-blue-600 font-medium">Perfil atual</p>
               </div>
             </div>
             <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="Maria Almeida"
-             data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuDoRfrxly35pDKTUJiMpLVymNcWxkSaTFH2UODf034ax38ZD9fnbTQYIdqPFM_jGAdMDrjL2Zc861FQHXpSRyFTlVvLckfSD7jpxSH0-NWqjCZOCPsdWl5qNvsCFnf0Bxp7JfOgCug-3_EHzQRMFpnpCm4CA-KFwniIgckkITWXVddPKeVIw3iiIdrAs74QkE5Uys3R4Bo45OuraWe_zrlwYtC-PyXs6XCvJGgbFDV5XzPrDceIu-4Qe2jxnWo1lxrGVY8McQ-9nO0"
+             data-avatar="https://xsgames.co/randomusers/assets/avatars/female/46.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Filha - Menor de 18">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoRfrxly35pDKTUJiMpLVymNcWxkSaTFH2UODf034ax38ZD9fnbTQYIdqPFM_jGAdMDrjL2Zc861FQHXpSRyFTlVvLckfSD7jpxSH0-NWqjCZOCPsdWl5qNvsCFnf0Bxp7JfOgCug-3_EHzQRMFpnpCm4CA-KFwniIgckkITWXVddPKeVIw3iiIdrAs74QkE5Uys3R4Bo45OuraWe_zrlwYtC-PyXs6XCvJGgbFDV5XzPrDceIu-4Qe2jxnWo1lxrGVY8McQ-9nO0" alt="">
+            <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/female/46.jpg" alt="">
             <div class="flex-grow">
-              <p class="font-semibold text-gray-800">Maria Almeida</p>
-              <p class="text-xs text-gray-500">Filha - Menor de 18 anos</p>
-              <div class="flex items-center gap-1.5 mt-1">
-                <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
-                <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+              <div class="profile-details">
+                <p class="font-semibold text-gray-800">Maria Almeida</p>
+                <p class="text-xs text-gray-500">Filha - Menor de 18 anos</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+                </div>
+              </div>
+              <div class="current-indicator hidden">
+                <p class="font-semibold text-gray-800">Maria Almeida</p>
+                <p class="text-xs text-blue-600 font-medium">Perfil atual</p>
               </div>
             </div>
             <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="Lúcia Santos"
-             data-avatar="https://lh3.googleusercontent.com/a/ACg8ocI-c6bYlYq8lZ-J3b-uXg-uXg-uXg-uXg-uXg-uXg-uXg=s96-c"
+             data-avatar="https://randomuser.me/api/portraits/women/81.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Mãe - Idosa (+60)">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/a/ACg8ocI-c6bYlYq8lZ-J3b-uXg-uXg-uXg-uXg-uXg-uXg-uXg=s96-c" alt="">
+            <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/81.jpg" alt="">
             <div class="flex-grow">
-              <p class="font-semibold text-gray-800">Lúcia Santos</p>
-              <p class="text-xs text-gray-500">Mãe/Dependente - Idosa</p>
-              <div class="flex items-center gap-1.5 mt-1">
-                <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
-                <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+              <div class="profile-details">
+                <p class="font-semibold text-gray-800">Lúcia Santos</p>
+                <p class="text-xs text-gray-500">Mãe/Dependente - Idosa</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+                </div>
+              </div>
+              <div class="current-indicator hidden">
+                <p class="font-semibold text-gray-800">Lúcia Santos</p>
+                <p class="text-xs text-blue-600 font-medium">Perfil atual</p>
               </div>
             </div>
             <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="José Santos"
-             data-avatar="https://lh3.googleusercontent.com/a/ACg8ocL_Fj2w_N5Y_1Z-aG_y_Z9c_v3q_J4QoXJAbW5s_z8R9V8H8Q=s96-c"
+             data-avatar="https://randomuser.me/api/portraits/men/71.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Pai - Idoso (+60)">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/a/ACg8ocL_Fj2w_N5Y_1Z-aG_y_Z9c_v3q_J4QoXJAbW5s_z8R9V8H8Q=s96-c" alt="">
+            <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/71.jpg" alt="">
             <div class="flex-grow">
-              <p class="font-semibold text-gray-800">José Santos</p>
-              <p class="text-xs text-gray-500">Pai/Dependente - Idoso</p>
-              <div class="flex items-center gap-1.5 mt-1">
-                <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
-                <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+              <div class="profile-details">
+                <p class="font-semibold text-gray-800">José Santos</p>
+                <p class="text-xs text-gray-500">Pai/Dependente - Idoso</p>
+                <div class="flex items-center gap-1.5 mt-1">
+                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+                </div>
+              </div>
+              <div class="current-indicator hidden">
+                <p class="font-semibold text-gray-800">José Santos</p>
+                <p class="text-xs text-blue-600 font-medium">Perfil atual</p>
               </div>
             </div>
             <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
-
-          <div class="my-1 border-t border-gray-100"></div>
-          <a class="flex items-center px-4 py-2 text-sm text-blue-600 hover:bg-blue-50 rounded-md" href="#">
-            <span class="material-symbols-outlined mr-3 text-base">add</span>Adicionar Perfil</a>
-          <a class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 rounded-md mt-1" href="#">
-            <span class="material-symbols-outlined mr-3 text-base">logout</span>Sair</a>
         </div>
       </div>
     </div>
@@ -321,7 +349,7 @@
     <div class="space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <img alt="Foto de Carlos Almeida" class="h-10 w-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/a/ACg8ocJ-L6qG_OYA8k9c2v3xqJ4QoXJAbW5s_z8R9V8H8Q=s96-c"/>
+          <img alt="Foto de Carlos Almeida" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/32.jpg"/>
           <div><p class="font-semibold text-gray-800 text-sm">Carlos Almeida</p><p class="text-xs text-gray-500">Cônjuge</p></div>
         </div>
         <div class="flex space-x-2">
@@ -331,7 +359,7 @@
       </div>
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <img alt="Foto de Dra. Ana Costa" class="h-10 w-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/a/ACg8ocK_oG4bW_Hk-4W-k-qT9u8u3c-2E9l8w4b4b4b=s96-c"/>
+          <img alt="Foto de Dra. Ana Costa" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/44.jpg"/>
           <div><p class="font-semibold text-gray-800 text-sm">Dra. Ana Costa</p><p class="text-xs text-gray-500">Cardiologista</p></div>
         </div>
         <div class="flex space-x-2">
@@ -341,7 +369,7 @@
       </div>
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <img alt="Foto de Lúcia Santos" class="h-10 w-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/a/ACg8ocI-c6bYlYq8lZ-J3b-uXg-uXg-uXg-uXg-uXg-uXg-uXg=s96-c"/>
+          <img alt="Foto de Lúcia Santos" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/81.jpg"/>
           <div><p class="font-semibold text-gray-800 text-sm">Lúcia Santos</p><p class="text-xs text-gray-500">Mãe</p></div>
         </div>
         <div class="flex space-x-2">
@@ -351,7 +379,7 @@
       </div>
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <img alt="Foto de José Santos" class="h-10 w-10 rounded-full mr-3" src="https://lh3.googleusercontent.com/a/ACg8ocL_Fj2w_N5Y_1Z-aG_y_Z9c_v3q_J4QoXJAbW5s_z8R9V8H8Q=s96-c"/>
+          <img alt="Foto de José Santos" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/71.jpg"/>
           <div><p class="font-semibold text-gray-800 text-sm">José Santos</p><p class="text-xs text-gray-500">Pai</p></div>
         </div>
         <div class="flex space-x-2">
@@ -416,21 +444,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function clearCurrentMarks() {
-    listEl.querySelectorAll('.check-icon').forEach(el => el.classList.add('hidden'));
-    listEl.querySelectorAll('.profile-option').forEach(el => el.classList.remove('bg-gray-100'));
-    listEl.querySelectorAll('.current-flag').forEach(el => el.textContent = '');
+    listEl.querySelectorAll('.profile-option').forEach(el => {
+      el.classList.remove('bg-gray-100');
+      el.querySelector('.check-icon').classList.add('hidden');
+      el.querySelector('.profile-details').classList.remove('hidden');
+      el.querySelector('.current-indicator').classList.add('hidden');
+    });
   }
 
   function markAsCurrent(anchor) {
     anchor.classList.add('bg-gray-100');
-    const flag = anchor.querySelector('.current-flag');
-    if (flag) {
-      flag.textContent = 'Perfil atual';
-    }
-    const check = anchor.querySelector('.check-icon');
-    if (check) {
-      check.classList.remove('hidden');
-    }
+    anchor.querySelector('.check-icon').classList.remove('hidden');
+    anchor.querySelector('.profile-details').classList.add('hidden');
+    anchor.querySelector('.current-indicator').classList.remove('hidden');
   }
 
   function switchProfile(a) {
