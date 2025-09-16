@@ -44,16 +44,34 @@
         </div>
         <button class="text-gray-500 hover:text-[#467de9] transition-colors"><span class="material-symbols-outlined">settings</span></button>
         <img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-500 hover:text-[#467de9] transition-colors">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
       </div>
     </div>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+    <nav class="flex flex-col space-y-2 p-4">
+        <a class="text-[#467de9] font-semibold" href="#">Início</a>
+        <a class="text-gray-500 hover:text-[#467de9]" href="#">Rede</a>
+        <a class="text-gray-500 hover:text-[#467de9]" href="#">Registro Médico</a>
+        <a class="text-gray-500 hover:text-[#467de9] relative" href="#">Notificações</a>
+        <a class="text-gray-500 hover:text-[#467de9]" href="#">Mensagens</a>
+        <div class="relative sm:hidden pt-2">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
+            <input class="bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#467de9] focus:border-transparent transition" placeholder="Pesquisar paciente..." type="text"/>
+        </div>
+    </nav>
   </div>
 </header>
 
 <main class="flex-grow py-10">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
 
-<aside class="lg:col-span-3 space-y-8 sticky top-24 self-start">
+<aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start">
   <div class="bg-white rounded-xl shadow-sm overflow-hidden">
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
@@ -238,7 +256,7 @@
       <h3 class="text-2xl font-bold">Cardiologia com Dr. Paulo Silva</h3>
       <p class="opacity-90 mt-1">Amanhã, 28 de Julho de 2024 - 10:30</p>
     </div>
-    <div class="flex items-center space-x-4 mt-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-6">
       <button class="flex items-center bg-white/20 text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-white/30 transition-colors">
         <span class="material-symbols-outlined text-base mr-2">event_available</span>Confirmar Presença
       </button>
@@ -309,7 +327,7 @@
   </div>
 </section>
 
-<aside class="lg:col-span-3 space-y-8 sticky top-24 self-start">
+<aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start">
   <div class="bg-white p-6 rounded-xl shadow-sm">
     <h3 class="text-lg font-semibold text-[#4d4d4d] mb-5">Notificações Importantes</h3>
     <div class="space-y-4">
@@ -424,6 +442,12 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
   const switcherToggle = document.getElementById('profile-switcher-toggle');
   const listEl = document.getElementById('profilesList');
   const currentNameTitle = document.getElementById('currentNameTitle');
