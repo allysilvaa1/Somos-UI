@@ -15,7 +15,6 @@
   .logo-s { font-family: 'Montserrat', sans-serif; font-weight: 700; }
   .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
   .group:hover .group-hover\:block { display:block; }
-  .peer:checked~.peer-checked\:block { display:block; }
   .modal { transition: opacity .25s ease; }
   body.modal-active { overflow-x:hidden; overflow-y:hidden; }
 </style>
@@ -54,19 +53,15 @@
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-<!-- ===== Sidebar esquerdo ===== -->
 <aside class="lg:col-span-3 space-y-8 sticky top-24 self-start">
   <div class="bg-white rounded-xl shadow-sm overflow-hidden">
-    <!-- capa -->
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
-      <!-- ícone de cartão/crachá (mantido) -->
       <button class="absolute top-3 right-3 p-1.5 bg-white/20 rounded-full hover:bg-white/40 transition-colors" title="Ver detalhes do Cartão SOMOS">
         <span class="material-symbols-outlined text-green-600" style="font-size:24px;">credit_card</span>
       </button>
     </div>
 
-    <!-- perfil atual -->
     <div class="p-6 relative text-center">
       <img id="currentAvatarTop" alt="Foto do perfil do usuário" class="h-24 w-24 rounded-full mx-auto -mt-16 mb-4 ring-4 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
       <h2 id="currentNameTitle" class="text-xl font-bold text-gray-800 text-center">Sofia Almeida</h2>
@@ -74,8 +69,7 @@
         <span class="inline-flex items-center bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Perfil atual</span>
       </div>
 
-      <!-- Switcher -->
-      <div class="mt-4 relative" id="profileSwitcherRoot">
+      <div class="mt-4" id="profileSwitcherRoot">
         <button id="profile-switcher-toggle" type="button" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-between cursor-pointer hover:bg-gray-100 transition-colors">
           <div class="flex items-center">
             <img id="currentAvatarItem" alt="Foto do perfil" class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
@@ -90,9 +84,7 @@
           <span class="material-symbols-outlined text-gray-500">expand_more</span>
         </button>
 
-        <!-- Lista de dependentes -->
-        <div class="absolute top-full left-0 mt-2 w-full bg-white rounded-xl shadow-lg border border-gray-100 p-2 hidden z-10" id="profilesList">
-          <!-- Sofia (atual) -->
+        <div id="profilesList" class="pt-4 mt-4 border-t border-gray-100 hidden">
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 bg-gray-100 rounded-md"
              data-name="Sofia Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"
@@ -105,7 +97,6 @@
             <span class="material-symbols-outlined text-blue-600 filled check-icon">check_circle</span>
           </a>
 
-          <!-- Filho (menor de 18) -->
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
              data-name="João Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBUC6tPlNCbXBsgoQ0KdN_axuSVDf1PfZPCN131043vtcqcOZl6dwxJfWN3pxEvMZaAfnDlV3730_K5G7ojiWEuGR4Kv05701PDwGSyqsWItBZvCrz5MV45keqEkY4m0Bl2MYhQ65EyqE83kVHEqMRBjt6WVCsDpP2zLiHoQboZ84ARZSd2VJ52E_6AsFlqwj5FRMZuqEtjP8LGRxpiD28tt5rg9yEGCv6JNQ98RFZz_22ggc4l0tiOzutpvLe_d1kSoIVTLXvnvlw"
@@ -119,9 +110,9 @@
                 <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
               </div>
             </div>
+            <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
 
-          <!-- Filha (menor de 18) -->
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
              data-name="Maria Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuDoRfrxly35pDKTUJiMpLVymNcWxkSaTFH2UODf034ax38ZD9fnbTQYIdqPFM_jGAdMDrjL2Zc861FQHXpSRyFTlVvLckfSD7jpxSH0-NWqjCZOCPsdWl5qNvsCFnf0Bxp7JfOgCug-3_EHzQRMFpnpCm4CA-KFwniIgckkITWXVddPKeVIw3iiIdrAs74QkE5Uys3R4Bo45OuraWe_zrlwYtC-PyXs6XCvJGgbFDV5XzPrDceIu-4Qe2jxnWo1lxrGVY8McQ-9nO0"
@@ -135,9 +126,9 @@
                 <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
               </div>
             </div>
+            <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
 
-          <!-- Mãe (idosa) -->
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
              data-name="Lúcia Santos"
              data-avatar="https://lh3.googleusercontent.com/a/ACg8ocI-c6bYlYq8lZ-J3b-uXg-uXg-uXg-uXg-uXg-uXg-uXg=s96-c"
@@ -151,9 +142,9 @@
                 <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
               </div>
             </div>
+            <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
 
-          <!-- Pai (idoso) -->
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1"
              data-name="José Santos"
              data-avatar="https://lh3.googleusercontent.com/a/ACg8ocL_Fj2w_N5Y_1Z-aG_y_Z9c_v3q_J4QoXJAbW5s_z8R9V8H8Q=s96-c"
@@ -167,6 +158,7 @@
                 <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
               </div>
             </div>
+            <span class="material-symbols-outlined text-blue-600 filled check-icon hidden">check_circle</span>
           </a>
 
           <div class="my-1 border-t border-gray-100"></div>
@@ -179,7 +171,6 @@
     </div>
   </div>
 
-  <!-- Saúde em Números (inalterado visualmente) -->
   <div class="bg-white p-6 rounded-xl shadow-sm">
     <h3 class="text-lg font-semibold text-gray-800 mb-5">Saúde em Números</h3>
     <div class="space-y-1">
@@ -212,7 +203,6 @@
   </div>
 </aside>
 
-<!-- ===== Conteúdo central e direito (inalterado) ===== -->
 <section class="lg:col-span-6 space-y-8">
   <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-8 rounded-xl shadow-lg flex flex-col justify-between min-h-[220px]">
     <div>
@@ -292,7 +282,6 @@
 </section>
 
 <aside class="lg:col-span-3 space-y-8 sticky top-24 self-start">
-  <!-- (blocos da direita inalterados) -->
   <div class="bg-white p-6 rounded-xl shadow-sm">
     <h3 class="text-lg font-semibold text-gray-800 mb-5">Notificações Importantes</h3>
     <div class="space-y-4">
@@ -379,7 +368,6 @@
 </main>
 </div>
 
-<!-- ===== Modal de gráficos (inalterado) ===== -->
 <div class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center hidden" id="health-modal">
   <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
   <div class="modal-container bg-white w-11/12 md:max-w-3xl mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
@@ -408,7 +396,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const switcherRoot = document.getElementById('profileSwitcherRoot');
   const switcherToggle = document.getElementById('profile-switcher-toggle');
   const listEl = document.getElementById('profilesList');
   const currentNameTitle = document.getElementById('currentNameTitle');
@@ -417,28 +404,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentAvatarItem = document.getElementById('currentAvatarItem');
   const currentAccessPill = document.getElementById('currentAccessPill');
 
-  switcherToggle.addEventListener('click', () => {
+  switcherToggle.addEventListener('click', (event) => {
+    event.stopPropagation();
     listEl.classList.toggle('hidden');
   });
 
-  document.addEventListener('click', (e) => {
-    if (!switcherRoot.contains(e.target)) {
+  document.addEventListener('click', () => {
+    if (!listEl.classList.contains('hidden')) {
       listEl.classList.add('hidden');
     }
   });
 
   function clearCurrentMarks() {
-    listEl.querySelectorAll('.current-flag').forEach(el => { el.textContent=''; el.classList.remove('text-blue-600','font-medium'); });
     listEl.querySelectorAll('.check-icon').forEach(el => el.classList.add('hidden'));
     listEl.querySelectorAll('.profile-option').forEach(el => el.classList.remove('bg-gray-100'));
+    listEl.querySelectorAll('.current-flag').forEach(el => el.textContent = '');
   }
 
   function markAsCurrent(anchor) {
-    const flag = anchor.querySelector('.current-flag');
-    const check = anchor.querySelector('.check-icon');
     anchor.classList.add('bg-gray-100');
-    if (flag) { flag.textContent = 'Perfil atual'; flag.classList.add('text-blue-600','font-medium'); }
-    if (check) { check.classList.remove('hidden'); }
+    const flag = anchor.querySelector('.current-flag');
+    if (flag) {
+      flag.textContent = 'Perfil atual';
+    }
+    const check = anchor.querySelector('.check-icon');
+    if (check) {
+      check.classList.remove('hidden');
+    }
   }
 
   function switchProfile(a) {
