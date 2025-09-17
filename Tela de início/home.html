@@ -6,7 +6,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -27,14 +27,16 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center space-x-8">
-        <a href="#"><img src="../Imagens/logomarca-somos.png" alt="Logotipo SOMOS" class="h-12 w-auto"></a>
+        <a href="#"><img src="../Imagens/logotipo-sem-fundo.png" alt="Logotipo SOMOS" class="h-20 w-auto"></a>
         <nav class="hidden md:flex space-x-8">
-          <a class="text-[#467de9] border-b-2 border-[#467de9] font-semibold text-sm" href="#">Início</a>
+          <a class="text-[#467de9] font-semibold text-sm" href="#">Início</a>
           <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Rede</a>
-          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Registro Médico</a>
+          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Prontuário</a>
           <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm relative" href="#">Notificações
             <span class="absolute -top-1 -right-3 h-2 w-2 rounded-full bg-red-500"></span></a>
+          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Humor</a>
           <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Mensagens</a>
+          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Arquivos</a>
         </nav>
       </div>
       <div class="flex items-center space-x-4">
@@ -42,7 +44,6 @@
           <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
           <input class="bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 w-56 focus:outline-none focus:ring-2 focus:ring-[#467de9] focus:border-transparent transition" placeholder="Pesquisar paciente..." type="text"/>
         </div>
-        <button class="text-gray-500 hover:text-[#467de9] transition-colors"><span class="material-symbols-outlined">settings</span></button>
         <img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
         <div class="md:hidden">
             <button id="mobile-menu-button" class="text-gray-500 hover:text-[#467de9] transition-colors">
@@ -56,9 +57,11 @@
     <nav class="flex flex-col space-y-2 p-4">
         <a class="text-[#467de9] font-semibold" href="#">Início</a>
         <a class="text-gray-500 hover:text-[#467de9]" href="#">Rede</a>
-        <a class="text-gray-500 hover:text-[#467de9]" href="#">Registro Médico</a>
+        <a class="text-gray-500 hover:text-[#467de9]" href="#">Prontuário</a>
         <a class="text-gray-500 hover:text-[#467de9] relative" href="#">Notificações</a>
+        <a class="text-gray-500 hover:text-[#467de9]" href="#">Humor</a>
         <a class="text-gray-500 hover:text-[#467de9]" href="#">Mensagens</a>
+        <a class="text-gray-500 hover:text-[#467de9]" href="#">Arquivos</a>
         <div class="relative sm:hidden pt-2">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
             <input class="bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#467de9] focus:border-transparent transition" placeholder="Pesquisar paciente..." type="text"/>
