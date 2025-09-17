@@ -6,7 +6,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -76,7 +76,7 @@
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
       <button class="absolute top-3 right-3 p-1.5 bg-white/20 rounded-full hover:bg-white/40 transition-colors" title="Ver detalhes do Cartão SOMOS">
-        <span class="material-symbols-outlined text-green-600" style="font-size:24px;">credit_card</span>
+        <span id="profileCardIcon" class="material-symbols-outlined text-green-600" style="font-size:24px;">credit_card</span>
       </button>
     </div>
 
@@ -106,7 +106,8 @@
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 bg-gray-100 rounded-md border border-gray-100"
              data-name="Sofia Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"
-             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Titular">
+             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Titular"
+             data-access-icon-color="text-green-600" data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0" alt="">
             <div class="flex-grow">
               <div class="profile-details hidden">
@@ -128,15 +129,16 @@
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="João Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/male/46.jpg"
-             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Filho - Menor de 18">
+             data-access="Crachá Ativo" data-access-icon="badge" data-role="Filho - Menor de 18"
+             data-access-icon-color="text-purple-600" data-access-pill-bg="bg-purple-100" data-access-pill-text="text-purple-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/male/46.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">João Almeida</p>
                 <p class="text-xs text-gray-500">Filho - Menor de 18 anos</p>
                 <div class="flex items-center gap-1.5 mt-1">
-                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+                  <span class="material-symbols-outlined text-base text-purple-600" style="font-size:16px;">badge</span>
+                  <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-0.5 rounded-full">Crachá Ativo</span>
                 </div>
               </div>
               <div class="current-indicator hidden">
@@ -150,15 +152,16 @@
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="Maria Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/female/46.jpg"
-             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Filha - Menor de 18">
+             data-access="Crachá Ativo" data-access-icon="badge" data-role="Filha - Menor de 18"
+             data-access-icon-color="text-purple-600" data-access-pill-bg="bg-purple-100" data-access-pill-text="text-purple-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/female/46.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">Maria Almeida</p>
                 <p class="text-xs text-gray-500">Filha - Menor de 18 anos</p>
                 <div class="flex items-center gap-1.5 mt-1">
-                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
-                  <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
+                  <span class="material-symbols-outlined text-base text-purple-600" style="font-size:16px;">badge</span>
+                  <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-0.5 rounded-full">Crachá Ativo</span>
                 </div>
               </div>
               <div class="current-indicator hidden">
@@ -172,7 +175,8 @@
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="Lúcia Santos"
              data-avatar="https://randomuser.me/api/portraits/women/81.jpg"
-             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Mãe - Idosa (+60)">
+             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Mãe - Idosa (+60)"
+             data-access-icon-color="text-green-600" data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/81.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
@@ -194,7 +198,8 @@
           <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
              data-name="José Santos"
              data-avatar="https://randomuser.me/api/portraits/men/71.jpg"
-             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Pai - Idoso (+60)">
+             data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Pai - Idoso (+60)"
+             data-access-icon-color="text-green-600" data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/71.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
@@ -569,6 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentAvatarTop = document.getElementById('currentAvatarTop');
   const currentAvatarItem = document.getElementById('currentAvatarItem');
   const currentAccessPill = document.getElementById('currentAccessPill');
+  const profileCardIcon = document.getElementById('profileCardIcon');
 
   switcherToggle.addEventListener('click', (event) => {
     event.stopPropagation();
@@ -602,6 +608,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const avatar = a.dataset.avatar;
     const access = a.dataset.access || 'Cartão Ativo';
     const icon = a.dataset.accessIcon || 'credit_card';
+    const iconColor = a.dataset.accessIconColor || 'text-green-600';
+    const pillBg = a.dataset.accessPillBg || 'bg-green-100';
+    const pillText = a.dataset.accessPillText || 'text-green-800';
 
     currentNameTitle.textContent = name;
     currentNameInline.textContent = name;
@@ -611,6 +620,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pillIcon = currentAccessPill.previousElementSibling;
     pillIcon.textContent = icon;
+
+    pillIcon.classList.remove('text-green-600', 'text-purple-600');
+    currentAccessPill.classList.remove('bg-green-100', 'text-green-800', 'bg-purple-100', 'text-purple-800');
+
+    pillIcon.classList.add(iconColor);
+    currentAccessPill.classList.add(pillBg, pillText);
+    
+    if (profileCardIcon) {
+        profileCardIcon.textContent = icon;
+        profileCardIcon.classList.remove('text-green-600', 'text-purple-600');
+        profileCardIcon.classList.add(iconColor);
+    }
 
     clearCurrentMarks();
     markAsCurrent(a);
