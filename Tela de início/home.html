@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR" x-data="{ notificationsOpen: false }">
 <head>
@@ -26,7 +27,7 @@
 <div class="flex flex-col min-h-screen">
 
 <header class="bg-white shadow-sm sticky top-0 z-30">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center space-x-8">
         <a href="#"><img src="../Imagens/logotipo-sem-fundo.png" alt="Logotipo SOMOS" class="h-20 w-auto"></a>
@@ -73,11 +74,11 @@
 </header>
 
 <main class="flex-grow py-10">
-<div class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
 
 <aside class="lg:col-span-3 space-y-6 lg:sticky top-24 self-start">
-  <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+  <div class="bg-white rounded-xl shadow-sm overflow-hidden w-11/12 ml-auto">
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
       <button class="absolute top-3 right-3 p-1.5 bg-white/20 rounded-full hover:bg-white/40 transition-colors" title="Ver detalhes do Cartão SOMOS">
@@ -221,7 +222,7 @@
     </div>
   </div>
 
-  <div class="bg-white p-6 rounded-xl shadow-sm" x-data="{ open: true }">
+  <div class="bg-white p-6 rounded-xl shadow-sm w-11/12 ml-auto" x-data="{ open: true }">
     <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
       <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
       <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
@@ -255,7 +256,7 @@
     </div>
   </div>
   
-  <div class="bg-white p-6 rounded-xl shadow-sm" x-data="{ open: true }">
+  <div class="bg-white p-6 rounded-xl shadow-sm w-11/12 ml-auto" x-data="{ open: true }">
     <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
         <h3 class="text-lg font-semibold text-[#4d4d4d]">Rede de Apoio</h3>
         <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
@@ -276,7 +277,7 @@
 </aside>
 
 <section class="lg:col-span-6 space-y-6">
-  <div class="bg-gradient-to-br from-[#467de9] to-[#4273c3] text-white p-8 rounded-xl shadow-lg flex flex-col justify-between" style="width: 678.414px; height: 260px;">
+  <div class="bg-gradient-to-br from-[#467de9] to-[#4273c3] text-white p-8 rounded-xl shadow-lg flex flex-col justify-between" style="height: 260px;">
     <div>
       <p class="text-sm font-medium opacity-80 mb-1 tracking-wider">PRÓXIMA CONSULTA</p>
       <h3 class="text-2xl font-bold">Cardiologia com Dr. Paulo Silva</h3>
@@ -292,7 +293,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="width: 678.414px;">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <div class="bg-white p-6 rounded-xl shadow-sm">
       <h3 class="text-lg font-semibold text-[#4d4d4d] mb-4">Resumo do Registro</h3>
       <div class="space-y-4">
@@ -338,7 +339,7 @@
     </div>
   </div>
   
-  <div class="bg-white p-6 rounded-xl shadow-sm" style="width: 678.414px;">
+  <div class="bg-white p-6 rounded-xl shadow-sm">
     <div class="flex justify-between items-center mb-6">
         <h3 class="text-xl font-bold text-[#4d4d4d]">Programas e Cursos Parceiros</h3>
         <div class="hidden sm:flex items-center space-x-2">
@@ -435,7 +436,30 @@
   </div>
 </section>
 
-<aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start"></aside>
+<aside class="lg:col-span-3 space-y-6 lg:sticky top-24 self-start">
+  <div class="w-11/12 rounded-xl overflow-hidden shadow-sm">
+    <a href="#">
+      <img src="../Imagens/anuncio-2.jpeg" alt="Anúncio de plano de saúde" class="w-full h-auto">
+    </a>
+  </div>
+  <div class="px-2 text-center">
+    <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-blue-400">
+      <a href="#" class="hover:underline">Sobre</a>
+      <a href="#" class="hover:underline">Acessibilidade</a>
+      <a href="#" class="hover:underline">Central de Ajuda</a>
+      <a href="#" class="hover:underline">Termos e Privacidade</a>
+      <a href="#" class="hover:underline">Preferências de anúncios</a>
+      <a href="#" class="hover:underline">Publicidade</a>
+      <a href="#" class="hover:underline">Serviços empresariais</a>
+      <a href="#" class="hover:underline">Baixe o aplicativo</a>
+      <a href="#" class="hover:underline">Mais</a>
+    </div>
+    <div class="mt-4 flex items-center justify-center space-x-2">
+      <img src="../Imagens/logotipo-sem-fundo.png" alt="Logotipo SOMOS" class="h-5 w-auto">
+      <p class="text-sm text-[#4d4d4d]">Somos Health Tec© 2024</p>
+    </div>
+  </div>
+</aside>
 
 </div>
 </div>
