@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -31,14 +31,14 @@
       <div class="flex items-center space-x-8">
         <a href="#"><img src="../Imagens/logotipo-sem-fundo.png" alt="Logotipo SOMOS" class="h-20 w-auto"></a>
         <nav class="hidden md:flex space-x-8">
-          <a class="text-[#467de9] font-semibold text-sm" href="#">Início</a>
-          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Rede</a>
-          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Prontuário</a>
-          <a @click.prevent="notificationsOpen = !notificationsOpen" class="text-gray-500 hover:text-[#467de9] font-medium text-sm relative" href="#">Notificações
+          <a class="text-[#6bbdff] font-semibold text-sm" href="#">Início</a>
+          <a class="text-gray-500 hover:text-[#6bbdff] font-medium text-sm" href="#">Rede</a>
+          <a class="text-gray-500 hover:text-[#6bbdff] font-medium text-sm" href="#">Prontuário</a>
+          <a @click.prevent="notificationsOpen = !notificationsOpen" class="text-gray-500 hover:text-[#6bbdff] font-medium text-sm relative" href="#">Notificações
             <span class="absolute -top-1 -right-3 h-2 w-2 rounded-full bg-red-500"></span></a>
-          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Humor</a>
-          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Mensagens</a>
-          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Arquivos</a>
+          <a class="text-gray-500 hover:text-[#6bbdff] font-medium text-sm" href="#">Humor</a>
+          <a class="text-gray-500 hover:text-[#6bbdff] font-medium text-sm" href="#">Mensagens</a>
+          <a class="text-gray-500 hover:text-[#6bbdff] font-medium text-sm" href="#">Arquivos</a>
         </nav>
       </div>
       <div class="flex items-center space-x-4">
@@ -57,13 +57,13 @@
   </div>
   <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
     <nav class="flex flex-col space-y-2 p-4">
-        <a class="text-[#467de9] font-semibold" href="#">Início</a>
-        <a class="text-gray-500 hover:text-[#467de9]" href="#">Rede</a>
-        <a class="text-gray-500 hover:text-[#467de9]" href="#">Prontuário</a>
-        <a @click.prevent="notificationsOpen = !notificationsOpen" class="text-gray-500 hover:text-[#467de9] relative" href="#">Notificações</a>
-        <a class="text-gray-500 hover:text-[#467de9]" href="#">Humor</a>
-        <a class="text-gray-500 hover:text-[#467de9]" href="#">Mensagens</a>
-        <a class="text-gray-500 hover:text-[#467de9]" href="#">Arquivos</a>
+        <a class="text-[#6bbdff] font-semibold" href="#">Início</a>
+        <a class="text-gray-500 hover:text-[#6bbdff]" href="#">Rede</a>
+        <a class="text-gray-500 hover:text-[#6bbdff]" href="#">Prontuário</a>
+        <a @click.prevent="notificationsOpen = !notificationsOpen" class="text-gray-500 hover:text-[#6bbdff] relative" href="#">Notificações</a>
+        <a class="text-gray-500 hover:text-[#6bbdff]" href="#">Humor</a>
+        <a class="text-gray-500 hover:text-[#6bbdff]" href="#">Mensagens</a>
+        <a class="text-gray-500 hover:text-[#6bbdff]" href="#">Arquivos</a>
         <div class="relative sm:hidden pt-2">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
             <input class="bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#467de9] focus:border-transparent transition" placeholder="Pesquisar paciente..." type="text"/>
@@ -74,9 +74,9 @@
 
 <main class="flex-grow py-10">
 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
 
-<aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start">
+<aside class="lg:col-span-3 space-y-6 lg:sticky top-24 self-start">
   <div class="bg-white rounded-xl shadow-sm overflow-hidden">
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
@@ -98,8 +98,7 @@
             <img id="currentAvatarItem" alt="Foto do perfil" class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
             <div class="flex flex-col items-start">
               <p id="currentNameInline" class="font-semibold text-sm text-[#4d4d4d]">Sofia Almeida</p>
-              <div class="flex items-center gap-1.5 mt-1">
-                <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+              <div class="flex items-center mt-1">
                 <span id="currentAccessPill" class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
               </div>
             </div>
@@ -108,7 +107,7 @@
         </button>
 
         <div id="profilesList" class="pt-4 mt-4 border-t border-gray-100 hidden">
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 bg-gray-100 rounded-md border border-gray-100"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] bg-gray-100 rounded-md border border-gray-100"
              data-name="Sofia Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Titular"
@@ -118,8 +117,7 @@
               <div class="profile-details hidden">
                 <p class="font-semibold text-[#4d4d4d]">Sofia Almeida</p>
                 <p class="text-xs text-gray-500">Titular</p>
-                <div class="flex items-center gap-1.5 mt-1">
-                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                <div class="flex items-center mt-1">
                   <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
                 </div>
               </div>
@@ -131,7 +129,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="João Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/male/46.jpg"
              data-access="Crachá Ativo" data-access-icon="badge" data-role="Filho - Menor de 18"
@@ -141,8 +139,7 @@
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">João Almeida</p>
                 <p class="text-xs text-gray-500">Filho - Menor de 18 anos</p>
-                <div class="flex items-center gap-1.5 mt-1">
-                  <span class="material-symbols-outlined text-base text-purple-600" style="font-size:16px;">badge</span>
+                <div class="flex items-center mt-1">
                   <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-0.5 rounded-full">Crachá Ativo</span>
                 </div>
               </div>
@@ -154,7 +151,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="Maria Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/female/46.jpg"
              data-access="Crachá Ativo" data-access-icon="badge" data-role="Filha - Menor de 18"
@@ -164,8 +161,7 @@
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">Maria Almeida</p>
                 <p class="text-xs text-gray-500">Filha - Menor de 18 anos</p>
-                <div class="flex items-center gap-1.5 mt-1">
-                  <span class="material-symbols-outlined text-base text-purple-600" style="font-size:16px;">badge</span>
+                <div class="flex items-center mt-1">
                   <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-0.5 rounded-full">Crachá Ativo</span>
                 </div>
               </div>
@@ -177,7 +173,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="Lúcia Santos"
              data-avatar="https://randomuser.me/api/portraits/women/81.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Mãe - Idosa (+60)"
@@ -187,8 +183,7 @@
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">Lúcia Santos</p>
                 <p class="text-xs text-gray-500">Mãe/Dependente - Idosa</p>
-                <div class="flex items-center gap-1.5 mt-1">
-                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                <div class="flex items-center mt-1">
                   <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
                 </div>
               </div>
@@ -200,7 +195,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 rounded-md mt-1 border border-gray-100"
+          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="José Santos"
              data-avatar="https://randomuser.me/api/portraits/men/71.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Pai - Idoso (+60)"
@@ -210,8 +205,7 @@
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">José Santos</p>
                 <p class="text-xs text-gray-500">Pai/Dependente - Idoso</p>
-                <div class="flex items-center gap-1.5 mt-1">
-                  <span class="material-symbols-outlined text-base text-green-600" style="font-size:16px;">credit_card</span>
+                <div class="flex items-center mt-1">
                   <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded-full">Cartão Ativo</span>
                 </div>
               </div>
@@ -229,7 +223,7 @@
 
   <div class="bg-white p-6 rounded-xl shadow-sm" x-data="{ open: true }">
     <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
-      <h3 class="text-lg font-semibold text-[#4d4d4d]">Saúde em Números</h3>
+      <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
       <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
     </div>
     <div class="space-y-1 mt-5" x-show="open" x-transition>
@@ -260,10 +254,29 @@
       </a>
     </div>
   </div>
+  
+  <div class="bg-white p-6 rounded-xl shadow-sm" x-data="{ open: true }">
+    <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
+        <h3 class="text-lg font-semibold text-[#4d4d4d]">Rede de Apoio</h3>
+        <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
+    </div>
+    <div class="space-y-4 mt-5" x-show="open" x-transition>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <img alt="Foto de Dra. Ana Costa" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/44.jpg"/>
+          <div><p class="font-semibold text-[#4d4d4d] text-sm">Dra. Ana Costa</p><p class="text-xs text-gray-500">Cardiologista</p></div>
+        </div>
+        <div class="flex space-x-2">
+          <button class="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">call</span></button>
+          <button class="p-2 bg-[#467de9]/10 text-[#467de9] rounded-full hover:bg-[#467de9]/20 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">chat</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
 </aside>
 
-<section class="lg:col-span-6 space-y-8">
-  <div class="bg-gradient-to-br from-[#467de9] to-[#4273c3] text-white p-8 rounded-xl shadow-lg flex flex-col justify-between min-h-[220px]">
+<section class="lg:col-span-6 space-y-6">
+  <div class="bg-gradient-to-br from-[#467de9] to-[#4273c3] text-white p-8 rounded-xl shadow-lg flex flex-col justify-between" style="width: 678.414px; height: 260px;">
     <div>
       <p class="text-sm font-medium opacity-80 mb-1 tracking-wider">PRÓXIMA CONSULTA</p>
       <h3 class="text-2xl font-bold">Cardiologia com Dr. Paulo Silva</h3>
@@ -279,38 +292,53 @@
     </div>
   </div>
 
-  <a href="./diario-de-bordo.html" class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between hover:ring-2 hover:ring-[#467de9] transition-all duration-200 group">
-    <div class="flex items-center">
-      <div class="bg-[#467de9]/10 p-3 rounded-lg mr-5">
-        <span class="material-symbols-outlined text-3xl text-[#467de9]">menu_book</span>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold text-[#4d4d4d]">Diário de Bordo</h3>
-        <p class="text-sm text-gray-500 mt-1">Acompanhe seus registros diários, sintomas e emoções.</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="width: 678.414px;">
+    <div class="bg-white p-6 rounded-xl shadow-sm">
+      <h3 class="text-lg font-semibold text-[#4d4d4d] mb-4">Resumo do Registro</h3>
+      <div class="space-y-4">
+        <div class="flex items-center">
+          <div class="bg-[#6bbdff]/20 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-[#467de9]">person</span></div>
+          <div><p class="text-sm text-gray-500">Último Médico</p><p class="font-semibold text-[#4d4d4d]">Dra. Beatriz Costa</p></div>
+        </div>
+        <div class="flex items-center">
+          <div class="bg-[#6bbdff]/20 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-[#467de9]">science</span></div>
+          <div><p class="text-sm text-gray-500">Último Exame</p><p class="font-semibold text-[#4d4d4d]">Hemograma Completo</p></div>
+        </div>
+        <div class="flex items-center">
+          <div class="bg-[#6bbdff]/20 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-[#467de9]">medication</span></div>
+          <div><p class="text-sm text-gray-500">Última Medicação</p><p class="font-semibold text-[#4d4d4d]">Losartana 50mg</p></div>
+        </div>
       </div>
     </div>
-    <span class="material-symbols-outlined text-gray-400 group-hover:text-[#467de9] transition-colors">arrow_forward_ios</span>
-  </a>
-
-  <div class="bg-white p-6 rounded-xl shadow-sm">
-    <h3 class="text-lg font-semibold text-[#4d4d4d] mb-4">Resumo do Registro</h3>
-    <div class="space-y-4">
-      <div class="flex items-center">
-        <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">person</span></div>
-        <div><p class="text-sm text-gray-500">Último Médico</p><p class="font-semibold text-[#4d4d4d]">Dra. Beatriz Costa</p></div>
+    <div class="bg-white p-6 rounded-xl shadow-sm flex flex-col">
+      <h3 class="text-lg font-bold text-[#4d4d4d]">Diário de Bordo</h3>
+      <div class="space-y-4 my-4 flex-grow">
+        <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-yellow-500 mt-1">sentiment_satisfied</span>
+            <div>
+                <p class="text-xs text-gray-500">Ontem, 20:45</p>
+                <p class="text-sm text-[#4d4d4d]">Me senti muito bem após a caminhada no parque. A dor no joelho diminuiu consideravelmente.</p>
+            </div>
+        </div>
+        <div class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-blue-500 mt-1">edit_note</span>
+            <div>
+                <p class="text-xs text-gray-500">Há 3 dias, 09:12</p>
+                <p class="text-sm text-[#4d4d4d]">Conversei com a Dra. Ana e ajustamos a dose do medicamento. Vamos observar os resultados...</p>
+            </div>
+        </div>
       </div>
-      <div class="flex items-center">
-        <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">science</span></div>
-        <div><p class="text-sm text-gray-500">Último Exame</p><p class="font-semibold text-[#4d4d4d]">Hemograma Completo</p></div>
-      </div>
-      <div class="flex items-center">
-        <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">medication</span></div>
-        <div><p class="text-sm text-gray-500">Última Medicação</p><p class="font-semibold text-[#4d4d4d]">Losartana 50mg</p></div>
+      <div class="flex justify-between items-center mt-auto pt-4 border-t">
+        <a href="#" class="text-sm font-semibold text-[#467de9] hover:underline">Ver Diário Completo</a>
+        <button class="flex items-center gap-2 bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors">
+            <span class="material-symbols-outlined">add</span>
+            Nova Entrada
+        </button>
       </div>
     </div>
   </div>
   
-  <div class="bg-white p-6 rounded-xl shadow-sm">
+  <div class="bg-white p-6 rounded-xl shadow-sm" style="width: 678.414px;">
     <div class="flex justify-between items-center mb-6">
         <h3 class="text-xl font-bold text-[#4d4d4d]">Programas e Cursos Parceiros</h3>
         <div class="hidden sm:flex items-center space-x-2">
@@ -323,7 +351,7 @@
         </div>
     </div>
     <div id="courses-carousel" class="flex overflow-x-auto space-x-6 pb-4 scroll-smooth snap-x snap-mandatory" style="scrollbar-width: none; -ms-overflow-style: none;">
-        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-72">
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/mulher-gravida.jpg" alt="Curso de Gestantes">
                 <div class="p-4 flex flex-col flex-grow">
@@ -339,7 +367,7 @@
                 </div>
             </div>
         </div>
-        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-72">
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/mulher-amamentando.jpg" alt="Curso de Amamentação">
                 <div class="p-4 flex flex-col flex-grow">
@@ -355,7 +383,7 @@
                 </div>
             </div>
         </div>
-        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-72">
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/primeiros-socorros.jpg" alt="Workshop de Primeiros Socorros">
                 <div class="p-4 flex flex-col flex-grow">
@@ -371,7 +399,7 @@
                 </div>
             </div>
         </div>
-        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-72">
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2670&auto=format&fit=crop" alt="Nutrição na Gestação">
                 <div class="p-4 flex flex-col flex-grow">
@@ -387,7 +415,7 @@
                 </div>
             </div>
         </div>
-        <div class="snap-start flex-shrink-0 w-11/12 sm:w-80">
+        <div class="snap-start flex-shrink-0 w-11/12 sm:w-72">
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/maes-empreendedoras.png" alt="Encontro de Mães">
                 <div class="p-4 flex flex-col flex-grow">
@@ -407,64 +435,7 @@
   </div>
 </section>
 
-<aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start">
-  <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-xl shadow-sm text-white">
-      <img src="../Imagens/logomarca-somos.png" alt="Logotipo SOMOS" class="h-12 w-auto mb-4 opacity-90">
-      <h3 class="text-xl font-bold mb-2">Conectando Corações, Abraçando o Autismo.</h3>
-      <p class="text-sm opacity-80 mb-4">
-          A SOMOS oferece ferramentas e apoio para o acompanhamento integrado e o desenvolvimento de pessoas no espectro autista.
-      </p>
-      <a href="#" class="inline-block bg-white/20 text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-white/30 transition-colors">
-          Saiba Mais
-      </a>
-  </div>
-
-  <div class="bg-white p-6 rounded-xl shadow-sm">
-    <h3 class="text-lg font-semibold text-[#4d4d4d] mb-5">Rede de Apoio</h3>
-    <div class="space-y-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
-          <img alt="Foto de Carlos Almeida" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/32.jpg"/>
-          <div><p class="font-semibold text-[#4d4d4d] text-sm">Carlos Almeida</p><p class="text-xs text-gray-500">Cônjuge</p></div>
-        </div>
-        <div class="flex space-x-2">
-          <button class="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">call</span></button>
-          <button class="p-2 bg-[#467de9]/10 text-[#467de9] rounded-full hover:bg-[#467de9]/20 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">chat</span></button>
-        </div>
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
-          <img alt="Foto de Dra. Ana Costa" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/44.jpg"/>
-          <div><p class="font-semibold text-[#4d4d4d] text-sm">Dra. Ana Costa</p><p class="text-xs text-gray-500">Cardiologista</p></div>
-        </div>
-        <div class="flex space-x-2">
-          <button class="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">call</span></button>
-          <button class="p-2 bg-[#467de9]/10 text-[#467de9] rounded-full hover:bg-[#467de9]/20 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">chat</span></button>
-        </div>
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
-          <img alt="Foto de Lúcia Santos" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/81.jpg"/>
-          <div><p class="font-semibold text-[#4d4d4d] text-sm">Lúcia Santos</p><p class="text-xs text-gray-500">Mãe</p></div>
-        </div>
-        <div class="flex space-x-2">
-          <button class="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">call</span></button>
-          <button class="p-2 bg-[#467de9]/10 text-[#467de9] rounded-full hover:bg-[#467de9]/20 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">chat</span></button>
-        </div>
-      </div>
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
-          <img alt="Foto de José Santos" class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/71.jpg"/>
-          <div><p class="font-semibold text-[#4d4d4d] text-sm">José Santos</p><p class="text-xs text-gray-500">Pai</p></div>
-        </div>
-        <div class="flex space-x-2">
-          <button class="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">call</span></button>
-          <button class="p-2 bg-[#467de9]/10 text-[#467de9] rounded-full hover:bg-[#467de9]/20 transition-colors"><span class="material-symbols-outlined" style="font-size:20px;">chat</span></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</aside>
+<aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start"></aside>
 
 </div>
 </div>
@@ -534,7 +505,7 @@
         <div class="flex justify-end items-center mb-4">
           <div class="flex items-center space-x-2">
             <span class="text-sm font-medium text-gray-600">Período:</span>
-            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#467de9] focus:border-[#467de9] block w-full p-2" id="time-filter">
+            <select class="bg-gray-50 border border-gray-300 text-[#4d4d4d] text-sm rounded-lg focus:ring-[#467de9] focus:border-[#467de9] block w-full p-2" id="time-filter">
               <option value="7">Últimos 7 dias</option>
               <option selected value="30">Últimos 30 dias</option>
               <option value="180">Últimos 6 meses</option>
@@ -607,13 +578,8 @@ document.addEventListener('DOMContentLoaded', () => {
     currentAvatarItem.src = avatar;
     currentAccessPill.textContent = access;
 
-    const pillIcon = currentAccessPill.previousElementSibling;
-    pillIcon.textContent = icon;
-
-    pillIcon.classList.remove('text-green-600', 'text-purple-600');
     currentAccessPill.classList.remove('bg-green-100', 'text-green-800', 'bg-purple-100', 'text-purple-800');
 
-    pillIcon.classList.add(iconColor);
     currentAccessPill.classList.add(pillBg, pillText);
     
     if (profileCardIcon) {
