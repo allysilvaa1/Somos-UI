@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR"><head>
+<html lang="pt-BR" x-data="{ notificationsOpen: false }">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Início - Prontuário Médico</title>
@@ -10,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <style type="text/tailwindcss">
   body { font-family: 'PT Sans', sans-serif; }
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24 }
@@ -32,7 +34,7 @@
           <a class="text-[#467de9] font-semibold text-sm" href="#">Início</a>
           <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Rede</a>
           <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Prontuário</a>
-          <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm relative" href="#">Notificações
+          <a @click.prevent="notificationsOpen = !notificationsOpen" class="text-gray-500 hover:text-[#467de9] font-medium text-sm relative" href="#">Notificações
             <span class="absolute -top-1 -right-3 h-2 w-2 rounded-full bg-red-500"></span></a>
           <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Humor</a>
           <a class="text-gray-500 hover:text-[#467de9] font-medium text-sm" href="#">Mensagens</a>
@@ -58,7 +60,7 @@
         <a class="text-[#467de9] font-semibold" href="#">Início</a>
         <a class="text-gray-500 hover:text-[#467de9]" href="#">Rede</a>
         <a class="text-gray-500 hover:text-[#467de9]" href="#">Prontuário</a>
-        <a class="text-gray-500 hover:text-[#467de9] relative" href="#">Notificações</a>
+        <a @click.prevent="notificationsOpen = !notificationsOpen" class="text-gray-500 hover:text-[#467de9] relative" href="#">Notificações</a>
         <a class="text-gray-500 hover:text-[#467de9]" href="#">Humor</a>
         <a class="text-gray-500 hover:text-[#467de9]" href="#">Mensagens</a>
         <a class="text-gray-500 hover:text-[#467de9]" href="#">Arquivos</a>
@@ -225,9 +227,12 @@
     </div>
   </div>
 
-  <div class="bg-white p-6 rounded-xl shadow-sm">
-    <h3 class="text-lg font-semibold text-[#4d4d4d] mb-5">Saúde em Números</h3>
-    <div class="space-y-1">
+  <div class="bg-white p-6 rounded-xl shadow-sm" x-data="{ open: true }">
+    <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
+      <h3 class="text-lg font-semibold text-[#4d4d4d]">Saúde em Números</h3>
+      <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
+    </div>
+    <div class="space-y-1 mt-5" x-show="open" x-transition>
       <a href="./saude-peso.html" class="w-full flex items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
         <div class="bg-[#467de9]/10 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-[#467de9]">monitor_weight</span></div>
         <div class="flex-grow"><span class="text-[#4d4d4d] text-sm">Peso</span></div>
@@ -287,40 +292,20 @@
     <span class="material-symbols-outlined text-gray-400 group-hover:text-[#467de9] transition-colors">arrow_forward_ios</span>
   </a>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div class="bg-white p-6 rounded-xl shadow-sm">
-      <h3 class="text-lg font-semibold text-[#4d4d4d] mb-4">Resumo do Registro</h3>
-      <div class="space-y-4">
-        <div class="flex items-center">
-          <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">person</span></div>
-          <div><p class="text-sm text-gray-500">Último Médico</p><p class="font-semibold text-[#4d4d4d]">Dra. Beatriz Costa</p></div>
-        </div>
-        <div class="flex items-center">
-          <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">science</span></div>
-          <div><p class="text-sm text-gray-500">Último Exame</p><p class="font-semibold text-[#4d4d4d]">Hemograma Completo</p></div>
-        </div>
-        <div class="flex items-center">
-          <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">medication</span></div>
-          <div><p class="text-sm text-gray-500">Última Medicação</p><p class="font-semibold text-[#4d4d4d]">Losartana 50mg</p></div>
-        </div>
+  <div class="bg-white p-6 rounded-xl shadow-sm">
+    <h3 class="text-lg font-semibold text-[#4d4d4d] mb-4">Resumo do Registro</h3>
+    <div class="space-y-4">
+      <div class="flex items-center">
+        <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">person</span></div>
+        <div><p class="text-sm text-gray-500">Último Médico</p><p class="font-semibold text-[#4d4d4d]">Dra. Beatriz Costa</p></div>
       </div>
-    </div>
-
-    <div class="bg-white p-6 rounded-xl shadow-sm">
-      <h3 class="text-lg font-semibold text-[#4d4d4d] mb-4">Indicadores de Progresso</h3>
-      <div class="space-y-5">
-        <div>
-          <div class="flex justify-between mb-1"><span class="text-sm font-medium text-[#4d4d4d]">Meta de Sono</span><span class="text-sm font-semibold text-indigo-600">94%</span></div>
-          <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-indigo-500 h-2.5 rounded-full" style="width:94%"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between mb-1"><span class="text-sm font-medium text-[#4d4d4d]">Atividade Física</span><span class="text-sm font-semibold text-green-600">60%</span></div>
-          <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full" style="width:60%"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between mb-1"><span class="text-sm font-medium text-[#4d4d4d]">Adesão ao Tratamento</span><span class="text-sm font-semibold text-[#467de9]">85%</span></div>
-          <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-[#467de9] h-2.5 rounded-full" style="width:85%"></div></div>
-        </div>
+      <div class="flex items-center">
+        <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">science</span></div>
+        <div><p class="text-sm text-gray-500">Último Exame</p><p class="font-semibold text-[#4d4d4d]">Hemograma Completo</p></div>
+      </div>
+      <div class="flex items-center">
+        <div class="bg-gray-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-gray-600">medication</span></div>
+        <div><p class="text-sm text-gray-500">Última Medicação</p><p class="font-semibold text-[#4d4d4d]">Losartana 50mg</p></div>
       </div>
     </div>
   </div>
@@ -428,22 +413,15 @@
 </section>
 
 <aside class="lg:col-span-3 space-y-8 lg:sticky top-24 self-start">
-  <div class="bg-white p-6 rounded-xl shadow-sm">
-    <h3 class="text-lg font-semibold text-[#4d4d4d] mb-5">Notificações Importantes</h3>
-    <div class="space-y-4">
-      <div class="flex items-start bg-yellow-50/50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-        <span class="material-symbols-outlined text-yellow-600 mt-0.5 mr-3">vaccines</span>
-        <div><p class="font-semibold text-sm text-yellow-800">Lembrete de Vacina</p><p class="text-sm text-yellow-700 mt-0.5">Vacina da Gripe agendada para 05/08.</p></div>
-      </div>
-      <div class="flex items-start bg-red-50/50 border-l-4 border-red-400 p-4 rounded-r-lg">
-        <span class="material-symbols-outlined text-red-600 mt-0.5 mr-3">warning</span>
-        <div><p class="font-semibold text-sm text-red-800">Medicação Terminando</p><p class="text-sm text-red-700 mt-0.5">Sua Losartana termina em 3 dias.</p></div>
-      </div>
-      <div class="flex items-start bg-[#467de9]/10 border-l-4 border-[#467de9] p-4 rounded-r-lg">
-        <span class="material-symbols-outlined text-[#467de9] mt-0.5 mr-3">checklist</span>
-        <div><p class="font-semibold text-sm text-[#467de9]">Check-up Atrasado</p><p class="text-sm text-[#467de9] mt-0.5">Agende seu check-up anual.</p></div>
-      </div>
-    </div>
+  <div class="bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-xl shadow-sm text-white">
+      <img src="../Imagens/logomarca-somos.png" alt="Logotipo SOMOS" class="h-12 w-auto mb-4 opacity-90">
+      <h3 class="text-xl font-bold mb-2">Conectando Corações, Abraçando o Autismo.</h3>
+      <p class="text-sm opacity-80 mb-4">
+          A SOMOS oferece ferramentas e apoio para o acompanhamento integrado e o desenvolvimento de pessoas no espectro autista.
+      </p>
+      <a href="#" class="inline-block bg-white/20 text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-white/30 transition-colors">
+          Saiba Mais
+      </a>
   </div>
 
   <div class="bg-white p-6 rounded-xl shadow-sm">
@@ -496,6 +474,57 @@
 </div>
 </div>
 </main>
+</div>
+
+<div
+    x-show="notificationsOpen"
+    @click.away="notificationsOpen = false"
+    @keydown.escape.window="notificationsOpen = false"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 transform -translate-y-2"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform -translate-y-2"
+    class="fixed top-20 right-4 sm:right-6 lg:right-8 w-full max-w-sm bg-white rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 z-40"
+    style="display: none;"
+>
+    <div class="p-4 border-b">
+        <div class="flex justify-between items-center">
+        <h3 class="text-lg font-bold text-[#4d4d4d]">Notificações</h3>
+        <button @click="notificationsOpen = false" class="text-gray-400 hover:text-gray-600">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        </div>
+    </div>
+    <div class="p-2 max-h-96 overflow-y-auto">
+        <div class="space-y-2 p-2">
+            <div class="flex items-start bg-yellow-50/50 border-l-4 border-yellow-400 p-3 rounded-r-lg">
+                <span class="material-symbols-outlined text-yellow-600 mt-0.5 mr-3">vaccines</span>
+                <div>
+                    <p class="font-semibold text-sm text-yellow-800">Lembrete de Vacina</p>
+                    <p class="text-sm text-yellow-700 mt-0.5">Vacina da Gripe agendada para 05/08.</p>
+                </div>
+            </div>
+            <div class="flex items-start bg-red-50/50 border-l-4 border-red-400 p-3 rounded-r-lg">
+                <span class="material-symbols-outlined text-red-600 mt-0.5 mr-3">warning</span>
+                <div>
+                    <p class="font-semibold text-sm text-red-800">Medicação Terminando</p>
+                    <p class="text-sm text-red-700 mt-0.5">Sua Losartana termina em 3 dias.</p>
+                </div>
+            </div>
+            <div class="flex items-start bg-[#467de9]/10 border-l-4 border-[#467de9] p-3 rounded-r-lg">
+                <span class="material-symbols-outlined text-[#467de9] mt-0.5 mr-3">checklist</span>
+                <div>
+                    <p class="font-semibold text-sm text-[#467de9]">Check-up Atrasado</p>
+                    <p class="text-sm text-[#467de9] mt-0.5">Agende seu check-up anual.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 bg-gray-50 rounded-b-xl text-center">
+        <a href="#" class="text-sm font-semibold text-[#467de9] hover:underline">Ver todas as notificações</a>
+    </div>
 </div>
 
 <div class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center hidden" id="health-modal">
