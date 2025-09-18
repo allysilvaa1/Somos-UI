@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,32 +13,109 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <style type="text/tailwindcss">
       body { font-family: 'PT Sans', sans-serif; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20 }
     </style>
 </head>
-<body class="bg-[#F0F7FF]">
+<body class="bg-gray-50">
     <div class="max-w-screen-2xl mx-auto p-4 sm:p-6 lg:p-8">
-        <div class="bg-white p-6 rounded-xl shadow-sm">
-            <div class="flex justify-between items-center pb-3 border-b flex-wrap gap-2">
-                <h1 class="text-2xl font-bold text-[#4d4d4d]">Histórico de Peso</h1>
-                <a href="./home.html" class="text-[#467de9] hover:underline flex items-center">
-                    <span class="material-symbols-outlined mr-1">arrow_back</span>
-                    Voltar
-                </a>
-            </div>
-            <div class="my-5">
-                <div class="flex justify-end items-center mb-4">
-                  <div class="flex items-center space-x-2">
-                    <span class="text-sm font-medium text-gray-600">Período:</span>
-                    <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#467de9] focus:border-[#467de9] py-2 px-3" id="time-filter">
-                      <option value="7">Últimos 7 dias</option>
-                      <option selected value="30">Últimos 30 dias</option>
-                      <option value="180">Últimos 6 meses</option>
-                      <option value="all">Tudo</option>
-                    </select>
-                  </div>
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-200">
+            <header class="flex justify-between items-center pb-4 border-b border-gray-200 flex-wrap gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">Histórico de Peso e IMC</h1>
+                    <p class="text-gray-500 mt-1">Acompanhe seu progresso, IMC e adicione novos registros.</p>
                 </div>
-                <div class="relative h-96"><canvas id="healthChart"></canvas></div>
-            </div>
+                <a href="./home.html" class="text-blue-600 hover:bg-blue-50 font-semibold flex items-center gap-2 px-3 py-2 rounded-lg transition-colors">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Voltar para o Início
+                </a>
+            </header>
+            
+            <main class="mt-8">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 mb-8">
+                    <div class="lg:col-span-3">
+                        <h2 class="text-xl font-bold text-gray-700 mb-4">Indicadores Chave</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <p class="text-sm font-medium text-gray-500">Peso Atual</p>
+                                <p class="text-2xl font-bold text-gray-800 mt-1" id="current-value">-</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <p class="text-sm font-medium text-green-700">Peso Recomendado</p>
+                                <p class="text-2xl font-bold text-green-800 mt-1" id="goal-value">-</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <p class="text-sm font-medium text-blue-700">Progresso</p>
+                                <p class="text-2xl font-bold text-blue-800 mt-1" id="goal-diff-value">-</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <p class="text-sm font-medium text-gray-500">IMC Atual</p>
+                                <p class="text-2xl font-bold text-gray-800 mt-1" id="imc-value">-</p>
+                            </div>
+                            <div id="imc-status-card" class="bg-gray-50 p-4 rounded-lg border border-gray-200 col-span-2">
+                                <p class="text-sm font-medium text-gray-500">Classificação IMC</p>
+                                <p class="text-2xl font-bold text-gray-800 mt-1" id="imc-status">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2">
+                        <h2 class="text-xl font-bold text-gray-700 mb-4">Adicionar Registro</h2>
+                         <form id="manual-entry-form" class="bg-gray-50 border border-gray-200 p-4 rounded-lg space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="flex-1">
+                                    <label for="manual-weight-input" class="block text-sm font-medium text-gray-700 mb-1">Peso (kg)</label>
+                                    <input type="number" step="0.1" id="manual-weight-input" class="w-full bg-white border border-gray-300 rounded-lg p-2.5" placeholder="Ex: 75.5" required>
+                                </div>
+                                <div class="flex-1">
+                                    <label for="manual-height-input" class="block text-sm font-medium text-gray-700 mb-1">Sua Altura (m)</label>
+                                    <input type="number" step="0.01" id="manual-height-input" class="w-full bg-white border border-gray-300 rounded-lg p-2.5" placeholder="Ex: 1.80" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2.5 px-5 rounded-lg text-sm hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined">add</span>
+                                Salvar Registro
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-8">
+                    <h3 class="text-base font-semibold text-center text-gray-700 mb-2">Escala de Classificação do IMC</h3>
+                    <div class="flex flex-wrap justify-center text-xs text-center gap-x-2 gap-y-1">
+                        <span class="px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-800">Abaixo de 18.5: Abaixo do peso</span>
+                        <span class="px-2 py-0.5 rounded-full bg-green-100 text-green-800">18.5 - 24.9: Normal</span>
+                        <span class="px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-800">25.0 - 29.9: Sobrepeso</span>
+                        <span class="px-2 py-0.5 rounded-full bg-orange-100 text-orange-800">30.0 - 34.9: Obesidade I</span>
+                        <span class="px-2 py-0.5 rounded-full bg-red-100 text-red-800">35.0 - 39.9: Obesidade II</span>
+                        <span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">Acima de 40.0: Obesidade III</span>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
+                        <h2 class="text-xl font-bold text-gray-700">Gráfico de Evolução</h2>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                                <span>Automático</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <div class="w-3 h-3 transform rotate-45 bg-yellow-500"></div>
+                                <span>Manual</span>
+                            </div>
+                            <div class="flex items-baseline space-x-2">
+                                <label for="time-filter" class="text-sm font-medium text-gray-600">Período:</label>
+                                <select id="time-filter" class="w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-3">
+                                  <option value="7">Últimos 7 dias</option>
+                                  <option selected value="30">Últimos 30 dias</option>
+                                  <option value="180">Últimos 6 meses</option>
+                                  <option value="all">Tudo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative h-96 bg-gray-50/50 p-4 rounded-lg border border-gray-200"><canvas id="healthChart"></canvas></div>
+                </div>
+            </main>
         </div>
     </div>
     <script>
@@ -47,54 +123,134 @@
             let myChart;
             const metric = 'Peso';
             const unit = 'kg';
-            const dummyData = {
-                'Peso': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000), y:75+Math.sin(i/5)*2+(Math.random()-0.5)})),
-                'Altura': [{x:new Date('2023-01-15'),y:1.79},{x:new Date('2024-01-10'),y:1.80}],
-                'Batimentos': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:72+Math.floor(Math.random()*10)-5})),
-                'Calorias': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:2200+Math.floor(Math.random()*400)-200})),
-                'Sono': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:7.5+(Math.random()-0.5)*2})),
+            let currentUserHeight = 1.80;
+
+            const getRecommendedValues = (height) => {
+                const minHealthyIMC = 18.5;
+                const maxHealthyIMC = 24.9;
+                const minWeight = minHealthyIMC * (height * height);
+                const maxWeight = maxHealthyIMC * (height * height);
+                return { min: minWeight, max: maxWeight };
             };
+
+            const dummyData = {
+                'Peso': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000), y:75+Math.sin(i/10)*2+(Math.random()-0.5)*2, source: 'auto'}))
+            };
+            const today = new Date();
+            dummyData.Peso.push({x: new Date(new Date().setDate(today.getDate()-2)), y: 74.8, source: 'manual'});
+            dummyData.Peso.push({x: new Date(new Date().setDate(today.getDate()-8)), y: 75.3, source: 'manual'});
+
             const getFilteredData = (data, days) => {
                 if (days === 'all') return data;
                 const cutoff = new Date(Date.now() - days * 86400000);
                 return data.filter(d => d.x >= cutoff);
             };
+
+            const calculateIMC = (weight, height) => height > 0 ? (weight / (height * height)) : 0;
+            const getIMCStatus = (imc) => {
+                if (imc < 18.5) return { status: 'Abaixo do peso', card: 'bg-cyan-50 border-cyan-200', text: 'text-cyan-800' };
+                if (imc < 25) return { status: 'Normal', card: 'bg-green-50 border-green-200', text: 'text-green-800' };
+                if (imc < 30) return { status: 'Sobrepeso', card: 'bg-yellow-50 border-yellow-200', text: 'text-yellow-800' };
+                if (imc < 35) return { status: 'Obesidade I', card: 'bg-orange-50 border-orange-200', text: 'text-orange-800' };
+                if (imc < 40) return { status: 'Obesidade II', card: 'bg-red-50 border-red-200', text: 'text-red-800' };
+                return { status: 'Obesidade III', card: 'bg-rose-50 border-rose-200', text: 'text-rose-800' };
+            };
+
+            const updateStats = (data, height) => {
+                const recommended = getRecommendedValues(height);
+                document.getElementById('goal-value').textContent = `${recommended.min.toFixed(1)}-${recommended.max.toFixed(1)} ${unit}`;
+                
+                const currentEl = document.getElementById('current-value');
+                const goalDiffEl = document.getElementById('goal-diff-value');
+                const imcEl = document.getElementById('imc-value');
+                const imcStatusEl = document.getElementById('imc-status');
+                const imcStatusCardEl = document.getElementById('imc-status-card');
+
+                if (!data || data.length === 0) {
+                    [currentEl, goalDiffEl, imcEl, imcStatusEl].forEach(el => el.textContent = '-');
+                    return;
+                }
+                
+                const sortedData = [...data].sort((a, b) => a.x - b.x);
+                const currentWeight = sortedData[sortedData.length - 1].y;
+                let goalDiffText = '';
+                if(currentWeight < recommended.min) {
+                    goalDiffText = `${(recommended.min - currentWeight).toFixed(1)}kg abaixo`;
+                } else if (currentWeight > recommended.max) {
+                    goalDiffText = `${(currentWeight - recommended.max).toFixed(1)}kg acima`;
+                } else {
+                    goalDiffText = 'Dentro do recomendado';
+                }
+
+                const imc = calculateIMC(currentWeight, height);
+                const imcStatus = getIMCStatus(imc);
+
+                currentEl.textContent = `${currentWeight.toFixed(1)} ${unit}`;
+                goalDiffEl.textContent = goalDiffText;
+                imcEl.textContent = imc.toFixed(1);
+                imcStatusEl.textContent = imcStatus.status;
+                
+                imcStatusCardEl.className = `p-4 rounded-lg border col-span-2 ${imcStatus.card}`;
+                imcStatusEl.className = `text-2xl font-bold mt-1 ${imcStatus.text}`;
+            };
+
             const createChart = () => {
                 const ctx = document.getElementById('healthChart').getContext('2d');
                 const timeFilter = document.getElementById('time-filter');
                 const selected = timeFilter.value;
-                const chartData = {
-                    datasets: [{
-                        label: `${metric} (${unit})`,
-                        data: getFilteredData(dummyData[metric], selected),
-                        borderColor: 'rgb(70, 125, 233)',
-                        backgroundColor: 'rgba(70, 125, 233, 0.5)',
-                        tension: 0.1,
-                        pointRadius: 4,
-                        pointHoverRadius: 7,
-                    }]
-                };
-                const config = {
+                const allData = dummyData[metric].sort((a,b) => a.x - b.x);
+                const filteredData = getFilteredData(allData, selected);
+
+                updateStats(filteredData, currentUserHeight);
+                
+                if (myChart) myChart.destroy();
+                
+                myChart = new Chart(ctx, {
                     type: 'line',
-                    data: chartData,
+                    data: {
+                        datasets: [{
+                            label: 'Peso',
+                            data: filteredData,
+                            borderColor: 'rgb(59, 130, 246)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.5)',
+                            tension: 0.2,
+                            pointRadius: (context) => context.raw.source === 'manual' ? 7 : 5,
+                            pointHoverRadius: (context) => context.raw.source === 'manual' ? 9 : 7,
+                            pointStyle: (context) => context.raw.source === 'manual' ? 'rectRot' : 'circle',
+                            pointBackgroundColor: (context) => context.raw.source === 'manual' ? 'rgb(234, 179, 8)' : 'rgb(59, 130, 246)',
+                        }]
+                    },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
                             x: { type: 'time', time: { unit: 'day', tooltipFormat: 'dd/MM/yyyy' }, title: { display: true, text: 'Data' } },
-                            y: { title: { display: true, text: `Valor (${unit})` } }
+                            y: { title: { display: true, text: `Peso (${unit})` } }
                         },
-                        plugins: { tooltip: { callbacks: { label: (ctx) => {
-                            let label = ctx.dataset.label ? ctx.dataset.label + ': ' : '';
-                            if (ctx.parsed.y !== null) label += `${ctx.parsed.y.toFixed(2)} ${unit}`;
-                            return label;
-                        } } } }
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { callbacks: { label: (ctx) => `Peso: ${ctx.parsed.y.toFixed(1)} ${unit}` } }
+                        }
                     }
-                };
-                if (myChart) myChart.destroy();
-                myChart = new Chart(ctx, config);
+                });
                 timeFilter.onchange = () => createChart();
             };
+            
+            document.getElementById('manual-entry-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const weightInput = document.getElementById('manual-weight-input');
+                const heightInput = document.getElementById('manual-height-input');
+                const weightValue = parseFloat(weightInput.value);
+                const heightValue = parseFloat(heightInput.value);
+                
+                if (!isNaN(weightValue) && !isNaN(heightValue) && heightValue > 0) {
+                    currentUserHeight = heightValue;
+                    dummyData[metric].push({ x: new Date(), y: weightValue, source: 'manual' });
+                    weightInput.value = '';
+                    createChart();
+                }
+            });
+            document.getElementById('manual-height-input').value = currentUserHeight.toFixed(2);
             createChart();
         });
     </script>
