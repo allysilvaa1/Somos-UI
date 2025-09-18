@@ -65,8 +65,8 @@
       </div>
       <div class="flex items-center space-x-4">
         <div class="relative hidden sm:block">
-          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-          <input class="bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 w-56 focus:outline-none focus:ring-2 focus:ring-[#467de9] focus:border-transparent transition" placeholder="Pesquisar paciente..." type="text"/>
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#6bbdff]">search</span>
+          <input class="bg-gray-50 rounded-lg pl-10 pr-4 py-2 w-56 transition" placeholder="Pesquisar..." type="text"/>
         </div>
         <img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
         <div class="md:hidden">
@@ -108,8 +108,8 @@
             <span>Arquivos</span>
         </a>
         <div class="relative sm:hidden pt-2">
-            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-            <input class="bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#467de9] focus:border-transparent transition" placeholder="Pesquisar paciente..." type="text"/>
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#6bbdff]">search</span>
+            <input class="bg-gray-50 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#467de9] focus:border-transparent transition" placeholder="Pesquisar paciente..." type="text"/>
         </div>
     </nav>
   </div>
@@ -135,8 +135,8 @@
         <span class="inline-flex items-center bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Perfil atual</span>
       </div>
 
-      <div class="mt-4" id="profileSwitcherRoot">
-        <button id="profile-switcher-toggle" type="button" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-between cursor-pointer hover:bg-gray-100 transition-colors">
+      <div class="mt-4" x-data="{ open: false }" @click.away="open = false">
+        <button @click="open = !open" type="button" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-between cursor-pointer hover:bg-gray-100 transition-colors">
           <div class="flex items-center">
             <img id="currentAvatarItem" alt="Foto do perfil" class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
             <div class="flex flex-col items-start">
@@ -146,11 +146,11 @@
               </div>
             </div>
           </div>
-          <span class="material-symbols-outlined text-gray-500">expand_more</span>
+          <span class="material-symbols-outlined text-gray-500 transition-transform duration-300" :class="{'rotate-180': open}">expand_more</span>
         </button>
 
-        <div id="profilesList" class="pt-4 mt-4 border-t border-gray-100 hidden">
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] bg-gray-100 rounded-md border border-gray-100"
+        <div id="profilesList" class="pt-4 mt-4 border-t border-gray-100" x-show="open" x-transition>
+          <a href="#" @click="open = false" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] bg-gray-100 rounded-md border border-gray-100"
              data-name="Sofia Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Titular"
@@ -172,7 +172,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
+          <a href="#" @click="open = false" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="João Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/male/46.jpg"
              data-access="Crachá Ativo" data-access-icon="badge" data-role="Filho - Menor de 18"
@@ -194,7 +194,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
+          <a href="#" @click="open = false" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="Maria Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/female/46.jpg"
              data-access="Crachá Ativo" data-access-icon="badge" data-role="Filha - Menor de 18"
@@ -216,7 +216,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
+          <a href="#" @click="open = false" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="Lúcia Santos"
              data-avatar="https://randomuser.me/api/portraits/women/81.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Mãe - Idosa (+60)"
@@ -238,7 +238,7 @@
             <span class="material-symbols-outlined text-[#467de9] filled check-icon hidden">check_circle</span>
           </a>
 
-          <a href="#" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
+          <a href="#" @click="open = false" class="profile-option flex items-center px-4 py-3 text-sm text-[#4d4d4d] hover:bg-gray-100 hover:text-[#4d4d4d] rounded-md mt-1 border border-gray-100"
              data-name="José Santos"
              data-avatar="https://randomuser.me/api/portraits/men/71.jpg"
              data-access="Cartão Ativo" data-access-icon="credit_card" data-role="Pai - Idoso (+60)"
@@ -593,7 +593,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.classList.toggle('hidden');
   });
 
-  const switcherToggle = document.getElementById('profile-switcher-toggle');
   const listEl = document.getElementById('profilesList');
   const currentNameTitle = document.getElementById('currentNameTitle');
   const currentNameInline = document.getElementById('currentNameInline');
@@ -601,17 +600,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentAvatarItem = document.getElementById('currentAvatarItem');
   const currentAccessPill = document.getElementById('currentAccessPill');
   const profileCardIcon = document.getElementById('profileCardIcon');
-
-  switcherToggle.addEventListener('click', (event) => {
-    event.stopPropagation();
-    listEl.classList.toggle('hidden');
-  });
-
-  document.addEventListener('click', () => {
-    if (!listEl.classList.contains('hidden')) {
-      listEl.classList.add('hidden');
-    }
-  });
 
   function clearCurrentMarks() {
     listEl.querySelectorAll('.profile-option').forEach(el => {
@@ -656,7 +644,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clearCurrentMarks();
     markAsCurrent(a);
-    listEl.classList.add('hidden');
   }
 
   listEl.querySelectorAll('.profile-option').forEach(a => {
