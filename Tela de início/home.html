@@ -124,7 +124,7 @@
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
       <button class="absolute top-3 right-3 h-10 w-10 bg-white/20 rounded-full hover:bg-white/40 transition-colors grid place-items-center" title="Ver detalhes do Cartão SOMOS">
-        <img src="../Imagens/cartao.png" alt="Status do Cartão" class="h-6 w-6 mt-1">
+        <span id="profileCardIcon" class="material-symbols-outlined filled" style="font-size: 24px; color: #17a34a;">credit_card</span>
       </button>
     </div>
 
@@ -154,6 +154,7 @@
              data-name="Sofia Almeida"
              data-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"
              data-access="Cartão Ativo" data-role="Titular"
+             data-access-icon="credit_card" data-access-icon-color="#17a34a" data-access-icon-filled="true"
              data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0" alt="">
             <div class="flex-grow">
@@ -176,6 +177,7 @@
              data-name="João Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/male/46.jpg"
              data-access="Crachá Ativo" data-role="Filho - Menor de 18"
+             data-access-icon="badge" data-access-icon-color="#9333ea" data-access-icon-filled="false"
              data-access-pill-bg="bg-purple-100" data-access-pill-text="text-purple-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/male/46.jpg" alt="">
             <div class="flex-grow">
@@ -198,6 +200,7 @@
              data-name="Maria Almeida"
              data-avatar="https://xsgames.co/randomusers/assets/avatars/female/46.jpg"
              data-access="Crachá Ativo" data-role="Filha - Menor de 18"
+             data-access-icon="badge" data-access-icon-color="#9333ea" data-access-icon-filled="false"
              data-access-pill-bg="bg-purple-100" data-access-pill-text="text-purple-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/female/46.jpg" alt="">
             <div class="flex-grow">
@@ -220,6 +223,7 @@
              data-name="Lúcia Santos"
              data-avatar="https://randomuser.me/api/portraits/women/81.jpg"
              data-access="Cartão Ativo" data-role="Mãe - Idosa (+60)"
+             data-access-icon="credit_card" data-access-icon-color="#17a34a" data-access-icon-filled="true"
              data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/81.jpg" alt="">
             <div class="flex-grow">
@@ -242,6 +246,7 @@
              data-name="José Santos"
              data-avatar="https://randomuser.me/api/portraits/men/71.jpg"
              data-access="Cartão Ativo" data-role="Pai - Idoso (+60)"
+             data-access-icon="credit_card" data-access-icon-color="#17a34a" data-access-icon-filled="true"
              data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
             <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/71.jpg" alt="">
             <div class="flex-grow">
@@ -397,7 +402,7 @@
   
   <div class="bg-white p-6 rounded-xl shadow-sm">
     <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-bold text-[#4d4d4d]">Programas e Cursos Parceiros</h3>
+        <h3 class="text-xl font-bold text-[#4d4d4d]">Programas Parceiros</h3>
         <div class="hidden sm:flex items-center space-x-2">
             <button id="scroll-left-btn" class="p-1 rounded-full hover:bg-gray-100 text-gray-600 disabled:text-gray-300 disabled:cursor-not-allowed">
                 <span class="material-symbols-outlined">chevron_left</span>
@@ -412,7 +417,7 @@
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/mulher-gravida.jpg" alt="Curso de Gestantes">
                 <div class="p-4 flex flex-col flex-grow">
-                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600 flex-wrap gap-y-2">
+                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600">
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>8h</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>IMIP</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">person</span>+2 mil</span>
@@ -428,7 +433,7 @@
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/mulher-amamentando.jpg" alt="Curso de Amamentação">
                 <div class="p-4 flex flex-col flex-grow">
-                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600 flex-wrap gap-y-2">
+                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600">
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>4h 30m</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Online</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">person</span>+1.5 mil</span>
@@ -444,7 +449,7 @@
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/primeiros-socorros.jpg" alt="Workshop de Primeiros Socorros">
                 <div class="p-4 flex flex-col flex-grow">
-                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600 flex-wrap gap-y-2">
+                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600">
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>3h</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Presencial</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">person</span>+980</span>
@@ -460,7 +465,7 @@
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1543353071-873f17a7a088?q=80&w=2670&auto=format&fit=crop" alt="Nutrição na Gestação">
                 <div class="p-4 flex flex-col flex-grow">
-                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600 flex-wrap gap-y-2">
+                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600">
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>6h</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Online</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">person</span>+750</span>
@@ -476,7 +481,7 @@
             <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
                 <img class="h-48 w-full object-cover" src="../Imagens/maes-empreendedoras.png" alt="Encontro de Mães">
                 <div class="p-4 flex flex-col flex-grow">
-                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600 flex-wrap gap-y-2">
+                    <div class="flex items-center space-x-2 mb-3 text-xs text-gray-600">
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">schedule</span>2h</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">groups</span>Evento</span>
                         <span class="flex items-center bg-gray-100 rounded-full px-3 py-1"><span class="material-symbols-outlined text-sm mr-1.5">person</span>+3.2 mil</span>
@@ -495,6 +500,14 @@
 <aside class="lg:col-span-3 space-y-6 lg:sticky top-24 self-start">
   <div class="w-11/12 rounded-xl overflow-hidden shadow-sm">
     <a href="#">
+      <video class="w-full h-auto" autoplay muted loop playsinline>
+          <source src="../Vídeos/propaganda.mp4" type="video/mp4">
+          Seu navegador não suporta o vídeo.
+      </video>
+    </a>
+  </div>
+  <div class="w-11/12 rounded-xl overflow-hidden shadow-sm">
+    <a href="#">
       <img src="../Imagens/anuncio-2.jpeg" alt="Anúncio de plano de saúde" class="w-full h-auto">
     </a>
   </div>
@@ -511,7 +524,7 @@
       <a href="#" class="hover:underline">Mais</a>
     </div>
     <div class="mt-4 flex items-center justify-center space-x-2">
-      <img src="../Imagens/logomarca-somos.png" alt="Logotipo SOMOS" class="h-7 w-auto">
+      <img src="../Imagens/logomarca-somos.png" alt="Logotipo SOMOS" class="h-6 w-auto">
       <p class="text-sm text-[#4d4d4d]">Health Tec© 2024</p>
     </div>
   </div>
@@ -613,6 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentAvatarTop = document.getElementById('currentAvatarTop');
   const currentAvatarItem = document.getElementById('currentAvatarItem');
   const currentAccessPill = document.getElementById('currentAccessPill');
+  const profileCardIcon = document.getElementById('profileCardIcon');
 
   function clearCurrentMarks() {
     listEl.querySelectorAll('.profile-option').forEach(el => {
@@ -636,6 +650,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const access = a.dataset.access;
     const pillBg = a.dataset.accessPillBg;
     const pillText = a.dataset.accessPillText;
+    const icon = a.dataset.accessIcon;
+    const iconColor = a.dataset.accessIconColor;
+    const iconFilled = a.dataset.accessIconFilled === 'true';
 
     currentNameTitle.textContent = name;
     currentNameInline.textContent = name;
@@ -644,6 +661,17 @@ document.addEventListener('DOMContentLoaded', () => {
     currentAccessPill.textContent = access;
 
     currentAccessPill.className = `text-xs font-medium px-2 py-0.5 rounded-full ${pillBg} ${pillText}`;
+
+    if (profileCardIcon) {
+        profileCardIcon.textContent = icon;
+        profileCardIcon.style.color = iconColor;
+        
+        if (iconFilled) {
+            profileCardIcon.classList.add('filled');
+        } else {
+            profileCardIcon.classList.remove('filled');
+        }
+    }
 
     clearCurrentMarks();
     markAsCurrent(a);
