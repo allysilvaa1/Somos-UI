@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR" x-data="{ notificationsOpen: false }">
 <head>
@@ -67,7 +68,7 @@
           <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#6bbdff]">search</span>
           <input class="bg-gray-50 rounded-lg pl-10 pr-4 py-2 w-56 transition" placeholder="Pesquisar..." type="text"/>
         </div>
-        <img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
+        <img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
         <div class="md:hidden">
             <button id="mobile-menu-button" class="text-gray-500 hover:text-[#467de9] transition-colors">
                 <span class="material-symbols-outlined">menu</span>
@@ -122,14 +123,14 @@
   <div class="bg-white rounded-xl shadow-sm overflow-hidden w-full lg:w-11/12 lg:ml-auto">
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
-      <button class="absolute top-3 right-3 h-10 w-10 bg-white/20 rounded-full hover:bg-white/40 transition-colors grid place-items-center" title="Ver detalhes do Cartão SOMOS">
-        <img id="profileCardImage" src="../Imagens/cartao.png" alt="Ícone do Cartão" class="h-6 w-auto">
-        <span id="profileCardIcon" class="material-symbols-outlined hidden" style="font-size: 24px;"></span>
+      <button class="absolute top-3 right-3 h-10 w-10 bg-white/20 rounded-full hover:bg-white/40 transition-colors flex items-center justify-center" title="Ver detalhes do Cartão SOMOS">
+        <img id="profileCardImage" src="../Imagens/cartao.png" alt="Ícone do Cartão" class="h-6 w-auto relative top-0.5">
+        <span id="profileCardIcon" class="material-symbols-outlined hidden relative top-0.5" style="font-size: 24px;"></span>
       </button>
     </div>
 
     <div class="p-6 relative text-center">
-      <img id="currentAvatarTop" alt="Foto do perfil do usuário" class="h-24 w-24 rounded-full mx-auto -mt-16 mb-4 ring-4 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
+      <img id="currentAvatarTop" alt="Foto do perfil do usuário" class="h-24 w-24 rounded-2xl mx-auto -mt-16 mb-4 ring-4 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
       <h2 id="currentNameTitle" class="text-xl font-bold text-[#4d4d4d] text-center">Sofia Almeida</h2>
       <div class="mt-3 text-center">
         <span class="inline-flex items-center bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Perfil atual</span>
@@ -138,7 +139,7 @@
       <div class="mt-4" x-data="{ open: false }" @click.away="open = false">
         <button @click="open = !open" type="button" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-between cursor-pointer hover:bg-gray-100 transition-colors">
           <div class="flex items-center">
-            <img id="currentAvatarItem" alt="Foto do perfil" class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
+            <img id="currentAvatarItem" alt="Foto do perfil" class="h-8 w-8 rounded-lg mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0"/>
             <div class="flex flex-col items-start">
               <p id="currentNameInline" class="font-semibold text-sm text-[#4d4d4d]">Sofia Almeida</p>
               <div class="flex items-center mt-1">
@@ -156,7 +157,7 @@
              data-access="Cartão Ativo" data-role="Titular"
              data-access-icon="credit_card" data-access-icon-color="#17a34a" data-access-icon-filled="true"
              data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0" alt="">
+            <img class="h-8 w-8 rounded-lg mr-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTyrv41FvmMs9dEsRUHQH10HCG6iTS3g5OUGaxbd2-JUNlbmfyBWWn6UvFYxDF1IXXNIGDL1aHiJt7cIBUflCtf3DNdkwY465XSYJVfheoRg45dgbAv-7oVRKXH2AZoxVEHp8c-89XVbCQfnvKUzEaPffGwlK1zx0yOZuPpa93uiGgTIHX8Uuh9qRd8u47Er1OvHXIDlL3FTBIz4_3vlUi8rj1cdDFisfkdWlOxaSuGPokYmSk_OgTrm0E7EhhlgjPIO4VrT2Rfw0" alt="">
             <div class="flex-grow">
               <div class="profile-details hidden">
                 <p class="font-semibold text-[#4d4d4d]">Sofia Almeida</p>
@@ -179,7 +180,7 @@
              data-access="Crachá Ativo" data-role="Filho - Menor de 18"
              data-access-icon="badge" data-access-icon-color="#9333ea" data-access-icon-filled="false"
              data-access-pill-bg="bg-purple-100" data-access-pill-text="text-purple-800">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/male/46.jpg" alt="">
+            <img class="h-8 w-8 rounded-lg mr-3" src="https://xsgames.co/randomusers/assets/avatars/male/46.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">João Almeida</p>
@@ -202,7 +203,7 @@
              data-access="Crachá Ativo" data-role="Filha - Menor de 18"
              data-access-icon="badge" data-access-icon-color="#9333ea" data-access-icon-filled="false"
              data-access-pill-bg="bg-purple-100" data-access-pill-text="text-purple-800">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://xsgames.co/randomusers/assets/avatars/female/46.jpg" alt="">
+            <img class="h-8 w-8 rounded-lg mr-3" src="https://xsgames.co/randomusers/assets/avatars/female/46.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">Maria Almeida</p>
@@ -225,7 +226,7 @@
              data-access="Cartão Ativo" data-role="Mãe - Idosa (+60)"
              data-access-icon="credit_card" data-access-icon-color="#17a34a" data-access-icon-filled="true"
              data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/81.jpg" alt="">
+            <img class="h-8 w-8 rounded-lg mr-3" src="https://randomuser.me/api/portraits/women/81.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">Lúcia Santos</p>
@@ -248,7 +249,7 @@
              data-access="Cartão Ativo" data-role="Pai - Idoso (+60)"
              data-access-icon="credit_card" data-access-icon-color="#17a34a" data-access-icon-filled="true"
              data-access-pill-bg="bg-green-100" data-access-pill-text="text-green-800">
-            <img class="h-8 w-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/71.jpg" alt="">
+            <img class="h-8 w-8 rounded-lg mr-3" src="https://randomuser.me/api/portraits/men/71.jpg" alt="">
             <div class="flex-grow">
               <div class="profile-details">
                 <p class="font-semibold text-[#4d4d4d]">José Santos</p>
@@ -310,7 +311,7 @@
     </div>
     <div class="space-y-4 mt-5" x-show="open" x-transition>
       <div class="flex items-start space-x-3">
-        <img alt="Foto do perfil de Leana Moraes" class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/33.jpg"/>
+        <img alt="Foto do perfil de Leana Moraes" class="h-10 w-10 rounded-lg" src="https://randomuser.me/api/portraits/women/33.jpg"/>
         <div class="flex-grow">
           <p class="font-semibold text-sm text-[#4d4d4d]">Encontro de Mães - Crianças com Autismo</p>
           <p class="text-xs text-gray-500 mt-0.5"><span class="font-medium">Quando:</span> 28/09/25 - 15:00</p>
@@ -321,7 +322,7 @@
       </div>
       <div class="border-t border-gray-100"></div>
       <div class="flex items-start space-x-3">
-        <img alt="Foto do perfil de Ricardo Gomes" class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/33.jpg"/>
+        <img alt="Foto do perfil de Ricardo Gomes" class="h-10 w-10 rounded-lg" src="https://randomuser.me/api/portraits/men/33.jpg"/>
         <div class="flex-grow">
           <p class="font-semibold text-sm text-[#4d4d4d]">Roda de Conversa: TDAH na Vida Adulta</p>
           <p class="text-xs text-gray-500 mt-0.5"><span class="font-medium">Quando:</span> 05/10/25 - 19:00</p>
