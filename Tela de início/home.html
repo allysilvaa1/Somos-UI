@@ -32,7 +32,7 @@
       <div class="flex items-center">
         <a href="#"><img src="../Imagens/logotipo-sem-fundo.png" alt="Logotipo SOMOS" class="h-24 w-auto"></a>
       </div>
-      <nav class="hidden md:flex space-x-4">
+      <nav class="hidden lg:flex space-x-4">
         <a href="#" class="flex flex-col items-center justify-center text-[#6bbdff] font-semibold text-sm w-20 p-2 rounded-lg bg-sky-50 transition-colors">
           <span class="material-symbols-outlined filled text-3xl">home</span>
           <span>Início</span>
@@ -81,7 +81,7 @@
           <span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-500"></span>
         </a>
         <img alt="Foto do perfil do usuário" class="h-12 w-12 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
-        <div class="md:hidden">
+        <div class="lg:hidden">
             <button id="mobile-menu-button" class="text-gray-500 hover:text-[#467de9] transition-colors">
                 <span class="material-symbols-outlined">menu</span>
             </button>
@@ -89,7 +89,7 @@
       </div>
     </div>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+  <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-md">
     <nav class="flex flex-col space-y-1 p-4">
         <a class="flex items-center gap-3 p-2 rounded-lg text-[#6bbdff] font-semibold bg-sky-50" href="#">
             <span class="material-symbols-outlined filled">home</span>
@@ -129,9 +129,9 @@
 
 <main class="flex-grow py-10">
 <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
-<aside class="lg:col-span-3 space-y-6 lg:sticky top-24 self-start">
+<aside class="md:col-span-4 lg:col-span-3 space-y-6 md:sticky top-28 self-start">
   <div class="bg-white rounded-xl shadow-sm overflow-hidden w-full lg:w-11/12 lg:ml-auto">
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
@@ -347,7 +347,7 @@
   </div>
 </aside>
 
-<section class="lg:col-span-6 space-y-6">
+<section class="md:col-span-8 lg:col-span-6 space-y-6">
   <div class="bg-gradient-to-br from-[#467de9] to-[#4273c3] text-white p-8 rounded-xl shadow-lg flex flex-col justify-between" style="height: 260px;">
     <div>
       <p class="text-sm font-medium opacity-80 mb-1 tracking-wider">PRÓXIMA CONSULTA</p>
@@ -510,7 +510,7 @@
   </div>
 </section>
 
-<aside class="lg:col-span-3 space-y-6 lg:sticky top-24 self-start">
+<aside class="md:col-span-12 lg:col-span-3 space-y-6 lg:sticky top-28 self-start">
   <div class="w-full lg:w-11/12 rounded-xl overflow-hidden shadow-sm">
     <a href="#">
       <video class="w-full h-auto" autoplay muted loop playsinline>
@@ -709,7 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let myChart;
   const dummyData = {
     'Peso': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000), y:75+Math.sin(i/5)*2+(Math.random()-0.5)})),
-    'Altura': [{x:new Date('203-01-15'),y:1.79},{x:new Date('2024-01-10'),y:1.80}],
+    'Altura': [{x:new Date('2023-01-15'),y:1.79},{x:new Date('2024-01-10'),y:1.80}],
     'Batimentos': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:72+Math.floor(Math.random()*10)-5})),
     'Calorias': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:2200+Math.floor(Math.random()*400)-200})),
     'Sono': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:7.5+(Math.random()-0.5)*2})),
