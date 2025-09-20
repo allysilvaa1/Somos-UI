@@ -3,7 +3,7 @@
 <html lang="pt-BR" x-data="{ notificationsOpen: false }">
 <head>
 <meta charset="utf-8"/>
-<meta content="width-device-width, initial-scale-1.0" name="viewport"/>
+<meta content="width-device-width, initial-scale=1.0" name="viewport"/>
 <title>Início - Prontuário Médico</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
@@ -72,11 +72,11 @@
                 x-ref="searchInput"
                 @click="searchOpen = true; $nextTick(() => $refs.searchInput.focus())"
                 :placeholder="searchOpen ? 'Pesquisar...' : ''"
-                class="relative bg-gray-50 border border-gray-200 rounded-lg h-full pl-10 pr-4 transition-all duration-300 ease-in-out focus:outline-none focus:border-[#467de9] cursor-pointer focus:cursor-text"
+                class="relative bg-gray-50 border border-gray-50 rounded-lg h-full pl-10 pr-4 transition-all duration-300 ease-in-out focus:outline-none cursor-pointer focus:cursor-text"
                 :class="searchOpen ? 'w-56' : 'w-10'"
             >
         </div>
-        <a @click.prevent="notificationsOpen = !notificationsOpen" href="#" class="relative text-gray-500 hover:text-[#6bbdff] p-2 rounded-full hover:bg-gray-100 transition-colors">
+        <a @click.prevent="notificationsOpen = !notificationsOpen" href="#" class="relative text-gray-500 hover:text-[#6bbdff] p-2 rounded-lg hover:bg-sky-50 transition-colors">
           <span class="material-symbols-outlined text-3xl">notifications</span>
           <span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-500"></span>
         </a>
@@ -121,7 +121,7 @@
         </a>
         <div class="relative sm:hidden pt-2">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#6bbdff]">search</span>
-            <input class="bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:border-[#467de9] transition" placeholder="Pesquisar paciente..." type="text"/>
+            <input class="bg-gray-50 border border-gray-50 rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none transition" placeholder="Pesquisar paciente..." type="text"/>
         </div>
     </nav>
   </div>
@@ -709,7 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let myChart;
   const dummyData = {
     'Peso': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000), y:75+Math.sin(i/5)*2+(Math.random()-0.5)})),
-    'Altura': [{x:new Date('2023-01-15'),y:1.79},{x:new Date('2024-01-10'),y:1.80}],
+    'Altura': [{x:new Date('203-01-15'),y:1.79},{x:new Date('2024-01-10'),y:1.80}],
     'Batimentos': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:72+Math.floor(Math.random()*10)-5})),
     'Calorias': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:2200+Math.floor(Math.random()*400)-200})),
     'Sono': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:7.5+(Math.random()-0.5)*2})),
