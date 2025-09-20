@@ -282,37 +282,70 @@
     </div>
   </div>
 
-  <div class="bg-white p-6 rounded-xl shadow-sm w-full lg:w-11/12 lg:ml-auto" x-data="{ open: true }">
+  <div class="bg-white p-6 rounded-xl shadow-sm w-full lg:w-11/12 lg:ml-auto" 
+       x-data="{
+          open: false,
+          healthData: [
+            { name: 'Batimentos', value: '72 bpm', href: './saude-batimentos.html', icon: 'favorite', iconBgClass: 'bg-red-100', iconTextClass: 'text-red-500', lastUpdate: new Date() },
+            { name: 'Peso', value: '75 kg', href: './saude-peso.html', icon: 'monitor_weight', iconBgClass: 'bg-[#467de9]/10', iconTextClass: 'text-[#467de9]', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
+            { name: 'Calorias', value: '2200 kcal', href: './saude-calorias.html', icon: 'local_fire_department', iconBgClass: 'bg-orange-100', iconTextClass: 'text-orange-500', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
+            { name: 'Sono', value: '7h<br>30m', href: './saude-sono.html', icon: 'bedtime', iconBgClass: 'bg-indigo-100', iconTextClass: 'text-indigo-500', lastUpdate: new Date('2025-09-18T23:00:00Z') },
+            { name: 'Altura', value: '1.80 m', href: './saude-altura.html', icon: 'height', iconBgClass: 'bg-[#467de9]/10', iconTextClass: 'text-[#467de9]', lastUpdate: new Date('2025-01-10T09:00:00Z') },
+          ],
+          get sortedData() {
+            return this.healthData.sort((a, b) => new Date(b.lastUpdate) - new Date(a.lastUpdate));
+          },
+          formatRelativeDate(date) {
+            const today = new Date();
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            today.setHours(0,0,0,0);
+            yesterday.setHours(0,0,0,0);
+            const checkDate = new Date(date);
+            checkDate.setHours(0,0,0,0);
+            if (today.getTime() === checkDate.getTime()) return 'Hoje';
+            if (yesterday.getTime() === checkDate.getTime()) return 'Ontem';
+            return new Date(date).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' });
+          }
+       }">
     <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
       <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
-      <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
+      <div class="flex items-center gap-2 text-sm text-gray-500" x-show="sortedData.length > 4">
+          <span x-text="open ? 'Ver menos' : 'Ver mais'"></span>
+          <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': open}">expand_more</span>
+      </div>
     </div>
-    <div class="space-y-1 mt-5" x-show="open" x-transition>
-      <a href="./saude-peso.html" class="w-full flex items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
-        <div class="bg-[#467de9]/10 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-[#467de9]">monitor_weight</span></div>
-        <div class="flex-grow"><span class="text-[#4d4d4d] text-sm">Peso</span></div>
-        <span class="font-semibold text-[#4d4d4d] text-sm">75 kg</span>
-      </a>
-      <a href="./saude-altura.html" class="w-full flex items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
-        <div class="bg-[#467de9]/10 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-[#467de9]">height</span></div>
-        <div class="flex-grow"><span class="text-[#4d4d4d] text-sm">Altura</span></div>
-        <span class="font-semibold text-[#4d4d4d] text-sm">1.80 m</span>
-      </a>
-      <a href="./saude-batimentos.html" class="w-full flex items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
-        <div class="bg-red-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-red-500">favorite</span></div>
-        <div class="flex-grow"><span class="text-[#4d4d4d] text-sm">Batimentos</span></div>
-        <span class="font-semibold text-[#4d4d4d] text-sm">72 bpm</span>
-      </a>
-      <a href="./saude-calorias.html" class="w-full flex items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
-        <div class="bg-orange-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-orange-500">local_fire_department</span></div>
-        <div class="flex-grow"><span class="text-[#4d4d4d] text-sm">Calorias</span></div>
-        <span class="font-semibold text-[#4d4d4d] text-sm">2200 kcal</span>
-      </a>
-      <a href="./saude-sono.html" class="w-full flex items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
-        <div class="bg-indigo-100 p-2 rounded-lg mr-4"><span class="material-symbols-outlined text-indigo-500">bedtime</span></div>
-        <div class="flex-grow"><span class="text-[#4d4d4d] text-sm">Sono</span></div>
-        <span class="font-semibold text-[#4d4d4d] text-sm">7h 30m</span>
-      </a>
+    <div class="space-y-1 mt-5">
+      <template x-for="(item, index) in sortedData.slice(0, 4)" :key="index">
+        <a :href="item.href" class="w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
+          <div class="flex items-center">
+            <div :class="item.iconBgClass" class="p-2 rounded-lg mr-4">
+              <span class="material-symbols-outlined" :class="item.iconTextClass" x-text="item.icon"></span>
+            </div>
+            <div>
+              <p class="text-[#4d4d4d] text-sm" x-text="item.name"></p>
+              <p class="text-[11px] text-gray-400" x-text="'Atualizado: ' + formatRelativeDate(item.lastUpdate)"></p>
+            </div>
+          </div>
+          <div class="font-semibold text-[#4d4d4d] text-sm text-right" :class="item.name === 'Sono' ? 'leading-tight' : ''" x-html="item.value"></div>
+        </a>
+      </template>
+      <div x-show="open" x-transition class="space-y-1 border-t border-gray-100 pt-1">
+        <template x-for="(item, index) in sortedData.slice(4)" :key="index">
+          <a :href="item.href" class="w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
+            <div class="flex items-center">
+              <div :class="item.iconBgClass" class="p-2 rounded-lg mr-4">
+                <span class="material-symbols-outlined" :class="item.iconTextClass" x-text="item.icon"></span>
+              </div>
+              <div>
+                <p class="text-[#4d4d4d] text-sm" x-text="item.name"></p>
+                <p class="text-[11px] text-gray-400" x-text="'Atualizado: ' + formatRelativeDate(item.lastUpdate)"></p>
+              </div>
+            </div>
+            <div class="font-semibold text-[#4d4d4d] text-sm text-right" :class="item.name === 'Sono' ? 'leading-tight' : ''" x-html="item.value"></div>
+          </a>
+        </template>
+      </div>
     </div>
   </div>
   
@@ -657,6 +690,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   mobileMenuButton.addEventListener('click', () => {
