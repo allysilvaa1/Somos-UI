@@ -29,46 +29,49 @@
 <header class="bg-white shadow-sm sticky top-0 z-30">
   <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-28">
-      <div class="flex items-center space-x-8">
+      <div class="flex items-center">
         <a href="#"><img src="../Imagens/logotipo-sem-fundo.png" alt="Logotipo SOMOS" class="h-24 w-auto"></a>
-        <nav class="hidden md:flex space-x-4">
-          <a href="#" class="flex flex-col items-center justify-center text-[#6bbdff] font-semibold text-sm w-20 p-2 rounded-lg bg-sky-50 transition-colors">
-            <span class="material-symbols-outlined filled">home</span>
-            <span class="mt-1">Início</span>
-          </a>
-          <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
-            <span class="material-symbols-outlined">group</span>
-            <span class="mt-1">Rede</span>
-          </a>
-          <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
-            <span class="material-symbols-outlined">assignment_ind</span>
-            <span class="mt-1">Prontuário</span>
-          </a>
-          <a @click.prevent="notificationsOpen = !notificationsOpen" href="#" class="relative flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
-            <span class="material-symbols-outlined">notifications</span>
-            <span class="mt-1">Notificações</span>
-            <span class="absolute top-2 right-4 h-2 w-2 rounded-full bg-red-500"></span>
-          </a>
-          <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
-            <span class="material-symbols-outlined">sentiment_satisfied</span>
-            <span class="mt-1">Humor</span>
-          </a>
-          <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
-            <span class="material-symbols-outlined">chat</span>
-            <span class="mt-1">Mensagens</span>
-          </a>
-          <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
-            <span class="material-symbols-outlined">archive</span>
-            <span class="mt-1">Arquivos</span>
-          </a>
-        </nav>
       </div>
+      <nav class="hidden md:flex space-x-4">
+        <a href="#" class="flex flex-col items-center justify-center text-[#6bbdff] font-semibold text-sm w-20 p-2 rounded-lg bg-sky-50 transition-colors">
+          <span class="material-symbols-outlined filled text-3xl">home</span>
+          <span>Início</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+          <span class="material-symbols-outlined text-3xl">group</span>
+          <span>Rede</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+          <span class="material-symbols-outlined text-3xl">assignment_ind</span>
+          <span>Prontuário</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+          <span class="material-symbols-outlined text-3xl">calendar_today</span>
+          <span>Calendário</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+          <span class="material-symbols-outlined text-3xl">sentiment_satisfied</span>
+          <span>Humor</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+          <span class="material-symbols-outlined text-3xl">chat</span>
+          <span>Mensagens</span>
+        </a>
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+          <span class="material-symbols-outlined text-3xl">archive</span>
+          <span>Arquivos</span>
+        </a>
+      </nav>
       <div class="flex items-center space-x-4">
         <div class="relative hidden sm:block">
           <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#6bbdff]">search</span>
           <input class="bg-gray-50 rounded-lg pl-10 pr-4 py-2 w-56 transition" placeholder="Pesquisar..." type="text"/>
         </div>
-        <img alt="Foto do perfil do usuário" class="h-10 w-10 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
+        <a @click.prevent="notificationsOpen = !notificationsOpen" href="#" class="relative text-gray-500 hover:text-[#6bbdff] p-2 rounded-full hover:bg-gray-100 transition-colors">
+          <span class="material-symbols-outlined text-3xl">notifications</span>
+          <span class="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-500"></span>
+        </a>
+        <img alt="Foto do perfil do usuário" class="h-12 w-12 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmvhkm1ZAc0CFv-5ZhgmJrjRnP-V5_dQESyWFE-xgMTAU3go2zIrlW8cIEuLv9PdCc-NJvPek_VpmsuFzKc-uMfV35Xvsj8Or-9OKTQ5rmU-4oT6kX8v67Nff0Bn8Z57tOBtu4GAY4Buq0LjqynmCxrRnmWe71oP-WU-3Rdw-K0RoXXFsLA2dWEf4fLtGutodfR9DLO5D79G620g6QgbNpbyrKRB4NiOLfKFELO0gABXdipKMJFdiBW23Pn93_CAt19eoeyDja3n0"/>
         <div class="md:hidden">
             <button id="mobile-menu-button" class="text-gray-500 hover:text-[#467de9] transition-colors">
                 <span class="material-symbols-outlined">menu</span>
@@ -91,9 +94,9 @@
             <span class="material-symbols-outlined">assignment_ind</span>
             <span>Prontuário</span>
         </a>
-        <a @click.prevent="notificationsOpen = !notificationsOpen" class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50 relative" href="#">
-            <span class="material-symbols-outlined">notifications</span>
-            <span>Notificações</span>
+        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span>Calendário</span>
         </a>
         <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
             <span class="material-symbols-outlined">sentiment_satisfied</span>
