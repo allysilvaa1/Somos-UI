@@ -284,16 +284,26 @@
 
   <div class="bg-white p-6 rounded-xl shadow-sm w-full lg:w-11/12 lg:ml-auto" 
        x-data="{
-          open: false,
+          open: true,
+          addMetricModalOpen: false,
           healthData: [
-            { name: 'Batimentos', value: '72 bpm', href: './saude-batimentos.html', icon: 'favorite', iconBgClass: 'bg-red-100', iconTextClass: 'text-red-500', lastUpdate: new Date() },
-            { name: 'Peso', value: '75 kg', href: './saude-peso.html', icon: 'monitor_weight', iconBgClass: 'bg-[#467de9]/10', iconTextClass: 'text-[#467de9]', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
-            { name: 'Calorias', value: '2200 kcal', href: './saude-calorias.html', icon: 'local_fire_department', iconBgClass: 'bg-orange-100', iconTextClass: 'text-orange-500', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
-            { name: 'Sono', value: '7h<br>30m', href: './saude-sono.html', icon: 'bedtime', iconBgClass: 'bg-indigo-100', iconTextClass: 'text-indigo-500', lastUpdate: new Date('2025-09-18T23:00:00Z') },
-            { name: 'Altura', value: '1.80 m', href: './saude-altura.html', icon: 'height', iconBgClass: 'bg-[#467de9]/10', iconTextClass: 'text-[#467de9]', lastUpdate: new Date('2025-01-10T09:00:00Z') },
+            { id: 'heart_rate', name: 'Batimentos', value: '72 bpm', href: './saude-batimentos.html', icon: 'favorite', iconBgClass: 'bg-red-100', iconTextClass: 'text-red-500', lastUpdate: new Date() },
+            { id: 'weight', name: 'Peso', value: '75 kg', href: './saude-peso.html', icon: 'monitor_weight', iconBgClass: 'bg-blue-100', iconTextClass: 'text-blue-500', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
+            { id: 'calories', name: 'Calorias', value: '2200 kcal', href: './saude-calorias.html', icon: 'local_fire_department', iconBgClass: 'bg-orange-100', iconTextClass: 'text-orange-500', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
+            { id: 'sleep', name: 'Sono', value: `7h<br>30m`, href: './saude-sono.html', icon: 'bedtime', iconBgClass: 'bg-indigo-100', iconTextClass: 'text-indigo-500', lastUpdate: new Date('2025-09-18T23:00:00Z') },
+            { id: 'height', name: 'Altura', value: '1.80 m', href: './saude-altura.html', icon: 'height', iconBgClass: 'bg-blue-100', iconTextClass: 'text-blue-500', lastUpdate: new Date('2025-01-10T09:00:00Z') },
+          ],
+          availableMetrics: [
+            { id: 'glucose', name: 'Glicose', unit: 'mg/dL', href: '#', icon: 'bloodtype', iconBgClass: 'bg-red-100', iconTextClass: 'text-red-500' },
+            { id: 'cholesterol', name: 'Colesterol', unit: 'mg/dL', href: '#', icon: 'water_drop', iconBgClass: 'bg-yellow-100', iconTextClass: 'text-yellow-500' },
+            { id: 'blood_pressure', name: 'Pressão Arterial', unit: '', href: '#', icon: 'blood_pressure', iconBgClass: 'bg-purple-100', iconTextClass: 'text-purple-500' },
           ],
           get sortedData() {
             return this.healthData.sort((a, b) => new Date(b.lastUpdate) - new Date(a.lastUpdate));
+          },
+          get untrackedMetrics() {
+              const trackedIds = this.healthData.map(item => item.id);
+              return this.availableMetrics.filter(metric => !trackedIds.includes(metric.id));
           },
           formatRelativeDate(date) {
             const today = new Date();
@@ -306,46 +316,68 @@
             if (today.getTime() === checkDate.getTime()) return 'Hoje';
             if (yesterday.getTime() === checkDate.getTime()) return 'Ontem';
             return new Date(date).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' });
+          },
+          addMetric(metricId) {
+            const metricToAdd = this.availableMetrics.find(m => m.id === metricId);
+            if (metricToAdd) {
+              this.healthData.push({
+                ...metricToAdd,
+                value: `- ${metricToAdd.unit}`.trim(),
+                lastUpdate: new Date()
+              });
+              this.addMetricModalOpen = false;
+            }
           }
        }">
     <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
       <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
-      <div class="flex items-center gap-2 text-sm text-gray-500" x-show="sortedData.length > 4">
-          <span x-text="open ? 'Ver menos' : 'Ver mais'"></span>
-          <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': open}">expand_more</span>
-      </div>
+      <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
     </div>
-    <div class="space-y-1 mt-5">
-      <template x-for="(item, index) in sortedData.slice(0, 4)" :key="index">
-        <a :href="item.href" class="w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
-          <div class="flex items-center">
-            <div :class="item.iconBgClass" class="p-2 rounded-lg mr-4">
-              <span class="material-symbols-outlined" :class="item.iconTextClass" x-text="item.icon"></span>
-            </div>
-            <div>
-              <p class="text-[#4d4d4d] text-sm" x-text="item.name"></p>
-              <p class="text-[11px] text-gray-400" x-text="'Atualizado: ' + formatRelativeDate(item.lastUpdate)"></p>
-            </div>
-          </div>
-          <div class="font-semibold text-[#4d4d4d] text-sm text-right" :class="item.name === 'Sono' ? 'leading-tight' : ''" x-html="item.value"></div>
-        </a>
-      </template>
-      <div x-show="open" x-transition class="space-y-1 border-t border-gray-100 pt-1">
-        <template x-for="(item, index) in sortedData.slice(4)" :key="index">
-          <a :href="item.href" class="w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
-            <div class="flex items-center">
-              <div :class="item.iconBgClass" class="p-2 rounded-lg mr-4">
-                <span class="material-symbols-outlined" :class="item.iconTextClass" x-text="item.icon"></span>
-              </div>
-              <div>
-                <p class="text-[#4d4d4d] text-sm" x-text="item.name"></p>
-                <p class="text-[11px] text-gray-400" x-text="'Atualizado: ' + formatRelativeDate(item.lastUpdate)"></p>
-              </div>
-            </div>
-            <div class="font-semibold text-[#4d4d4d] text-sm text-right" :class="item.name === 'Sono' ? 'leading-tight' : ''" x-html="item.value"></div>
-          </a>
+    
+    <div x-show="open" x-transition class="space-y-1 mt-5">
+        <template x-for="item in sortedData" :key="item.id">
+            <a :href="item.href" class="w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
+                <div class="flex items-center">
+                    <div :class="item.iconBgClass" class="flex items-center justify-center h-10 w-10 rounded-lg mr-3">
+                        <span class="material-symbols-outlined" :class="item.iconTextClass" x-text="item.icon"></span>
+                    </div>
+                    <div>
+                        <p class="text-[#4d4d4d] text-sm font-semibold" x-text="item.name"></p>
+                        <p class="text-[11px] text-gray-400" x-text="'Atualizado: ' + formatRelativeDate(item.lastUpdate)"></p>
+                    </div>
+                </div>
+                <div class="font-semibold text-[#4d4d4d] text-sm text-right" :class="item.value.includes('<br>') ? 'leading-tight' : ''" x-html="item.value"></div>
+            </a>
         </template>
-      </div>
+        <div class="pt-2">
+            <a href="#" @click.prevent="addMetricModalOpen = true" class="text-sm font-semibold text-[#467de9] hover:underline mt-2 inline-block">
+                Adicionar Novo Parâmetro
+            </a>
+        </div>
+    </div>
+
+    <div x-show="addMetricModalOpen" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50" @keydown.escape.window="addMetricModalOpen = false" style="display: none;">
+        <div @click.away="addMetricModalOpen = false" class="bg-white rounded-xl shadow-lg p-6 w-full max-w-sm">
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Adicionar Parâmetro</h3>
+            <div class="space-y-2">
+                <template x-if="untrackedMetrics.length === 0">
+                    <p class="text-gray-500 text-sm text-center py-4">Todos os parâmetros já estão sendo monitorados.</p>
+                </template>
+                <template x-for="metric in untrackedMetrics" :key="metric.id">
+                    <button @click="addMetric(metric.id)" class="w-full flex items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 text-left">
+                        <div :class="metric.iconBgClass" class="flex items-center justify-center h-10 w-10 rounded-lg mr-3">
+                            <span class="material-symbols-outlined" :class="metric.iconTextClass" x-text="metric.icon"></span>
+                        </div>
+                        <span class="text-[#4d4d4d] text-sm font-semibold" x-text="metric.name"></span>
+                    </button>
+                </template>
+            </div>
+             <div class="mt-6 flex justify-end">
+                <button type="button" @click="addMetricModalOpen = false" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
+                    Fechar
+                </button>
+            </div>
+        </div>
     </div>
   </div>
   
@@ -662,32 +694,6 @@
     </div>
 </div>
 
-<div class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center hidden" id="health-modal">
-  <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-  <div class="modal-container bg-white w-11/12 md:max-w-3xl mx-auto rounded-xl shadow-lg z-50 overflow-y-auto">
-    <div class="modal-content py-6 text-left px-6">
-      <div class="flex justify-between items-center pb-3 border-b">
-        <p class="text-2xl font-bold text-[#4d4d4d]" id="modal-title">Histórico de Peso</p>
-        <div class="modal-close cursor-pointer z-50"><span class="material-symbols-outlined text-gray-500 hover:text-[#4d4d4d]">close</span></div>
-      </div>
-      <div class="my-5">
-        <div class="flex justify-end items-center mb-4">
-          <div class="flex items-center space-x-2">
-            <span class="text-sm font-medium text-gray-600">Período:</span>
-            <select class="bg-gray-50 border border-gray-300 text-[#4d4d4d] text-sm rounded-lg focus:ring-[#467de9] focus:border-[#467de9] block w-full p-2" id="time-filter">
-              <option value="7">Últimos 7 dias</option>
-              <option selected value="30">Últimos 30 dias</option>
-              <option value="180">Últimos 6 meses</option>
-              <option value="all">Tudo</option>
-            </select>
-          </div>
-        </div>
-        <div class="relative h-96"><canvas id="healthChart"></canvas></div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -768,86 +774,6 @@ document.addEventListener('DOMContentLoaded', () => {
       switchProfile(a);
     });
   });
-
-  const openmodal = document.querySelectorAll('.modal-open');
-  let myChart;
-  const dummyData = {
-    'Peso': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000), y:75+Math.sin(i/5)*2+(Math.random()-0.5)})),
-    'Altura': [{x:new Date('2023-01-15'),y:1.79},{x:new Date('2024-01-10'),y:1.80}],
-    'Batimentos': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:72+Math.floor(Math.random()*10)-5})),
-    'Calorias': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:2200+Math.floor(Math.random()*400)-200})),
-    'Sono': Array.from({length:90},(_,i)=>({x:new Date(Date.now()-(90-i)*86400000),y:7.5+(Math.random()-0.5)*2})),
-  };
-  const getFilteredData = (data, days) => {
-    if (days === 'all') return data;
-    const cutoff = new Date(Date.now()-days*86400000);
-    return data.filter(d=>d.x>=cutoff);
-  };
-  const createChart = (metric, unit) => {
-    const ctx = document.getElementById('healthChart').getContext('2d');
-    const timeFilter = document.getElementById('time-filter');
-    const selected = timeFilter.value;
-    const chartData = {
-      datasets: [{
-        label: `${metric} (${unit})`,
-        data: getFilteredData(dummyData[metric], selected),
-        borderColor: 'rgb(70, 125, 233)',
-        backgroundColor: 'rgba(70, 125, 233, 0.5)',
-        tension: 0.1,
-        pointRadius: 4,
-        pointHoverRadius: 7,
-      }]
-    };
-    const config = {
-      type: 'line',
-      data: chartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: { type:'time', time:{ unit:'day', tooltipFormat:'dd/MM/yyyy' }, title:{ display:true, text:'Data' } },
-          y: { title:{ display:true, text:`Valor (${unit})` } }
-        },
-        plugins: { tooltip: { callbacks: { label: (ctx)=> {
-          let label = ctx.dataset.label ? ctx.dataset.label + ': ' : '';
-          if (ctx.parsed.y !== null) label += `${ctx.parsed.y.toFixed(2)} ${unit}`;
-          return label; } } } }
-      }
-    };
-    if (myChart) myChart.destroy();
-    myChart = new Chart(ctx, config);
-    timeFilter.onchange = () => {
-      myChart.data.datasets[0].data = getFilteredData(dummyData[metric], timeFilter.value);
-      myChart.update();
-    };
-  };
-
-  openmodal.forEach(btn=>{
-    btn.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const modalId = btn.dataset.target;
-      const modal = document.getElementById(modalId);
-      const metric = btn.dataset.metric;
-      const unit = btn.dataset.unit;
-      document.getElementById('modal-title').innerText = `Histórico de ${metric}`;
-      createChart(metric, unit);
-      toggleModal(modal);
-    });
-  });
-
-  const overlay = document.querySelector('.modal-overlay');
-  if (overlay) overlay.addEventListener('click', () => {
-    const modal = document.querySelector('.modal.flex'); if (modal) toggleModal(modal);
-  });
-  document.querySelectorAll('.modal-close').forEach(el=>{
-    el.addEventListener('click', ()=>{ const m = document.querySelector('.modal.flex'); if (m) toggleModal(m); });
-  });
-  document.addEventListener('keydown', (evt)=>{
-    if ((evt.key === 'Escape' || evt.key === 'Esc')) {
-      const m = document.querySelector('.modal.flex'); if (m) toggleModal(m);
-    }
-  });
-  function toggleModal(modal){ modal.classList.toggle('hidden'); modal.classList.toggle('flex'); document.body.classList.toggle('modal-active'); }
 
   const carousel = document.getElementById('courses-carousel');
   const scrollLeftBtn = document.getElementById('scroll-left-btn');
