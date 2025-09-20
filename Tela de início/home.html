@@ -284,13 +284,13 @@
 
   <div class="bg-white p-6 rounded-xl shadow-sm w-full lg:w-11/12 lg:ml-auto" 
        x-data="{
-          open: true,
+          open: false,
           addMetricModalOpen: false,
           healthData: [
             { id: 'heart_rate', name: 'Batimentos', value: '72 bpm', href: './saude-batimentos.html', icon: 'favorite', iconBgClass: 'bg-red-100', iconTextClass: 'text-red-500', lastUpdate: new Date() },
             { id: 'weight', name: 'Peso', value: '75 kg', href: './saude-peso.html', icon: 'monitor_weight', iconBgClass: 'bg-blue-100', iconTextClass: 'text-blue-500', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
             { id: 'calories', name: 'Calorias', value: '2200 kcal', href: './saude-calorias.html', icon: 'local_fire_department', iconBgClass: 'bg-orange-100', iconTextClass: 'text-orange-500', lastUpdate: new Date(new Date().setDate(new Date().getDate() - 1)) },
-            { id: 'sleep', name: 'Sono', value: `7h<br>30m`, href: './saude-sono.html', icon: 'bedtime', iconBgClass: 'bg-indigo-100', iconTextClass: 'text-indigo-500', lastUpdate: new Date('2025-09-18T23:00:00Z') },
+            { id: 'sleep', name: 'Sono', value: '7h<br>30m', href: './saude-sono.html', icon: 'bedtime', iconBgClass: 'bg-indigo-100', iconTextClass: 'text-indigo-500', lastUpdate: new Date('2025-09-18T23:00:00Z') },
             { id: 'height', name: 'Altura', value: '1.80 m', href: './saude-altura.html', icon: 'height', iconBgClass: 'bg-blue-100', iconTextClass: 'text-blue-500', lastUpdate: new Date('2025-01-10T09:00:00Z') },
           ],
           availableMetrics: [
@@ -331,7 +331,7 @@
        }">
     <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
       <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
-      <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
+      <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': open}">expand_more</span>
     </div>
     
     <div x-show="open" x-transition class="space-y-1 mt-5">
@@ -349,7 +349,7 @@
                 <div class="font-semibold text-[#4d4d4d] text-sm text-right" :class="item.value.includes('<br>') ? 'leading-tight' : ''" x-html="item.value"></div>
             </a>
         </template>
-        <div class="pt-2">
+        <div class="pt-2 text-center">
             <a href="#" @click.prevent="addMetricModalOpen = true" class="text-sm font-semibold text-[#467de9] hover:underline mt-2 inline-block">
                 Adicionar Novo Parâmetro
             </a>
