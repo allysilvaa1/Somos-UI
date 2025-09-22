@@ -21,6 +21,41 @@
   .modal { transition: opacity .25s ease; }
   body.modal-active { overflow-x:hidden; overflow-y:hidden; }
   #courses-carousel::-webkit-scrollbar { display: none; }
+
+  .wip-link { 
+    position: relative;
+    cursor: not-allowed; 
+  }
+  .wip-link::after {
+    content: attr(title);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5px;
+    background-color: #374151;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 50;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .wip-link:hover::after {
+    visibility: visible;
+    opacity: 1;
+  }
+  .wip-link.wip-link-top::after {
+    top: auto;
+    margin-top: 0;
+    bottom: 100%;
+    margin-bottom: 5px;
+  }
 </style>
 </head>
 <body class="bg-[#F0F7FF]">
@@ -37,33 +72,33 @@
           <span class="material-symbols-outlined filled text-3xl">home</span>
           <span>Início</span>
         </a>
-        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors wip-link">
           <span class="material-symbols-outlined text-3xl">group</span>
           <span>Rede</span>
         </a>
-        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors wip-link">
           <span class="material-symbols-outlined text-3xl">assignment_ind</span>
           <span>Prontuário</span>
         </a>
-        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors wip-link">
           <span class="material-symbols-outlined text-3xl">calendar_today</span>
-          <span>Calendário</span>
+          <span>Agenda</span>
         </a>
-        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors wip-link">
           <span class="material-symbols-outlined text-3xl">sentiment_satisfied</span>
           <span>Humor</span>
         </a>
-        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors wip-link">
           <span class="material-symbols-outlined text-3xl">chat</span>
           <span>Mensagens</span>
         </a>
-        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors">
+        <a href="#" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#6bbdff] font-medium text-sm w-20 p-2 rounded-lg hover:bg-sky-50 transition-colors wip-link">
           <span class="material-symbols-outlined text-3xl">archive</span>
           <span>Arquivos</span>
         </a>
       </nav>
       <div class="flex items-center space-x-4">
-        <div x-data="{ searchOpen: false }" @click.away="searchOpen = false" class="relative hidden sm:block h-10">
+        <div x-data="{ searchOpen: false }" @click.away="searchOpen = false" class="relative hidden sm:block h-10 w-10">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#6bbdff] z-10 pointer-events-none">
                 search
             </span>
@@ -72,7 +107,7 @@
                 x-ref="searchInput"
                 @click="searchOpen = true; $nextTick(() => $refs.searchInput.focus())"
                 :placeholder="searchOpen ? 'Pesquisar...' : ''"
-                class="relative bg-gray-50 border border-gray-50 rounded-lg h-full pl-10 pr-4 transition-all duration-300 ease-in-out focus:outline-none cursor-pointer focus:cursor-text"
+                class="absolute top-0 right-0 bg-gray-50 border border-gray-50 rounded-lg h-full pl-10 pr-4 transition-all duration-300 ease-in-out focus:outline-none cursor-pointer focus:cursor-text"
                 :class="searchOpen ? 'w-56' : 'w-10'"
             >
         </div>
@@ -95,27 +130,27 @@
             <span class="material-symbols-outlined filled">home</span>
             <span>Início</span>
         </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
+        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50 wip-link" href="#">
             <span class="material-symbols-outlined">group</span>
             <span>Rede</span>
         </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
+        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50 wip-link" href="#">
             <span class="material-symbols-outlined">assignment_ind</span>
             <span>Prontuário</span>
         </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
+        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50 wip-link" href="#">
             <span class="material-symbols-outlined">calendar_today</span>
-            <span>Calendário</span>
+            <span>Agenda</span>
         </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
+        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50 wip-link" href="#">
             <span class="material-symbols-outlined">sentiment_satisfied</span>
             <span>Humor</span>
         </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
+        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50 wip-link" href="#">
             <span class="material-symbols-outlined">chat</span>
             <span>Mensagens</span>
         </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50" href="#">
+        <a class="flex items-center gap-3 p-2 rounded-lg text-gray-500 hover:text-[#6bbdff] hover:bg-sky-50 wip-link" href="#">
             <span class="material-symbols-outlined">archive</span>
             <span>Arquivos</span>
         </a>
@@ -391,7 +426,7 @@
           <p class="text-xs text-gray-500"><span class="font-medium">Onde:</span> Cafeteria São Braz</p>
           <p class="text-xs text-gray-400 mt-1">Criado por Leana Moraes</p>
         </div>
-        <a href="#" class="text-xs font-semibold text-[#467de9] hover:underline whitespace-nowrap">Ver mais</a>
+        <a href="#" class="text-xs font-semibold text-[#467de9] hover:underline whitespace-nowrap wip-link">Ver mais</a>
       </div>
       <div class="border-t border-gray-100"></div>
       <div class="flex items-start space-x-3">
@@ -402,7 +437,7 @@
           <p class="text-xs text-gray-500"><span class="font-medium">Onde:</span> Online (Link no grupo)</p>
           <p class="text-xs text-gray-400 mt-1">Criado por Ricardo Gomes</p>
         </div>
-        <a href="#" class="text-xs font-semibold text-[#467de9] hover:underline whitespace-nowrap">Participar</a>
+        <a href="#" class="text-xs font-semibold text-[#467de9] hover:underline whitespace-nowrap wip-link">Participar</a>
       </div>
     </div>
   </div>
@@ -420,16 +455,16 @@
             <span class="material-symbols-outlined text-base mr-1.5">location_on</span>
             <span class="text-sm">Rua das Flores, 123 - Recife, PE</span>
           </div>
-          <button class="flex items-center text-white/80 hover:text-white transition-colors whitespace-nowrap mt-3 opacity-90">
+          <button class="flex items-center text-white/80 hover:text-white transition-colors whitespace-nowrap mt-3 opacity-90 wip-link">
             <span class="material-symbols-outlined text-base mr-1.5">attachment</span>
             <span class="text-sm">Anexar arquivos</span>
           </button>
         </div>
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-auto pt-4">
-          <button class="flex items-center bg-white/20 text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-white/30 transition-colors whitespace-nowrap">
+          <button class="flex items-center bg-white/20 text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-white/30 transition-colors whitespace-nowrap wip-link">
             <span class="material-symbols-outlined text-base mr-2">event_available</span>Confirmar presença
           </button>
-          <button class="flex items-center text-white/80 hover:text-white transition-colors whitespace-nowrap">
+          <button class="flex items-center text-white/80 hover:text-white transition-colors whitespace-nowrap wip-link">
             <span class="material-symbols-outlined text-base mr-1.5">videocam</span>Iniciar teleconsulta
           </button>
         </div>
@@ -447,7 +482,7 @@
                         <p class="text-xs opacity-80 mt-1.5">05 de agosto de 2024 - 14:00</p>
                     </div>
                 </div>
-                <a href="#" class="font-semibold hover:underline text-xs mt-1 flex-shrink-0">Ver</a>
+                <a href="#" class="font-semibold hover:underline text-xs mt-1 flex-shrink-0 wip-link">Ver</a>
             </div>
             <div class="flex justify-between items-start opacity-90">
                 <div class="flex items-start gap-3">
@@ -458,7 +493,7 @@
                         <p class="text-xs opacity-80 mt-1.5">12 de agosto de 2024 - 08:00</p>
                     </div>
                 </div>
-                <a href="#" class="font-semibold hover:underline text-xs mt-1 flex-shrink-0">Ver</a>
+                <a href="#" class="font-semibold hover:underline text-xs mt-1 flex-shrink-0 wip-link">Ver</a>
             </div>
         </div>
       </div>
@@ -503,7 +538,7 @@
       </div>
       <div class="flex justify-between items-center mt-auto pt-4 border-t">
         <a href="./diario-de-bordo.html" class="text-sm font-semibold text-[#467de9] hover:underline">Ver diário completo</a>
-        <button class="flex items-center gap-2 bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors">
+        <button class="flex items-center gap-2 bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors wip-link">
             <span class="material-symbols-outlined">add</span>
             Nova entrada
         </button>
@@ -535,7 +570,7 @@
                     </div>
                     <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Programa de preparação para o parto - IMIP</h4>
                     <div class="flex justify-end items-center mt-auto pt-3">
-                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors">Inscrever-se</a>
+                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors wip-link wip-link-top">Inscrever-se</a>
                     </div>
                 </div>
             </div>
@@ -551,7 +586,7 @@
                     </div>
                     <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Amamentação descomplicada</h4>
                     <div class="flex justify-end items-center mt-auto pt-3">
-                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors">Inscrever-se</a>
+                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors wip-link wip-link-top">Inscrever-se</a>
                     </div>
                 </div>
             </div>
@@ -567,7 +602,7 @@
                     </div>
                     <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Primeiros socorros para bebês</h4>
                      <div class="flex justify-end items-center mt-auto pt-3">
-                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors">Inscrever-se</a>
+                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors wip-link wip-link-top">Inscrever-se</a>
                     </div>
                 </div>
             </div>
@@ -583,7 +618,7 @@
                     </div>
                     <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Nutrição na gestação: coma bem por dois</h4>
                      <div class="flex justify-end items-center mt-auto pt-3">
-                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors">Inscrever-se</a>
+                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors wip-link wip-link-top">Inscrever-se</a>
                     </div>
                 </div>
             </div>
@@ -599,7 +634,7 @@
                     </div>
                     <h4 class="font-bold text-base text-[#4d4d4d] mb-2 flex-grow">Evento online: encontro de mães empreendedoras</h4>
                     <div class="flex justify-end items-center mt-auto pt-3">
-                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors">Participar</a>
+                        <a href="#" class="bg-[#467de9] text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-[#3a6ed1] transition-colors wip-link wip-link-top">Participar</a>
                     </div>
                 </div>
             </div>
@@ -813,6 +848,14 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateArrowState);
     updateArrowState();
   }
+
+  const wipLinks = document.querySelectorAll('.wip-link');
+  wipLinks.forEach(link => {
+      link.setAttribute('title', 'Página em construção');
+      link.addEventListener('click', (event) => {
+          event.preventDefault();
+      });
+  });
 });
 </script>
 </body>
