@@ -131,7 +131,7 @@
 <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
-<aside class="md:col-span-4 lg:col-span-3 space-y-6 md:sticky top-28 self-start">
+<aside class="md:col-span-3 lg:col-span-3 space-y-6 md:sticky top-28 self-start">
   <div class="bg-white rounded-xl shadow-sm overflow-hidden w-full lg:w-11/12 lg:ml-auto">
     <div class="relative h-24 bg-cover bg-center" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuDX57e-y108_Kk_t7S_Vv0y1p3E5b6o3hC2f4gA0rQ1j2c-X-g1g3o4e_z5j9a_b9g4h5b3c_w8g3k4l3q_r2d1p2j3k4l5m6n7o8')">
       <div class="absolute inset-0 bg-blue-500 opacity-20"></div>
@@ -284,7 +284,7 @@
 
   <div class="bg-white p-6 rounded-xl shadow-sm w-full lg:w-11/12 lg:ml-auto" 
        x-data="{
-          open: false,
+          open: true,
           addMetricModalOpen: false,
           healthData: [
             { id: 'heart_rate', name: 'Batimentos', value: '72 bpm', href: './saude-batimentos.html', icon: 'favorite', iconBgClass: 'bg-red-100', iconTextClass: 'text-red-500', lastUpdate: new Date() },
@@ -306,16 +306,13 @@
               return this.availableMetrics.filter(metric => !trackedIds.includes(metric.id));
           },
           formatRelativeDate(date) {
-            const today = new Date();
-            const yesterday = new Date();
-            yesterday.setDate(yesterday.getDate() - 1);
-            today.setHours(0,0,0,0);
-            yesterday.setHours(0,0,0,0);
-            const checkDate = new Date(date);
-            checkDate.setHours(0,0,0,0);
-            if (today.getTime() === checkDate.getTime()) return 'Hoje';
-            if (yesterday.getTime() === checkDate.getTime()) return 'Ontem';
-            return new Date(date).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: '2-digit' });
+            const d = new Date(date);
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = String(d.getFullYear()).slice(-2);
+            const hours = String(d.getHours()).padStart(2, '0');
+            const minutes = String(d.getMinutes()).padStart(2, '0');
+            return `Última atualização:<br>${day}/${month}/${year} às ${hours}:${minutes}h`;
           },
           addMetric(metricId) {
             const metricToAdd = this.availableMetrics.find(m => m.id === metricId);
@@ -330,11 +327,10 @@
           }
        }">
     <div @click="open = !open" class="flex justify-between items-center cursor-pointer">
-      <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
-      <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': open}">expand_more</span>
+        <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
+        <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
     </div>
-    
-    <div x-show="open" x-transition class="space-y-1 mt-5">
+    <div class="space-y-1 mt-5" x-show="open" x-transition>
         <template x-for="item in sortedData" :key="item.id">
             <a :href="item.href" class="w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
                 <div class="flex items-center">
@@ -343,7 +339,7 @@
                     </div>
                     <div>
                         <p class="text-[#4d4d4d] text-sm font-semibold" x-text="item.name"></p>
-                        <p class="text-[11px] text-gray-400" x-text="'Atualizado: ' + formatRelativeDate(item.lastUpdate)"></p>
+                        <p class="text-[11px] text-gray-400 leading-tight" x-html="formatRelativeDate(item.lastUpdate)"></p>
                     </div>
                 </div>
                 <div class="font-semibold text-[#4d4d4d] text-sm text-right" :class="item.value.includes('<br>') ? 'leading-tight' : ''" x-html="item.value"></div>
@@ -412,7 +408,7 @@
   </div>
 </aside>
 
-<section class="md:col-span-8 lg:col-span-6 space-y-6">
+<section class="md:col-span-9 lg:col-span-6 space-y-6">
   <div class="bg-gradient-to-br from-[#467de9] to-[#4273c3] text-white p-8 rounded-xl shadow-lg flex flex-col">
     <div>
       <div>
@@ -605,7 +601,7 @@
   </div>
 </section>
 
-<aside class="md:col-span-12 lg:col-span-3 space-y-6 lg:sticky top-28 self-start">
+<aside class="md:col-span-9 md:col-start-4 lg:col-span-3 lg:col-start-auto space-y-6 lg:sticky top-28 self-start">
   <div class="w-full lg:w-11/12 rounded-xl overflow-hidden shadow-sm">
     <a href="#">
       <video class="w-full h-auto" autoplay muted loop playsinline>
