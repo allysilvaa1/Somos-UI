@@ -3,7 +3,7 @@
 <html lang="pt-BR" x-data="{ notificationsOpen: false }">
 <head>
 <meta charset="utf-8"/>
-<meta content="width-device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width-device-width, initial-scale-1.0" name="viewport"/>
 <title>Início - Prontuário Médico</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
@@ -365,9 +365,20 @@
         <h3 class="text-lg font-semibold text-[#4d4d4d]">Minha saúde</h3>
         <span class="material-symbols-outlined transition-transform duration-300" :class="{'rotate-180': !open}">expand_more</span>
     </div>
+
+    <div class="mt-5" x-show="!open" x-transition>
+        <div class="flex items-center justify-center space-x-2">
+            <template x-for="item in sortedData" :key="item.id">
+                <div :class="item.iconBgClass" class="wip-link flex items-center justify-center h-10 w-10 rounded-lg" :title="item.name">
+                    <span class="material-symbols-outlined" :class="item.iconTextClass" x-text="item.icon"></span>
+                </div>
+            </template>
+        </div>
+    </div>
+
     <div class="space-y-1 mt-5" x-show="open" x-transition>
         <template x-for="item in sortedData" :key="item.id">
-            <a :href="item.href" class="w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
+            <a :href="item.href" class="wip-link w-full flex justify-between items-center p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer text-left">
                 <div class="flex items-center">
                     <div :class="item.iconBgClass" class="flex items-center justify-center h-10 w-10 rounded-lg mr-3">
                         <span class="material-symbols-outlined" :class="item.iconTextClass" x-text="item.icon"></span>
@@ -445,12 +456,15 @@
 
 <section class="md:col-span-9 lg:col-span-6 space-y-6">
   <div class="bg-gradient-to-br from-[#467de9] to-[#4273c3] text-white p-6 rounded-xl shadow-lg">
-    <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-x-4">
-      <div class="flex flex-col lg:col-span-2">
+    <div class="grid grid-cols-1 lg:grid-cols-5 lg:gap-x-4">
+      <div class="flex flex-col lg:col-span-3">
         <div>
-          <span class="inline-block bg-white/20 text-white text-sm font-bold px-3 py-1 rounded-full mb-3 tracking-wider">Consulta de rotina</span>
-          <h3 class="text-2xl font-bold">Cardiologia com Dr. Paulo Silva</h3>
-          <p class="opacity-90 mt-1">Amanhã, 28 de julho de 2024 - 10:30</p>
+          <h3 class="text-2xl font-bold">Consulta | Dr thiago Martin</h3>
+          <div class="flex items-center flex-wrap gap-2 mt-3">
+              <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">Endocrinologia e Metabologia</span>
+              <span class="inline-block text-white text-xs font-semibold px-3 py-1 rounded-full" style="background-color: rgba(147, 51, 234, 0.5);">Endocrinologia e Nutrição</span>
+          </div>
+          <p class="opacity-90 mt-3">Amanhã, 28 de julho de 2025 - 10:30</p>
           <div class="flex items-center mt-3 opacity-90">
             <span class="material-symbols-outlined text-base mr-1.5">location_on</span>
             <span class="text-sm">Rua das Flores, 123 - Recife, PE</span>
@@ -461,36 +475,64 @@
           </button>
         </div>
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-auto pt-4">
-          <button class="flex items-center bg-white/20 text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-white/30 transition-colors whitespace-nowrap wip-link">
-            <span class="material-symbols-outlined text-base mr-2">event_available</span>Confirmar presença
-          </button>
+          <div x-data="{ open: false, status: { text: 'Ações', icon: null } }" class="relative">
+            <button @click="open = !open" class="flex items-center bg-white/20 text-white rounded-lg px-4 py-2 text-sm font-semibold hover:bg-white/30 transition-colors whitespace-nowrap">
+                <span x-if="status.icon" class="material-symbols-outlined text-base mr-1.5" x-text="status.icon"></span>
+                <span x-text="status.text"></span>
+                <span x-if="!status.icon" class="material-symbols-outlined text-base ml-1.5 transition-transform duration-200" :class="{'rotate-180': open}">expand_more</span>
+            </button>
+            <div x-show="open" 
+                 @click.away="open = false" 
+                 x-transition:enter="transition ease-out duration-100"
+                 x-transition:enter-start="transform opacity-0 scale-95"
+                 x-transition:enter-end="transform opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-75"
+                 x-transition:leave-start="transform opacity-100 scale-100"
+                 x-transition:leave-end="transform opacity-0 scale-95"
+                 class="absolute top-full mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-10 origin-top"
+                 style="display: none;">
+                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                    <a href="#" @click.prevent="status = { text: 'Consulta confirmada', icon: 'event_available' }; open = false" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                        <span class="material-symbols-outlined text-base text-green-600">event_available</span>
+                        Confirmar consulta
+                    </a>
+                    <a href="#" @click.prevent="status = { text: 'Consulta cancelada', icon: 'event_busy' }; open = false" class="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                         <span class="material-symbols-outlined text-base text-red-600">event_busy</span>
+                        Cancelar consulta
+                    </a>
+                </div>
+            </div>
+          </div>
           <button class="flex items-center text-white/80 hover:text-white transition-colors whitespace-nowrap wip-link">
             <span class="material-symbols-outlined text-base mr-1.5">videocam</span>Iniciar teleconsulta
           </button>
         </div>
       </div>
       
-      <div class="mt-8 lg:mt-0 lg:pl-4 lg:border-l lg:border-white/20">
-        <h4 class="text-sm font-medium opacity-80 mb-4 tracking-wider">Próximos eventos</h4>
+      <div class="mt-8 lg:mt-0 lg:pl-6 lg:border-l lg:border-white/20 lg:col-span-2">
+        <h4 class="text-sm font-medium opacity-80 mb-4 tracking-wider">Próximas consultas</h4>
         <div class="space-y-4 text-sm">
             <div class="flex justify-between items-start opacity-90">
                 <div class="flex items-start gap-3">
-                    <span class="material-symbols-outlined text-lg mt-1">event</span>
+                    <span class="material-symbols-outlined text-xl relative -top-0.5">event</span>
                     <div>
-                        <p class="font-semibold">Clínico geral</p>
-                        <span class="inline-block bg-white/20 text-white text-[9px] font-semibold px-2.5 py-0.5 rounded-full tracking-wide mt-1.5">Consulta de retorno</span>
-                        <p class="text-xs opacity-80 mt-1.5">05 de agosto de 2024 - 14:00</p>
+                        <p class="font-semibold">Consulta | Dr Marcos Paulo</p>
+                        <div class="flex items-center flex-nowrap gap-1 mt-1.5">
+                           <span class="inline-block bg-white/20 text-white text-[9px] font-semibold px-2.5 py-0.5 rounded-full tracking-wide">Anestesiologista</span>
+                           <span class="inline-block text-white text-[9px] font-semibold px-2.5 py-0.5 rounded-full tracking-wide" style="background-color: rgba(147, 51, 234, 0.5);">Coluna</span>
+                        </div>
+                        <p class="text-xs opacity-80 mt-1.5">05 de agosto de 2025 - 14:00</p>
                     </div>
                 </div>
                 <a href="#" class="font-semibold hover:underline text-xs mt-1 flex-shrink-0 wip-link">Ver</a>
             </div>
             <div class="flex justify-between items-start opacity-90">
                 <div class="flex items-start gap-3">
-                    <span class="material-symbols-outlined text-lg mt-1">science</span>
+                    <span class="material-symbols-outlined text-xl relative -top-0.5">science</span>
                     <div>
                         <p class="font-semibold">Exame de sangue</p>
                         <span class="inline-block bg-white/20 text-white text-[9px] font-semibold px-2.5 py-0.5 rounded-full tracking-wide mt-1.5">Exame laboratorial</span>
-                        <p class="text-xs opacity-80 mt-1.5">12 de agosto de 2024 - 08:00</p>
+                        <p class="text-xs opacity-80 mt-1.5">12 de agosto de 2025 - 08:00</p>
                     </div>
                 </div>
                 <a href="#" class="font-semibold hover:underline text-xs mt-1 flex-shrink-0 wip-link">Ver</a>
